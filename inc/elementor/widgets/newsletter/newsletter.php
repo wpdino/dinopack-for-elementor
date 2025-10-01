@@ -79,7 +79,7 @@ class Newsletter extends Widget_Base {
      * @access public
      */
     public function get_title() {
-        return esc_html__('Newsletter', 'dinopack-for-elementor');
+        return esc_html__('MailChimp Newsletter', 'dinopack-for-elementor');
     }
 
     /**
