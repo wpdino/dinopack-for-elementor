@@ -27,7 +27,7 @@
 - 📱 **Fully Responsive** - Mobile-first design approach
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
 - 🛠️ **Highly Customizable** - Extensive styling options
-- 🔌 **MailChimp Integration** - Newsletter widget with API support
+- 🔌 **MailChimp Integration** - Mailchimp Newsletter widget with API support
 - 🛒 **WooCommerce Support** - Dedicated products widget
 - 🌐 **Translation Ready** - WPML and multilingual compatible
 - ♿ **Accessibility** - Built with accessibility in mind
@@ -43,8 +43,6 @@ Display your posts in multiple layouts:
 - Grid Layout
 - List Layout
 - Masonry Layout
-- Cards Layout
-- Timeline Layout
 - AJAX Load More functionality
 
 ### 3. **Button Widget**
@@ -80,16 +78,16 @@ Modal popups and overlays with:
 
 ### 8. **Price Table Widget**
 Professional pricing tables with:
-- 3+ different styles
-- Featured pricing options
-- Ribbon badges
-- Custom buttons
+- Customizable title and description
+- Price display with currency and period
+- Feature list with icons
+- Popular badge option
+- Call-to-action button
 
 ### 9. **Progress Bar Widget**
 Animated progress bars in multiple formats:
 - Line style
 - Circle style
-- Half-circle style
 - Custom colors and animations
 
 ### 10. **WooCommerce Products Widget**
@@ -168,9 +166,8 @@ Every widget is fully responsive with:
 
 ### Custom Controls
 
-DinoPack includes custom Elementor controls:
-- Image Picker Control
-- Select Image Control
+DinoPack includes a custom Elementor control:
+- Select Image Control (with Image Picker functionality)
 
 ### Hooks & Filters
 
@@ -191,7 +188,7 @@ dinopack-for-elementor/
 
 ## 🐛 Bug Reports
 
-Found a bug? Please create an issue on [GitHub Issues](https://github.com/yourusername/dinopack-for-elementor/issues) with:
+Found a bug? Please create an issue on [GitHub Issues](https://github.com/wpdino/dinopack-for-elementor/issues) with:
 - WordPress version
 - Elementor version
 - PHP version
@@ -262,14 +259,14 @@ The Newsletter widget only connects to MailChimp API when explicitly configured,
 
 #### Added
 - Advanced Heading Widget with text rotator
-- Blog Widget with 5 layouts and AJAX load more
+- Blog Widget with 3 layouts (Grid, List, Masonry) and AJAX load more
 - Button Widget with animations
 - Gallery Widget with GLightbox
 - Icon Box Widget
 - Newsletter Widget with MailChimp integration
 - Popup Widget
 - Price Table Widget
-- Progress Bar Widget (line, circle, half-circle)
+- Progress Bar Widget (line, circle)
 - WooCommerce Products Widget
 - Admin settings panel
 - Custom Elementor controls
