@@ -1,0 +1,186 @@
+.elementor-widget-dinopack-woo-products .woocommerce .elementor-element .button,
+.elementor-widget-dinopack-woo-products .woocommerce .elementor-element button[type=submit], 
+.elementor-widget-dinopack-woo-products .woocommerce .elementor-element input[type=button], 
+.elementor-widget-dinopack-woo-products .woocommerce .elementor-element input[type=reset], 
+.elementor-widget-dinopack-woo-products .woocommerce .elementor-element input[type=submit] {
+	display: inline-block;
+	font-family: inherit;
+	background-color: #f68e13;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
+	margin: 0;
+	padding: 14px 20px;
+	border: 0;
+	cursor: pointer;
+	text-align: center;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+/* Pagination Container */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination {
+	text-align: center;
+	margin: 30px 0 0 0;
+}
+
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li {
+	display: inline-block;
+	margin: 0 2px;
+}
+
+/* Page Numbers Styling */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers {
+	position: relative;
+	display: inline-block;
+	min-width: 40px;
+	line-height: 40px;
+	padding: 0 12px;
+	text-align: center;
+	color: #333;
+	background-color: #f8f9fa;
+	border: 1px solid #e9e9e9;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	white-space: nowrap;
+	border-radius: 5px;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	text-decoration: none;
+}
+
+/* Page Numbers Hover - Only individual page numbers */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers:hover {
+	background: #6F9C50;
+	color: #fff;
+	border: 1px solid #6F9C50;
+}
+
+/* Current Page */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers.current {
+	background: #6F9C50;
+	color: #fff;
+	border: 1px solid #6F9C50;
+}
+
+/* Next/Prev Buttons */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers.next,
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers.prev {
+	font-weight: 600;
+}
+
+/* Icon Styling for Next/Prev */
+.elementor-widget-dinopack-woo-products .dinopack-woo-pagination ul.page-numbers li .page-numbers i {
+	font-size: 12px;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce .wpcf7 label {
+	width: 100%;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .woocommerce-loop-product__link {
+	display: block;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .woocommerce-loop-product__title {
+	font-weight: 400;
+	margin: 0 0 10px 0;
+	padding-left:20px;
+	padding-right:20px;
+}
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .price {
+	padding-left:20px;
+	padding-right:20px;
+}
+
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .button {
+	display: inline-block;
+	padding: 8px 15px;
+	position: relative;
+	z-index: 10;
+	background-color: #6F9C50;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 400;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #6F9C50;
+	transition: all 0.3s ease;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .button:hover {
+	background: #fff;
+	border: 1px solid #6F9C50;
+	color: #6F9C50;
+}
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .added_to_cart {
+	color: #6F9C50;
+	background-color: transparent;
+	text-decoration: none;
+	border: none;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .star-rating {
+	margin-left: 20px;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .price {
+	display: inline-block;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product {
+	position: relative;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+/* Sale Badge Styling - Plugin Theme */
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .onsale {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #6F9C50;
+	color: #fff;
+	padding: 8px 20px;
+	border-radius: 0 5px 0 10px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	z-index: 10;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	min-height: auto;
+	line-height: 1;
+}
+
+/* Hide sale badge when show_sale_badge is disabled */
+.elementor-widget[data-show-sale-badge="no"] .woocommerce ul.products li.product .onsale {
+	display: none !important;
+}
+
+/* Image Hover Effect */
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product .woocommerce-loop-product__link img {
+	transition: transform 0.3s ease;
+}
+
+.elementor-widget-dinopack-woo-products .woocommerce ul.products li.product:hover .woocommerce-loop-product__link img {
+	transform: scale(1.05);
+}

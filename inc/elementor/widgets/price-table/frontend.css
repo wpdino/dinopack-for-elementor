@@ -1,0 +1,309 @@
+/* Price Table Widget Styles */
+
+.dinopack-price-table {
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 1px rgba(178.5, 178.5, 178.5, 0.5607843137254902);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+/* Popular Badge */
+.dinopack-price-table-popular {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6F9C50;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 0 0 10px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+/* Header */
+.dinopack-price-table-header {
+    margin-bottom: 30px;
+}
+
+.dinopack-price-table-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.dinopack-price-table-description {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.dinopack-price-table-price-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.dinopack-price-table-currency {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6F9C50;
+    margin-right: 2px;
+}
+
+.dinopack-price-table-price {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.dinopack-price-table-period {
+    font-size: 16px;
+    color: #666;
+    margin-left: 5px;
+}
+
+/* Features */
+.dinopack-price-table-features {
+    margin-bottom: 30px;
+}
+
+.dinopack-price-table-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dinopack-price-table-feature {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+}
+
+.dinopack-price-table-feature:last-child {
+    border-bottom: none;
+}
+
+.dinopack-price-table-feature-icon {
+    margin-right: 12px;
+    color: #6F9C50;
+    font-size: 16px;
+    flex-shrink: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+.dinopack-price-table-feature-icon i {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+}
+
+.dinopack-price-table-feature-icon svg {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.dinopack-price-table-feature-text {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* Footer */
+.dinopack-price-table-footer {
+    margin-top: 20px;
+}
+
+.dinopack-price-table-button {
+    display: inline-block;
+    background: #6F9C50;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+	line-height: 1em;
+    border: none;
+    cursor: pointer;
+    max-width: 200px;
+	border: 1px solid #6F9C50;
+	transition:all .3s;
+}
+
+.dinopack-price-table-button:hover {
+    background: #fff;
+    border: 1px solid #6F9C50;
+    color: #6F9C50;
+}
+
+/* Style Variations */
+
+/* Style 2 */
+.dinopack-price-table-style-2 {
+    background: #6F9C50;
+    color: #fff;
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-title,
+.dinopack-price-table-style-2 .dinopack-price-table-price {
+    color: #fff;
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-description,
+.dinopack-price-table-style-2 .dinopack-price-table-period {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-feature-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-feature {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-button {
+    background: #fff;
+    color: #6F9C50;
+}
+
+.dinopack-price-table-style-2 .dinopack-price-table-button:hover {
+    background: #fff;
+    border: 2px solid #fff;
+    color: #6F9C50;
+}
+
+/* Style 3 */
+.dinopack-price-table-style-3 {
+    border: 2px solid #6F9C50;
+    background: #fff;
+}
+
+.dinopack-price-table-style-3:hover {
+    background: #6F9C50;
+    color: #fff;
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-title,
+.dinopack-price-table-style-3:hover .dinopack-price-table-price {
+    color: #fff;
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-description,
+.dinopack-price-table-style-3:hover .dinopack-price-table-period {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-feature-text {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-feature {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-button {
+    background: #fff;
+    color: #6F9C50;
+}
+
+.dinopack-price-table-style-3:hover .dinopack-price-table-button:hover {
+    background: #fff;
+    border: 2px solid #fff;
+    color: #6F9C50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dinopack-price-table {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+    
+    .dinopack-price-table-title {
+        font-size: 24px;
+    }
+    
+    .dinopack-price-table-price {
+        font-size: 40px;
+    }
+    
+    .dinopack-price-table-button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dinopack-price-table {
+        padding: 25px 15px;
+    }
+    
+    .dinopack-price-table-title {
+        font-size: 22px;
+    }
+    
+    .dinopack-price-table-price {
+        font-size: 36px;
+    }
+    
+    .dinopack-price-table-feature-text {
+        font-size: 14px;
+    }
+}
+
+/* Animation Classes */
+.dinopack-price-table.animate {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Popular Badge Animation */
+.dinopack-price-table-popular {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}

@@ -1,0 +1,365 @@
+/* Gallery Widget Styles */
+.dinopack-gallery-container {
+    display: grid;
+    gap: 10px;
+}
+
+/* Grid Layout */
+.dinopack-gallery-container.dinopack-gallery-type-grid {
+    display: grid;
+    gap: 10px;
+    /* Default fallback - will be overridden by column classes */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Column Classes - Responsive Grid Layout */
+/* Desktop Columns (1024px+) */
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--1 .dinopack-gallery-container {
+    grid-template-columns: 1fr;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--2 .dinopack-gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--3 .dinopack-gallery-container {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--4 .dinopack-gallery-container {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--5 .dinopack-gallery-container {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-columns--6 .dinopack-gallery-container {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+/* Tablet Columns (768px - 1023px) */
+@media (max-width: 1023px) {
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-1 .dinopack-gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-2 .dinopack-gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-3 .dinopack-gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-4 .dinopack-gallery-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-5 .dinopack-gallery-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--tablet-6 .dinopack-gallery-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Mobile Columns (767px and below) */
+@media (max-width: 767px) {
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-1 .dinopack-gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-2 .dinopack-gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-3 .dinopack-gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-4 .dinopack-gallery-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-5 .dinopack-gallery-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-columns--mobile-6 .dinopack-gallery-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* Masonry Layout - CSS Columns using widget wrapper classes */
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry .dinopack-gallery-container {
+    display: block !important; /* Override grid display */
+    column-count: 3; /* Default */
+    column-fill: balance;
+    grid-template-columns: none !important; /* Remove grid columns */
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry .dinopack-gallery-container .dinopack-gallery-item {
+    break-inside: avoid;
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* Masonry Column Classes - Responsive */
+/* Desktop Masonry Columns (1024px+) */
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--1 .dinopack-gallery-container {
+    column-count: 1;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--2 .dinopack-gallery-container {
+    column-count: 2;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--3 .dinopack-gallery-container {
+    column-count: 3;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--4 .dinopack-gallery-container {
+    column-count: 4;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--5 .dinopack-gallery-container {
+    column-count: 5;
+}
+
+.elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--6 .dinopack-gallery-container {
+    column-count: 6;
+}
+
+/* Tablet Masonry Columns (768px - 1023px) */
+@media (max-width: 1023px) {
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-1 .dinopack-gallery-container {
+        column-count: 1;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-2 .dinopack-gallery-container {
+        column-count: 2;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-3 .dinopack-gallery-container {
+        column-count: 3;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-4 .dinopack-gallery-container {
+        column-count: 4;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-5 .dinopack-gallery-container {
+        column-count: 5;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--tablet-6 .dinopack-gallery-container {
+        column-count: 6;
+    }
+}
+
+/* Mobile Masonry Columns (767px and below) */
+@media (max-width: 767px) {
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-1 .dinopack-gallery-container {
+        column-count: 1;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-2 .dinopack-gallery-container {
+        column-count: 2;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-3 .dinopack-gallery-container {
+        column-count: 3;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-4 .dinopack-gallery-container {
+        column-count: 4;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-5 .dinopack-gallery-container {
+        column-count: 5;
+    }
+
+    .elementor-widget-dinopack-gallery.dinopack-gallery-type-masonry.dinopack-gallery-columns--mobile-6 .dinopack-gallery-container {
+        column-count: 6;
+    }
+}
+
+/* Masonry Layout - JavaScript handles positioning */
+
+/* GLightbox Navigation Fix - Only ensure visibility */
+.glightbox .gprev,
+.glightbox .gnext,
+.glightbox .gclose {
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1000000 !important;
+}
+
+/* Gallery Items */
+
+.dinopack-gallery-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.dinopack-gallery-item:hover {
+    transform: scale(1.02);
+}
+
+.dinopack-gallery-item-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+.dinopack-gallery-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.dinopack-gallery-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(1) contrast(1) saturate(1);
+}
+
+.dinopack-gallery-item:hover .dinopack-gallery-image {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}
+
+/* Hover Effects */
+.dinopack-gallery-item.dinopack-hover-none:hover .dinopack-gallery-image {
+    transform: none;
+    filter: none;
+}
+
+.dinopack-gallery-item.dinopack-hover-default:hover .dinopack-gallery-image {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}
+
+.dinopack-gallery-item.dinopack-hover-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.dinopack-gallery-item.dinopack-hover-overlay .dinopack-gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.dinopack-gallery-item.dinopack-hover-overlay:hover .dinopack-gallery-overlay {
+    opacity: 1;
+}
+
+.dinopack-gallery-item.dinopack-hover-overlay:hover .dinopack-gallery-image {
+    transform: scale(1.05);
+}
+
+/* Gallery Link and Image Wrapper - Position relative for zoom icon */
+.dinopack-gallery-link,
+.dinopack-gallery-image-wrapper {
+    position: relative;
+    display: block;
+}
+
+/* Zoom Icon */
+.dinopack-gallery-zoom-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.dinopack-gallery-zoom-icon i {
+    font-size: 24px;
+    color: #ffffff;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dinopack-gallery-item:hover .dinopack-gallery-zoom-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Image Wrapper for non-lightbox images - overflow hidden for image effects */
+.dinopack-gallery-image-wrapper {
+    overflow: hidden;
+}
+
+/* Gallery Content */
+.dinopack-gallery-content {
+    padding: 15px;
+    background: #fff;
+}
+
+.dinopack-gallery-title {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #333;
+}
+
+.dinopack-gallery-caption {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666;
+}
+
+.dinopack-gallery-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Accessibility */
+.dinopack-gallery-item:focus-within {
+    outline: 2px solid #6F9C50;
+    outline-offset: 2px;
+}
+
+.dinopack-gallery-item a:focus {
+    outline: none;
+}
+
+/* Print Styles */
+@media print {
+    .dinopack-gallery-container {
+        display: block;
+    }
+    
+    .dinopack-gallery-item {
+        break-inside: avoid;
+        margin-bottom: 10px;
+        page-break-inside: avoid;
+    }
+    
+    .dinopack-gallery-item:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}

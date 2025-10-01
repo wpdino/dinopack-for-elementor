@@ -1,0 +1,12 @@
+
+#elementor-panel-categories {
+    display: flex;
+    flex-direction: column;
+}
+#elementor-panel-category-dinopack-for-elementor {
+	order: -1;
+}
+
+#elementor-panel-category-dinopack-for-elementor .icon {
+	color: #6F9C50;
+}

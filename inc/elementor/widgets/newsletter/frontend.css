@@ -1,0 +1,238 @@
+/* Newsletter Widget Styles */
+
+.dinopack-newsletter {
+    text-align: center;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 1px rgba(178.5, 178.5, 178.5, 0.5607843137254902);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.dinopack-newsletter-icon {
+    margin-bottom: 20px;
+    display: inline-block;
+    line-height: 1;
+}
+
+.dinopack-newsletter-icon svg {
+    display: inline-block;
+    vertical-align: middle;
+	fill:#6F9C50;
+}
+
+.dinopack-newsletter-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+.dinopack-newsletter-description {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+}
+
+.dinopack-newsletter-form {
+    margin-top: 20px;
+}
+
+.dinopack-newsletter-form-group {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.dinopack-newsletter-input {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: none;
+	border: 1px solid #6F9C50;
+}
+
+.dinopack-newsletter-input:focus {
+    border-color:#6F9C50;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dinopack-newsletter-input::placeholder {
+    color: #999;
+}
+
+.dinopack-newsletter-button {
+    display: inline-block;
+    background: #6F9C50;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1em;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #6F9C50;
+    transition: all .3s;
+    white-space: nowrap;
+}
+
+.dinopack-newsletter-button:hover,
+.dinopack-newsletter-button:focus {
+    background: #fff;
+    border: 1px solid #6F9C50;
+    color: #6F9C50;
+}
+
+.dinopack-newsletter-button:active {
+    transform: translateY(0);
+}
+
+/* Stacked Layout */
+.dinopack-newsletter-stacked .dinopack-newsletter-form-group {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dinopack-newsletter-stacked .dinopack-newsletter-input,
+.dinopack-newsletter-stacked .dinopack-newsletter-button {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dinopack-newsletter {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+    
+    .dinopack-newsletter-title {
+        font-size: 24px;
+    }
+    
+    .dinopack-newsletter-form-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .dinopack-newsletter-input,
+    .dinopack-newsletter-button {
+        width: 100%;
+        border-radius: 5px;
+    }
+    
+    .dinopack-newsletter-button {
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .dinopack-newsletter {
+        padding: 25px 15px;
+    }
+    
+    .dinopack-newsletter-title {
+        font-size: 22px;
+    }
+    
+    .dinopack-newsletter-description {
+        font-size: 14px;
+    }
+    
+    .dinopack-newsletter-input,
+    .dinopack-newsletter-button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* Icon Styles */
+.dinopack-newsletter-icon {
+    /* No animations - static icon */
+}
+
+/* Form Focus States */
+.dinopack-newsletter-input:focus {
+    /* No transform animations */
+}
+
+.dinopack-newsletter-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Loading State */
+.dinopack-newsletter-button.loading {
+    position: relative;
+    color: transparent;
+}
+
+.dinopack-newsletter-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success/Error States */
+.dinopack-newsletter-message {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dinopack-newsletter-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.dinopack-newsletter-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Admin Notice */
+.dinopack-newsletter-admin-notice {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.dinopack-newsletter-admin-notice a {
+    color: #6F9C50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dinopack-newsletter-admin-notice a:hover {
+    text-decoration: underline;
+}

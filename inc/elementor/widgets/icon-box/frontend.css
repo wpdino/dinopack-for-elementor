@@ -1,0 +1,164 @@
+.dinopack-icon-box {
+    display: flex;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.dinopack-position-top .dinopack-icon-box {
+    flex-direction: column;
+    text-align: center;
+}
+
+.dinopack-position-left .dinopack-icon-box {
+    flex-direction: row;
+    text-align: left;
+}
+
+.dinopack-position-right .dinopack-icon-box {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.dinopack-position-bottom .dinopack-icon-box {
+    flex-direction: column-reverse;
+    text-align: center;
+}
+
+.dinopack-position-left .dinopack-icon-wrapper,
+.dinopack-position-right .dinopack-icon-wrapper {
+    flex: 0 0 auto;
+}
+
+.dinopack-position-left .dinopack-icon-box-content {
+    padding-left: 15px;
+}
+
+.dinopack-position-right .dinopack-icon-box-content {
+    padding-right: 15px;
+}
+
+
+.dinopack-position-top .dinopack-icon-wrapper {
+    margin-bottom: 15px;
+}
+
+.dinopack-position-bottom .dinopack-icon-wrapper {
+    margin-top: 15px;
+}
+
+.dinopack-vertical-align-top .dinopack-icon-box {
+    align-items: flex-start;
+}
+
+.dinopack-vertical-align-middle .dinopack-icon-box {
+    align-items: center;
+}
+
+.dinopack-vertical-align-bottom .dinopack-icon-box {
+    align-items: flex-end;
+}
+
+.dinopack-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+.dinopack-icon i,
+.dinopack-icon svg {
+    display: inline-block;
+    line-height: 1;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* SVG icon specific styles */
+.dinopack-icon svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: middle;
+}
+
+/* Ensure Font Awesome icons display properly */
+.dinopack-icon i[class*="fa-"]:before,
+.dinopack-icon i[class*="fas"]:before,
+.dinopack-icon i[class*="far"]:before,
+.dinopack-icon i[class*="fab"]:before {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Pro", "Font Awesome 5 Brands", "FontAwesome";
+    font-weight: 900;
+}
+
+.dinopack-icon i[class*="far"]:before {
+    font-weight: 400;
+}
+
+.dinopack-icon i[class*="fab"]:before {
+    font-family: "Font Awesome 5 Brands", "FontAwesome";
+    font-weight: 400;
+}
+
+.dinopack-view-stacked .dinopack-icon {
+    padding: 0.5em;
+    background-color: #818a91;
+    color: #fff;
+}
+
+.dinopack-view-framed .dinopack-icon {
+    padding: 0.5em;
+    border: 3px solid #818a91;
+    color: #818a91;
+    background-color: transparent;
+}
+
+.dinopack-shape-circle .dinopack-icon {
+    border-radius: 50%;
+}
+
+.dinopack-icon-box-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.dinopack-icon-box-description {
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+/* Icon wrapper styles */
+.dinopack-icon-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+/* Ensure icons are visible */
+.dinopack-icon {
+    min-width: 1em;
+    min-height: 1em;
+}
+
+/* Ensure SVG icons are properly sized */
+.dinopack-icon svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Fix for SVG icons not displaying */
+.dinopack-icon-wrapper svg,
+.dinopack-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fallback for missing icons */
+.dinopack-icon:empty:before {
+    content: "★";
+    font-family: serif;
+    color: #ccc;
+} 

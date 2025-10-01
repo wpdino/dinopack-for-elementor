@@ -1,0 +1,387 @@
+.dinopack-popup-wrapper {
+    position: relative;
+}
+
+.dinopack-popup-trigger {
+    cursor: pointer;
+}
+
+/* Button Trigger Styles - Matching Button Widget Default */
+.dinopack-popup-trigger-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    line-height: 1em;
+    font-size: 16px;
+    padding: 16px 40px;
+    font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background-color: transparent;
+    color: #6F9C50;
+    border: 1px solid #6F9C50;
+}
+
+.dinopack-popup-trigger-button:hover {
+    background-color: #6F9C50;
+    color: #ffffff;
+}
+
+.dinopack-popup-trigger-button:focus,
+.dinopack-popup-trigger-button:focus-visible {
+    outline: none;
+}
+
+/* Text Trigger Styles */
+.dinopack-popup-trigger-text {
+    color: #6F9C50;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dinopack-popup-trigger-text:hover {
+    color: #5a8a42;
+}
+
+/* Icon Trigger Styles */
+.dinopack-popup-trigger-icon {
+    display: inline-block;
+    font-size: 24px;
+    color: #4054b2;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.dinopack-popup-trigger-icon:hover {
+    color: #3344a8;
+}
+
+.dinopack-popup-trigger-icon i,
+.dinopack-popup-trigger-icon svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Image Trigger Styles */
+.dinopack-popup-trigger-image {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.dinopack-popup-trigger-image:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.dinopack-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.dinopack-popup.is-open {
+    display: block !important;
+}
+
+.dinopack-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dinopack-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 30px;
+    width: 600px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dinopack-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #444;
+    transition: all 0.3s ease;
+}
+
+.dinopack-popup-close:hover {
+    color: #000;
+}
+
+.dinopack-popup-header {
+    margin-bottom: 20px;
+}
+
+.dinopack-popup-title {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.dinopack-popup-body {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Animation Styles */
+.dinopack-popup-content-animated {
+    animation-fill-mode: both;
+}
+
+.dinopack-popup-overlay-animated {
+    animation-fill-mode: both;
+}
+
+/* Fade In Animation */
+@keyframes dinopack-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dinopack-animation-fadeIn {
+    animation-name: dinopack-fadeIn;
+}
+
+/* Slide Down Animation */
+@keyframes dinopack-slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dinopack-animation-slideDown {
+    animation-name: dinopack-slideDown;
+}
+
+/* Slide Up Animation */
+@keyframes dinopack-slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dinopack-animation-slideUp {
+    animation-name: dinopack-slideUp;
+}
+
+/* Slide Left Animation */
+@keyframes dinopack-slideLeft {
+    from {
+        opacity: 0;
+        transform: translate(-40%, -50%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dinopack-animation-slideLeft {
+    animation-name: dinopack-slideLeft;
+}
+
+/* Slide Right Animation */
+@keyframes dinopack-slideRight {
+    from {
+        opacity: 0;
+        transform: translate(-60%, -50%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dinopack-animation-slideRight {
+    animation-name: dinopack-slideRight;
+}
+
+/* Zoom In Animation */
+@keyframes dinopack-zoomIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.dinopack-animation-zoomIn {
+    animation-name: dinopack-zoomIn;
+}
+
+/* Zoom Out Animation */
+@keyframes dinopack-zoomOut {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.dinopack-animation-zoomOut {
+    animation-name: dinopack-zoomOut;
+}
+
+/* Bounce In Animation */
+@keyframes dinopack-bounceIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.dinopack-animation-bounceIn {
+    animation-name: dinopack-bounceIn;
+}
+
+/* Flip Horizontal Animation */
+@keyframes dinopack-flipInX {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) perspective(400px) rotateX(90deg);
+    }
+    40% {
+        transform: translate(-50%, -50%) perspective(400px) rotateX(-20deg);
+    }
+    60% {
+        transform: translate(-50%, -50%) perspective(400px) rotateX(10deg);
+    }
+    80% {
+        transform: translate(-50%, -50%) perspective(400px) rotateX(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) perspective(400px) rotateX(0deg);
+    }
+}
+
+.dinopack-animation-flipInX {
+    animation-name: dinopack-flipInX;
+}
+
+/* Flip Vertical Animation */
+@keyframes dinopack-flipInY {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) perspective(400px) rotateY(90deg);
+    }
+    40% {
+        transform: translate(-50%, -50%) perspective(400px) rotateY(-20deg);
+    }
+    60% {
+        transform: translate(-50%, -50%) perspective(400px) rotateY(10deg);
+    }
+    80% {
+        transform: translate(-50%, -50%) perspective(400px) rotateY(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) perspective(400px) rotateY(0deg);
+    }
+}
+
+.dinopack-animation-flipInY {
+    animation-name: dinopack-flipInY;
+}
+
+/* Overlay Animations */
+@keyframes dinopack-overlay-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dinopack-popup-overlay-animated.dinopack-animation-fadeIn {
+    animation-name: dinopack-overlay-fadeIn;
+}
+
+@keyframes dinopack-overlay-slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dinopack-popup-overlay-animated.dinopack-animation-slideDown {
+    animation-name: dinopack-overlay-slideDown;
+}
+
+@keyframes dinopack-overlay-slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dinopack-popup-overlay-animated.dinopack-animation-slideUp {
+    animation-name: dinopack-overlay-slideUp;
+} 

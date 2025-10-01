@@ -1,0 +1,164 @@
+/* Base styles */
+.dinopack-advanced-heading-container {
+	position: relative;
+}
+
+.dinopack-advanced-heading-text {
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+
+/* Masking styles */
+.dinopack-advanced-heading-container.has-mask > * {
+	background-position: center;
+	transform: translateZ(0);
+}
+
+.dinopack-advanced-heading-container.has-mask .dinopack-advanced-heading-text {
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent !important;
+}
+
+/* Word Rotator Base Styles */
+.dinopack-word-rotator {
+	display: inline-block;
+	position: relative;
+	min-width: 10px;
+	vertical-align: top;
+}
+
+.dinopack-rotating-word,
+.dinopack-rotating-word-current {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(0);
+}
+
+.dinopack-rotating-word-current {
+	position: relative;
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Animation states */
+.dinopack-rotating-word.entering {
+	opacity: 1;
+	visibility: visible;
+}
+
+.dinopack-rotating-word-current.exiting {
+	position: absolute;
+}
+
+/* BLUR ANIMATION */
+.animation-blur .dinopack-rotating-word,
+.animation-blur .dinopack-rotating-word-current {
+	transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+.animation-blur .dinopack-rotating-word {
+	filter: blur(20px);
+}
+
+.animation-blur .dinopack-rotating-word-current {
+	filter: blur(0);
+}
+
+.animation-blur .dinopack-rotating-word.entering {
+	animation: blur-in 0.8s forwards;
+}
+
+.animation-blur .dinopack-rotating-word-current.exiting {
+	animation: blur-out 0.8s forwards;
+}
+
+/* TYPING ANIMATION - FIXED ALIGNMENT */
+.animation-typing .dinopack-word-rotator {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.animation-typing .dinopack-rotating-word,
+.animation-typing .dinopack-rotating-word-current {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	transform: translateY(0);
+}
+
+.animation-typing .dinopack-rotating-word-current {
+	position: relative;
+	border-right: 2px solid currentColor;
+	animation: blink 0.7s infinite;
+}
+
+.animation-typing .dinopack-rotating-word-current.typing-complete {
+	border-right-color: currentColor;
+	animation: none;
+}
+
+.animation-typing .dinopack-rotating-word {
+	border-right: 2px solid transparent;
+}
+
+/* Make sure word rotator has consistent sizing */
+.animation-typing .dinopack-word-rotator[data-max-width] {
+	display: inline-block;
+	min-width: var(--max-width);
+}
+
+/* SHUFFLE ANIMATION */
+.animation-shuffle .dinopack-rotating-word,
+.animation-shuffle .dinopack-rotating-word-current {
+	transition: opacity 0.2s ease;
+	white-space: nowrap;
+	transform: translateY(0);
+}
+
+/* Animation keyframes */
+@keyframes blink {
+	0%, 100% { border-color: transparent; }
+	50% { border-color: currentColor; }
+}
+
+@keyframes blur-in {
+	0% { opacity: 0; filter: blur(20px); }
+	100% { opacity: 1; filter: blur(0); }
+}
+
+@keyframes blur-out {
+	0% { opacity: 1; filter: blur(0); }
+	100% { opacity: 0; filter: blur(20px); }
+}
+
+/* RTL support */
+[dir="rtl"] .dinopack-rotating-word,
+[dir="rtl"] .dinopack-rotating-word-current {
+	left: auto;
+	right: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+	.dinopack-word-rotator {
+		display: inline-block;
+	}
+}
+
+/* Rotator Helper Styles */
+.elementor-control-description code {
+	background-color: #f1f1f1;
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 13px;
+	color: #d63384;
+}

@@ -1,0 +1,222 @@
+.dinopack-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    line-height: 1em;
+    font-size: 16px;		
+    padding: 16px 40px;
+	font-weight: 400;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+.dinopack-button:focus,
+.dinopack-button:focus-visible {
+	outline: none;
+}
+
+.dinopack-button-text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dinopack-button-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Alignment Classes */
+.elementor-align-left .dinopack-button-wrapper {
+    text-align: left;
+}
+
+.elementor-align-center .dinopack-button-wrapper {
+    text-align: center;
+}
+
+.elementor-align-right .dinopack-button-wrapper {
+    text-align: right;
+}
+
+.elementor-align-justify .dinopack-button-wrapper {
+    text-align: justify;
+}
+
+.elementor-align-justify .dinopack-button {
+    width: 100%;
+}
+
+/* Button Type Styles */
+.dinopack-button-border {
+    background-color: transparent;
+    color: #6F9C50;
+    border: 1px solid #6F9C50;
+}
+
+.dinopack-button-border:hover {
+    background-color: #6F9C50;
+    color: #ffffff;
+}
+
+.dinopack-button-fill {
+    background-color: #6F9C50;
+    color: #ffffff;
+    border: 1px solid #6F9C50;
+}
+
+.dinopack-button-fill:hover {
+    background-color: transparent;
+    border-color: #6F9C50;
+	color: #6F9C50;
+}
+
+.dinopack-button-half {
+    background-color: transparent;
+    color: #6F9C50;
+    border: none;
+    position: relative;
+    overflow: hidden;
+	border-radius: 0;
+	transition: all 0.3s ease-in-out;
+}
+.dinopack-button-half:hover {
+	color: #6F9C50;
+}
+
+.dinopack-button-half::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #6F9C50;
+    opacity: 0.25;
+    transition: all 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.dinopack-button-half:hover::before {
+    width: 100%;
+    transform: translateX(50%);
+}
+
+.dinopack-button-half .dinopack-button-text,
+.dinopack-button-half .dinopack-button-icon {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease-in-out;
+}
+
+.dinopack-button-label {
+    background-color: transparent;
+    color: #6F9C50;
+    border: none;
+    padding: 0;
+}
+
+.dinopack-button-label:hover {
+    background-color: transparent;
+    border-color: #6F9C50;
+}
+
+/* Animated underline styles - only when enabled */
+.dinopack-button-label.dinopack-button-animated-underline {
+    position: relative;
+    overflow: visible;
+}
+
+.dinopack-button-label.dinopack-button-animated-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #6F9C50;
+    transition: width 0.3s ease-in-out;
+    transform-origin: left;
+}
+
+.dinopack-button-label.dinopack-button-animated-underline:hover::after {
+    width: 100%;
+    transform-origin: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .dinopack-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .dinopack-button-label {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dinopack-button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .dinopack-button-label {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+}
+
+.dinopack-button-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.dinopack-button-icon-before {
+    margin-right: 8px;
+}
+
+.dinopack-button-icon-after {
+    margin-left: 8px;
+}
+
+/* Font Awesome Icon Styling */
+.dinopack-button-icon i {
+    display: inline-block;
+    line-height: 1;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Pro", "Font Awesome 5 Brands", "FontAwesome";
+    font-weight: 900;
+    min-width: 1em;
+    min-height: 1em;
+    color: inherit;
+}
+
+/* SVG Icon Styling */
+.dinopack-button-icon svg {
+    width: 1em;
+    height: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    fill: currentColor;
+    vertical-align: middle;
+}
+
+/* Fallback for missing icons */
+.dinopack-button-icon:empty:before {
+    content: "→";
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+} 
