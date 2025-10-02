@@ -23,8 +23,8 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Icon Box Widget** - Feature boxes with icons, perfect for services and features
 * **Newsletter Widget** - MailChimp integration for email subscriptions with AJAX submission
 * **Popup Widget** - Modal popups and overlays for enhanced user experience
-* **Price Table Widget** - Professional pricing tables with multiple styles
-* **Progress Bar Widget** - Animated progress bars in line, circle, and half-circle formats
+* **Price Table Widget** - Professional pricing tables with customizable features and popular badge
+* **Progress Bar Widget** - Animated progress bars in line and circle formats
 * **WooCommerce Products Widget** - Display products with customizable layouts and styling
 
 = Widget Features =
@@ -98,7 +98,7 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 1. Advanced Heading Widget with text rotator effects
 2. Blog Widget with grid, list, and masonry layouts
 3. WooCommerce Products Widget with customizable styling
-4. Price Table Widget with different styles
+4. Price Table Widget with customizable features
 5. Progress Bar Widget animations
 6. Newsletter Widget with MailChimp integration
 7. Icon Box Widget with hover effects
@@ -116,8 +116,8 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 * Icon Box Widget with hover effects
 * Newsletter Widget with MailChimp API integration
 * Popup Widget with trigger options
-* Price Table Widget with multiple styles
-* Progress Bar Widget (line, circle, half-circle)
+* Price Table Widget
+* Progress Bar Widget (line, circle)
 * WooCommerce Products Widget
 * Admin settings panel
 * MailChimp API integration

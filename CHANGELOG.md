@@ -10,15 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release of DinoPack for Elementor
 - Advanced Heading Widget with text rotator effects
-- Blog Widget with 5 layout options (Grid, List, Masonry, Cards, Timeline)
+- Blog Widget with 3 layout options (Grid, List, Masonry)
 - Button Widget with hover animations and effects
 - Carousel Widget with Swiper.js integration
 - Gallery Widget with lightbox functionality
 - Icon Box Widget with multiple styles
 - Newsletter Widget with email validation
 - Popup Widget with modal functionality
-- Price Table Widget with 3 different styles
-- Progress Bar Widget (Line, Circle, Half-circle)
+- Price Table Widget with customizable features
+- Progress Bar Widget (Line, Circle)
 - Template library with 50+ professional templates
 - Full Elementor editor compatibility
 - Responsive design for all widgets
