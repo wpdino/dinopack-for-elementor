@@ -747,7 +747,7 @@ class DinoPack_Settings {
 			<div class="wpdino-header">
 				<div class="wpdino-header-content">					
 					<h1>
-						<?php echo esc_html( 'DinoPack', 'dinopack-for-elementor' ); ?>
+						<?php echo esc_html( 'DinoPack For Elementor', 'dinopack-for-elementor' ); ?>
 						<small><?php esc_html_e('Lite', 'dinopack-for-elementor')?></small>
 					</h1>
 					<span class="wpdino-version"><?php esc_html_e('v', 'dinopack-for-elementor'); ?><?php echo esc_html( DINOPACK_VERSION ); ?></span>					
@@ -851,7 +851,7 @@ class DinoPack_Settings {
 							<?php 
 							printf( 
 								/* translators: DinoPack version and WPDINO link */
-								esc_html__( 'DinoPack v%1$s by %2$s', 'dinopack-for-elementor' ), 
+								esc_html__( 'DinoPack For Elementor v%1$s by %2$s', 'dinopack-for-elementor' ), 
 								esc_attr( DINOPACK_VERSION ),
 								'<a href="https://wpdino.com" target="_blank">WPDINO</a>' 
 							); ?>
