@@ -2,6 +2,10 @@
     display: flex;
     transition: all 0.3s ease;
     position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 1px rgba(178.5, 178.5, 178.5, 0.5607843137254902);
+    padding: 30px;
 }
 
 .dinopack-position-top .dinopack-icon-box {
@@ -64,6 +68,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     font-size: 24px;
+    color: #6F9C50;
 }
 
 .dinopack-icon i,
@@ -105,14 +110,14 @@
 
 .dinopack-view-stacked .dinopack-icon {
     padding: 0.5em;
-    background-color: #818a91;
+    background-color: #6F9C50;
     color: #fff;
 }
 
 .dinopack-view-framed .dinopack-icon {
     padding: 0.5em;
-    border: 3px solid #818a91;
-    color: #818a91;
+    border: 3px solid #6F9C50;
+    color: #6F9C50;
     background-color: transparent;
 }
 
@@ -123,11 +128,18 @@
 .dinopack-icon-box-title {
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    line-height: 1.3;
 }
 
 .dinopack-icon-box-description {
     margin-bottom: 0;
-    line-height: 1.7;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.6;
 }
 
 /* Icon wrapper styles */
@@ -161,4 +173,41 @@
     content: "★";
     font-family: serif;
     color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dinopack-icon-box {
+        padding: 25px 20px;
+    }
+    
+    .dinopack-icon-box-title {
+        font-size: 20px;
+    }
+    
+    .dinopack-icon-box-description {
+        font-size: 15px;
+    }
+    
+    .dinopack-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dinopack-icon-box {
+        padding: 20px 15px;
+    }
+    
+    .dinopack-icon-box-title {
+        font-size: 18px;
+    }
+    
+    .dinopack-icon-box-description {
+        font-size: 14px;
+    }
+    
+    .dinopack-icon {
+        font-size: 18px;
+    }
 } 

@@ -172,7 +172,7 @@ class Icon_Box extends Widget_Base {
                 'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
                 'default' => [
-                    'value' => 'fas fa-star',
+                    'value' => 'fas fa-gem',
                     'library' => 'fa-solid',
                 ],
                 'recommended' => [
@@ -349,7 +349,7 @@ class Icon_Box extends Widget_Base {
             [
                 'label' => esc_html__('Primary Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '',
+                'default' => '#6F9C50',
                 'selectors' => [
                     '{{WRAPPER}}.dinopack-view-stacked .dinopack-icon' => 'background-color: {{VALUE}};',
                     '{{WRAPPER}}.dinopack-view-framed .dinopack-icon, {{WRAPPER}}.dinopack-view-default .dinopack-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
@@ -362,7 +362,7 @@ class Icon_Box extends Widget_Base {
             [
                 'label' => esc_html__('Secondary Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '',
+                'default' => '#ffffff',
                 'condition' => [
                     'view!' => 'default',
                 ],
@@ -427,7 +427,7 @@ class Icon_Box extends Widget_Base {
                     ],
                 ],
                 'default' => [
-                    'size' => 24,
+                    'size' => 48,
                     'unit' => 'px',
                 ],
                 'selectors' => [
@@ -574,7 +574,7 @@ class Icon_Box extends Widget_Base {
             [
                 'label' => esc_html__('Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '',
+                'default' => '#222222',
                 'selectors' => [
                     '{{WRAPPER}} .dinopack-icon-box-title' => 'color: {{VALUE}};',
                 ],
@@ -586,6 +586,45 @@ class Icon_Box extends Widget_Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .dinopack-icon-box-title',
+                'fields_options' => [
+                    'typography' => [
+                        'default' => 'yes',
+                    ],
+                    'font_size' => [
+                        'default' => [
+                            'size' => 28,
+                            'unit' => 'px',
+                        ],
+                    ],
+                    'font_weight' => [
+                        'default' => '600',
+                    ],
+                    'line_height' => [
+                        'default' => [
+                            'size' => 1.3,
+                            'unit' => 'em',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_margin',
+            [
+                'label' => esc_html__('Margin', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 10,
+                    'left' => 0,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-icon-box-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -603,7 +642,7 @@ class Icon_Box extends Widget_Base {
             [
                 'label' => esc_html__('Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '',
+                'default' => '#666666',
                 'selectors' => [
                     '{{WRAPPER}} .dinopack-icon-box-description' => 'color: {{VALUE}};',
                 ],
@@ -615,6 +654,148 @@ class Icon_Box extends Widget_Base {
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} .dinopack-icon-box-description',
+                'fields_options' => [
+                    'typography' => [
+                        'default' => 'yes',
+                    ],
+                    'font_size' => [
+                        'default' => [
+                            'size' => 16,
+                            'unit' => 'px',
+                        ],
+                    ],
+                    'font_weight' => [
+                        'default' => '400',
+                    ],
+                    'line_height' => [
+                        'default' => [
+                            'size' => 1.6,
+                            'unit' => 'em',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_margin',
+            [
+                'label' => esc_html__('Margin', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-icon-box-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Style Tab - Box
+        $this->start_controls_section(
+            'section_style_box',
+            [
+                'label' => esc_html__('Box', 'dinopack-for-elementor'),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'box_background',
+                'label' => esc_html__('Background', 'dinopack-for-elementor'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .dinopack-icon-box',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'box_border',
+                'label' => esc_html__('Border', 'dinopack-for-elementor'),
+                'selector' => '{{WRAPPER}} .dinopack-icon-box',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 5,
+                    'right' => 5,
+                    'bottom' => 5,
+                    'left' => 5,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'box_shadow',
+                'label' => esc_html__('Box Shadow', 'dinopack-for-elementor'),
+                'selector' => '{{WRAPPER}} .dinopack-icon-box',
+                'fields_options' => [
+                    'box_shadow_type' => [
+                        'default' => 'yes',
+                    ],
+                    'box_shadow' => [
+                        'default' => [
+                            'horizontal' => 1,
+                            'vertical' => 2,
+                            'blur' => 5,
+                            'spread' => 1,
+                            'color' => 'rgba(178.5, 178.5, 178.5, 0.5607843137254902)',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_padding',
+            [
+                'label' => esc_html__('Padding', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => 30,
+                    'right' => 30,
+                    'bottom' => 30,
+                    'left' => 30,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-icon-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'box_margin',
+            [
+                'label' => esc_html__('Margin', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-icon-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
