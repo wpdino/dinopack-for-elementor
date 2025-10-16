@@ -215,16 +215,19 @@ function dinopack_newsletter_subscribe() {
         
         $mailchimp = new \DinoPack_MailChimp_API($api_key);
         
-        // Sanitize merge fields
-        $merge_fields = isset($_POST['merge_fields']) ? sanitize_text_field( wp_unslash($_POST['merge_fields'] ) ) : array();
-        $sanitized_merge_fields = array();
-        if (!empty($merge_fields) && is_array($merge_fields)) {
-            foreach ($merge_fields as $key => $value) {
-                $sanitized_merge_fields[sanitize_key($key)] = sanitize_text_field($value);
+        // Sanitize merge fields using filter_input for better security
+        $raw_merge_fields = filter_input( INPUT_POST, 'merge_fields', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+        if ( $raw_merge_fields === null ) {
+            $raw_merge_fields = array();
+        }
+        $merge_fields = array();
+        if (!empty($raw_merge_fields) && is_array($raw_merge_fields)) {
+            foreach ($raw_merge_fields as $key => $value) {
+                $merge_fields[sanitize_key($key)] = sanitize_text_field($value);
             }
         }
         
-        $result = $mailchimp->subscribe($list_id, $email, $sanitized_merge_fields);
+        $result = $mailchimp->subscribe($list_id, $email, $merge_fields);
         
         if ($result) {
             wp_send_json_success([

@@ -221,9 +221,15 @@ class DinoPack_Settings {
 			return;
 		}
 
-		// Get the settings array from POST
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized via sanitize_field_value() below
-		$post_settings = isset( $_POST[ self::OPTION_NAME ] ) ? wp_unslash( $_POST[ self::OPTION_NAME ] ) : array();
+		// Get the settings array from POST using filter_input for better security
+		$raw_post_settings = filter_input( INPUT_POST, self::OPTION_NAME, FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $raw_post_settings === null ) {
+			$raw_post_settings = array();
+		}
+		$post_settings = array();
+		foreach ( $raw_post_settings as $key => $value ) {
+			$post_settings[ sanitize_key( $key ) ] = sanitize_text_field( $value );
+		}
 		$updated_settings = array();
 
 		// Get all field configurations
@@ -438,27 +444,60 @@ class DinoPack_Settings {
 	}
 
 	/**
-	 * Sanitize field value based on its type
+	 * Sanitize and validate field value based on its type
 	 */
 	private function sanitize_field_value( $field, $value ) {
 		$default = isset( $field['default'] ) ? $field['default'] : '';
 		
+		// First, unslash the value if it's slashed
+		$value = wp_unslash( $value );
+		
+		// Validate that the value is not null or empty string (unless it's a checkbox)
+		if ( $field['type'] !== 'checkbox' && ( $value === null || $value === '' ) ) {
+			return $default;
+		}
+		
 		switch ( $field['type'] ) {
 			case 'text':
-				return sanitize_text_field( $value );
+				$sanitized = sanitize_text_field( $value );
+				// Validate length if specified
+				if ( isset( $field['maxlength'] ) && strlen( $sanitized ) > $field['maxlength'] ) {
+					$sanitized = substr( $sanitized, 0, $field['maxlength'] );
+				}
+				return $sanitized;
 				
 			case 'textarea':
-				return sanitize_textarea_field( $value );
+				$sanitized = sanitize_textarea_field( $value );
+				// Validate length if specified
+				if ( isset( $field['maxlength'] ) && strlen( $sanitized ) > $field['maxlength'] ) {
+					$sanitized = substr( $sanitized, 0, $field['maxlength'] );
+				}
+				return $sanitized;
 				
 			case 'email':
-				return sanitize_email( $value );
+				$sanitized = sanitize_email( $value );
+				// Validate email format
+				if ( ! is_email( $sanitized ) ) {
+					return $default;
+				}
+				return $sanitized;
 				
 			case 'url':
-				return esc_url_raw( $value );
+				$sanitized = esc_url_raw( $value );
+				// Validate URL format
+				if ( ! filter_var( $sanitized, FILTER_VALIDATE_URL ) ) {
+					return $default;
+				}
+				return $sanitized;
 				
 			case 'number':
 			case 'range':
-				$num_value = is_numeric( $value ) ? floatval( $value ) : $default;
+				// Validate that value is numeric
+				if ( ! is_numeric( $value ) ) {
+					return $default;
+				}
+				
+				$num_value = floatval( $value );
 				
 				// Apply min constraint
 				if ( isset( $field['min'] ) && $num_value < $field['min'] ) {
@@ -478,7 +517,8 @@ class DinoPack_Settings {
 				return $num_value;
 				
 			case 'checkbox':
-				return ! empty( $value );
+				// Validate checkbox value (should be boolean or string)
+				return ! empty( $value ) && $value !== 'false' && $value !== '0';
 				
 			case 'select':
 			case 'radio':
@@ -493,6 +533,7 @@ class DinoPack_Settings {
 				if ( is_array( $value ) ) {
 					$sanitized = array();
 					foreach ( $value as $item ) {
+						$item = wp_unslash( $item );
 						if ( isset( $field['options'] ) && array_key_exists( $item, $field['options'] ) ) {
 							$sanitized[] = sanitize_text_field( $item );
 						}
@@ -502,9 +543,15 @@ class DinoPack_Settings {
 				return $default;
 				
 			case 'colorpicker':
-				return sanitize_hex_color( $value ) ?: $default;
+				$sanitized = sanitize_hex_color( $value );
+				// Validate hex color format
+				if ( ! $sanitized ) {
+					return $default;
+				}
+				return $sanitized;
 				
 			case 'editor':
+				// Use wp_kses_post for rich text content
 				return wp_kses_post( $value );
 				
 			case 'file':
@@ -512,6 +559,11 @@ class DinoPack_Settings {
 				$url = esc_url_raw( $value );
 				if ( empty( $url ) ) {
 					return '';
+				}
+				
+				// Validate URL format
+				if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
+					return $default;
 				}
 				
 				// Check if it's a valid WordPress attachment URL
@@ -537,7 +589,7 @@ class DinoPack_Settings {
 			default:
 				// For custom field types, apply basic text sanitization
 				if ( is_array( $value ) ) {
-					return array_map( 'sanitize_text_field', $value );
+					return array_map( 'sanitize_text_field', array_map( 'wp_unslash', $value ) );
 				}
 				return sanitize_text_field( $value );
 		}

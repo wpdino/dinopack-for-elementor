@@ -105,7 +105,7 @@ class Dinopack_Elementor_Widgets {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	function add_widget_categories( $elements_manager ) {
+	public function add_widget_categories( $elements_manager ) {
 		$elements_manager->add_category(
 			'dinopack-for-elementor',
 			[

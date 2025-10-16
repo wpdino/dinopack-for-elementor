@@ -1,6 +1,6 @@
 jQuery(window).on('elementor/frontend/init', () => {
     const addHandler = ($element) => {
-        initBlogWidget($element);
+        dinopackInitBlogWidget($element);
     };
 
     // Check if elementorFrontend is available before using it
@@ -9,7 +9,7 @@ jQuery(window).on('elementor/frontend/init', () => {
     }
 });
 
-function initBlogWidget($element) {
+function dinopackInitBlogWidget($element) {
     const $container = $element.find('.dinopack-blog-container');
     
     // Function to update layout classes

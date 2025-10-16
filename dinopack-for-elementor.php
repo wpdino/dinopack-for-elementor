@@ -16,8 +16,21 @@
  * Text Domain: dinopack-for-elementor
  * Domain Path: /languages/
  * 
- * Privacy Policy: This plugin does not collect, store, or share any personal data.
- * All data remains on your website and is not transmitted to external servers.
+ * Privacy Policy: This plugin collects and processes personal data in the following ways:
+ * 
+ * 1. Newsletter Subscription: When users subscribe to newsletters via the Newsletter widget,
+ *    email addresses and optional merge fields are transmitted to MailChimp API for processing.
+ *    This data is handled according to MailChimp's privacy policy and terms of service.
+ * 
+ * 2. Plugin Settings: Admin settings are stored locally in your WordPress database.
+ *    No personal data from settings is transmitted to external servers.
+ * 
+ * 3. No Tracking: This plugin does not track user behavior or collect analytics data.
+ * 
+ * For more information about MailChimp's data handling, please visit:
+ * https://mailchimp.com/legal/privacy/
+ * 
+ * All other data remains on your website and is not transmitted to external servers.
  * 
  */
 
@@ -99,12 +112,12 @@ final class Plugin {
 
 
 		// Controls & Widgets
-		include_once DINOPACK_PATH . 'inc/elementor/wpdino-controls.php';
-		include_once DINOPACK_PATH . 'inc/elementor/wpdino-widgets.php';
-		include_once DINOPACK_PATH . 'inc/elementor/wpdino-utils.php';
+		include_once DINOPACK_PATH . 'inc/elementor/class-dinopack-elementor-controls.php';
+		include_once DINOPACK_PATH . 'inc/elementor/class-dinopack-elementor-widgets.php';
+		include_once DINOPACK_PATH . 'inc/elementor/class-dinopack-elementor-utils.php';
 		
 		// AJAX Handlers
-		include_once DINOPACK_PATH . 'inc/ajax-handlers.php';
+		include_once DINOPACK_PATH . 'inc/class-dinopack-elementor-ajax-handlers.php';
 
 		// Admin Menus and settins page
 		include_once DINOPACK_PATH . 'inc/class-dinopack-admin-menus.php';

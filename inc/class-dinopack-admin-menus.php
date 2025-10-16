@@ -34,8 +34,7 @@ class DinoPack_Admin_Menus {
 		add_action( 'admin_menu', array( $this, 'register_menus' ), 15 );
 		add_action( 'plugin_action_links_' . DINOPACK_PLUGIN_BASE, array( $this, 'plugin_action_links' ), 10, 4 );
 
-		add_action( 'admin_head', array( $this, 'add_css_go_pro_menu' ) );
-		add_action( 'admin_footer', array( $this, 'add_target_blank_go_pro_menu' ) ); 
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 
 	}
 
@@ -126,31 +125,38 @@ class DinoPack_Admin_Menus {
 	}
 
 	/**
-	 * Add CSS to Go Pro link.
+	 * Enqueue admin assets using proper WordPress functions.
+	 *
+	 * @param string $hook_suffix The current admin page hook suffix.
 	 */
-	public function add_css_go_pro_menu() {
-		?>
-		<style>
-			#adminmenu #toplevel_page_dinopack-settings a[href="<?php echo esc_attr( self::$goProLink ); ?>"] {
+	public function enqueue_admin_assets( $hook_suffix ) {
+		// Only load on admin pages
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		// Enqueue jQuery (it's already included in WordPress admin)
+		wp_enqueue_script( 'jquery' );
+
+		// Add inline CSS for Go Pro link styling
+		$css = sprintf(
+			'#adminmenu #toplevel_page_dinopack-settings a[href="%s"] {
 				background-color: #6F9C50;
 				color: #fff;
 				font-weight: bold;
-			}
-		</style>
-		<?php
-	}
+			}',
+			esc_attr( self::$goProLink )
+		);
+		wp_add_inline_style( 'wp-admin', $css );
 
-	/**
-	 * Add target="_blank" to Go Pro link.
-	 */
-	public function add_target_blank_go_pro_menu() {
-		?>
-		<script>
-			jQuery( document ).ready( function( $ ) {
-				$('a[href$="<?php echo esc_attr( self::$goProLink ); ?>"]').attr('target', '_blank');				
-			});
-		</script>
-		<?php
+		// Add inline JavaScript for Go Pro link target
+		$js = sprintf(
+			'jQuery( document ).ready( function( $ ) {
+				$("a[href$=\\"%s\\"]").attr("target", "_blank");
+			});',
+			esc_js( self::$goProLink )
+		);
+		wp_add_inline_script( 'jquery', $js );
 	}
 
 }

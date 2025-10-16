@@ -181,7 +181,7 @@ dinopack-for-elementor/
 ├── inc/                 # Core files
 │   ├── admin/          # Admin settings
 │   ├── elementor/      # Widgets and controls
-│   └── ajax-handlers.php
+│   └── class-dinopack-elementor-ajax-handlers.php
 ├── languages/          # Translation files
 └── dinopack-for-elementor.php
 ```

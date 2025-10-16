@@ -135,6 +135,32 @@ Initial release of DinoPack for Elementor. Install to get access to all widgets 
 
 For support, documentation, and updates, visit [wpdino.com](https://wpdino.com)
 
+== External Services ==
+
+This plugin uses the following third-party/external services:
+
+= MailChimp API =
+
+**What the service is and what it is used for:**
+MailChimp is an email marketing service used by the Newsletter widget to manage email subscriptions and send newsletters to subscribers.
+
+**What data is sent and when:**
+- Email addresses are sent to MailChimp when users subscribe through the Newsletter widget
+- Optional merge fields (like first name, last name) are sent if configured
+- Data is only sent when users actively submit the newsletter subscription form
+- The plugin sends data to MailChimp's API endpoint: `https://<dc>.api.mailchimp.com/3.0/`
+
+**Service provider information:**
+- Service provided by: MailChimp (Intuit Inc.)
+- Terms of Service: https://www.intuit.com/legal/
+- Privacy Policy: https://www.intuit.com/privacy/statement/
+
+**Important notes:**
+- This service is only used when you configure a MailChimp API key in the plugin settings
+- No data is sent to external services unless you explicitly configure the MailChimp integration
+- Users must actively submit the newsletter form for their data to be transmitted
+- All data transmission is encrypted using HTTPS
+
 == Privacy Policy ==
 
-This plugin does not collect, store, or share any personal data. All data remains on your website and is not transmitted to external servers. The Newsletter widget connects to MailChimp API only when configured, and only sends the email addresses you collect through your forms.
+This plugin does not collect, store, or share any personal data by default. All data remains on your website and is not transmitted to external servers unless you configure the MailChimp integration. When MailChimp is configured, only email addresses and optional merge fields from newsletter subscription forms are sent to MailChimp's secure API endpoint.

@@ -835,14 +835,21 @@ class Advanced_Heading extends Widget_Base {
 		if ( ! empty( $settings['heading_link']['url'] ) ) {
 			$this->add_link_attributes( 'url', $settings['heading_link'] );
 
-			$heading_text = sprintf( '<a %1$s>%2$s</a>', $this->get_render_attribute_string( 'url' ), $heading_text );
+			$heading_text = sprintf( '<a %1$s>%2$s</a>', $this->get_render_attribute_string( 'url' ), wp_kses_post( $heading_text ) );
 		}
 
-		$heading_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['heading_tag'] ), $this->get_render_attribute_string( 'heading_text' ), $heading_text );
-		$heading_html = sprintf( '<div %1$s>%2$s</div>', $this->get_render_attribute_string( 'advanced-heading' ), $heading_html );
+		$heading_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', 
+			esc_attr( Utils::validate_html_tag( $settings['heading_tag'] ) ), 
+			$this->get_render_attribute_string( 'heading_text' ), 
+			wp_kses_post( $heading_text ) 
+		);
+		$heading_html = sprintf( '<div %1$s>%2$s</div>', 
+			$this->get_render_attribute_string( 'advanced-heading' ), 
+			wp_kses_post( $heading_html ) 
+		);
 
-		// PHPCS - the variable $heading_html holds safe data.
-		echo $heading_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// Output the heading HTML
+		echo wp_kses_post( $heading_html );
 
 
 	}

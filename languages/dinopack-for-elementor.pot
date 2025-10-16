@@ -199,7 +199,7 @@ msgstr ""
 msgid "No image selected"
 msgstr ""
 
-#: inc/elementor/wpdino-widgets.php:112
+#: inc/elementor/class-dinopack-elementor-widgets.php:112
 msgid "WPDINO - DinoPack"
 msgstr ""
 
