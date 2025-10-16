@@ -23,7 +23,7 @@
     width: 100%;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 1px 1px 5px 1px rgba(178.5, 178.5, 178.5, 0.2);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
 }
@@ -50,13 +50,13 @@
 .elementor-widget-dinopack-blog .dinopack-blog-item {
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 1px 1px 5px 1px rgba(178.5, 178.5, 178.5, 0.2);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
 }
 
 .elementor-widget-dinopack-blog .dinopack-blog-item:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 1px 1px 5px 1px rgba(178.5, 178.5, 178.5, 0.2);
     transform: none;
 }
 

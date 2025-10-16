@@ -90,7 +90,7 @@ class Newsletter extends Widget_Base {
      * @access public
      */
     public function get_icon() {
-        return 'eicon-mail';
+        return 'eicon-mailchimp';
     }
 
     /**
@@ -286,6 +286,24 @@ class Newsletter extends Widget_Base {
                 'default' => [
                     'value' => 'fas fa-envelope',
                     'library' => 'fa-solid',
+                ],
+                'recommended' => [
+                    'fa-solid' => [
+                        'envelope', 'mail', 'user', 'users', 'heart', 'star', 'check', 'check-circle',
+                        'plus', 'arrow-right', 'arrow-left', 'chevron-right', 'chevron-left', 'phone',
+                        'globe', 'home', 'calendar', 'clock', 'map-marker', 'share', 'download',
+                        'upload', 'cog', 'bell', 'gift', 'trophy', 'gem', 'fire', 'bolt'
+                    ],
+                    'fa-regular' => [
+                        'envelope', 'mail', 'user', 'users', 'heart', 'star', 'check', 'check-circle',
+                        'plus', 'arrow-right', 'arrow-left', 'chevron-right', 'chevron-left', 'phone',
+                        'globe', 'home', 'calendar', 'clock', 'map-marker', 'share', 'download',
+                        'upload', 'cog', 'bell', 'gift', 'trophy', 'gem', 'fire', 'bolt'
+                    ],
+                    'fa-brands' => [
+                        'facebook', 'twitter', 'instagram', 'linkedin', 'youtube', 'github', 'google',
+                        'apple', 'microsoft', 'amazon', 'spotify', 'paypal', 'wordpress', 'elementor'
+                    ]
                 ],
                 'condition' => [
                     'show_icon' => 'yes',

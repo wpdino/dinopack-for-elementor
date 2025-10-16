@@ -758,10 +758,10 @@ class Icon_Box extends Widget_Base {
                     'box_shadow' => [
                         'default' => [
                             'horizontal' => 1,
-                            'vertical' => 2,
+                            'vertical' => 1,
                             'blur' => 5,
                             'spread' => 1,
-                            'color' => 'rgba(178.5, 178.5, 178.5, 0.5607843137254902)',
+                            'color' => 'rgba(178.5, 178.5, 178.5, 0.2)',
                         ],
                     ],
                 ],

@@ -287,6 +287,26 @@ class Button extends Widget_Base {
                     'value' => 'fas fa-arrow-right',
                     'library' => 'fa-solid',
                 ],
+                'recommended' => [
+                    'fa-solid' => [
+                        'arrow-right', 'arrow-left', 'arrow-up', 'arrow-down', 'chevron-right', 'chevron-left',
+                        'chevron-up', 'chevron-down', 'play', 'pause', 'stop', 'check', 'check-circle',
+                        'plus', 'minus', 'times', 'download', 'upload', 'share', 'envelope', 'phone',
+                        'search', 'cog', 'star', 'heart', 'thumbs-up', 'thumbs-down', 'user', 'lock',
+                        'unlock', 'eye', 'eye-slash', 'home', 'globe', 'calendar', 'clock', 'map-marker'
+                    ],
+                    'fa-regular' => [
+                        'arrow-right', 'arrow-left', 'arrow-up', 'arrow-down', 'chevron-right', 'chevron-left',
+                        'chevron-up', 'chevron-down', 'play', 'pause', 'stop', 'check', 'check-circle',
+                        'plus', 'minus', 'times', 'download', 'upload', 'share', 'envelope', 'phone',
+                        'search', 'cog', 'star', 'heart', 'thumbs-up', 'thumbs-down', 'user', 'lock',
+                        'unlock', 'eye', 'eye-slash', 'home', 'globe', 'calendar', 'clock', 'map-marker'
+                    ],
+                    'fa-brands' => [
+                        'facebook', 'twitter', 'instagram', 'linkedin', 'youtube', 'github', 'google',
+                        'apple', 'microsoft', 'amazon', 'spotify', 'paypal', 'wordpress', 'elementor'
+                    ]
+                ],
             ]
         );
 
