@@ -71,18 +71,51 @@
                     closeEffect: 'fade',
                     cssEfects: {
                         fade: { in: 'fadeIn', out: 'fadeOut' }
+                    },
+                    plyr: {
+                        css: false, // We'll load Plyr CSS via WordPress
+                        js: false   // We'll load Plyr JS via WordPress
                     }
                 };
                 
                 // Merge user settings with defaults
                 var finalSettings = $.extend({}, defaultSettings, lightboxSettings);
                 
+                // Set description position for GLightbox
+                if (finalSettings.descPosition) {
+                    finalSettings.descPosition = finalSettings.descPosition;
+                }
+                
                 // Convert boolean strings to actual booleans
-                ['loop', 'keyboardNavigation', 'touchNavigation', 'closeOnOutsideClick', 'zoomable', 'draggable', 'preload'].forEach(function(key) {
+                ['loop', 'keyboardNavigation', 'touchNavigation', 'closeOnOutsideClick', 'zoomable', 'draggable', 'preload', 'showDescription', 'autoplayVideos'].forEach(function(key) {
                     if (typeof finalSettings[key] === 'string') {
                         finalSettings[key] = finalSettings[key] === 'yes';
                     }
                 });
+                
+                // Handle description visibility after GLightbox is initialized
+                var originalOnOpen = finalSettings.onOpen;
+                finalSettings.onOpen = function() {
+                    // Call original onOpen if it exists
+                    if (originalOnOpen) {
+                        originalOnOpen();
+                    }
+                    
+                    // Handle description visibility
+                    setTimeout(function() {
+                        var lightboxBody = document.getElementById('glightbox-body');
+                        if (lightboxBody) {
+                            if (finalSettings.showDescription === false) {
+                                lightboxBody.classList.add('dinopack-hide-description');
+                            }
+                            
+                            // Handle description position
+                            if (finalSettings.descPosition && finalSettings.showDescription) {
+                                lightboxBody.classList.add('dinopack-desc-' + finalSettings.descPosition);
+                            }
+                        }
+                    }, 100);
+                };
                 
                 // Initialize GLightbox with merged settings
                 const lightbox = GLightbox(finalSettings);

@@ -139,27 +139,37 @@ For support, documentation, and updates, visit [wpdino.com](https://wpdino.com)
 
 This plugin uses the following third-party/external services:
 
-= MailChimp API =
+= MailChimp API Service =
 
 **What the service is and what it is used for:**
-MailChimp is an email marketing service used by the Newsletter widget to manage email subscriptions and send newsletters to subscribers.
+MailChimp is an email marketing service that provides API endpoints for managing email subscribers and campaigns. The Newsletter widget connects to MailChimp to subscribe users to your email lists when they submit newsletter signup forms.
 
 **What data is sent and when:**
-- Email addresses are sent to MailChimp when users subscribe through the Newsletter widget
-- Optional merge fields (like first name, last name) are sent if configured
-- Data is only sent when users actively submit the newsletter subscription form
-- The plugin sends data to MailChimp's API endpoint: `https://<dc>.api.mailchimp.com/3.0/`
+- **Email addresses** - Only when users submit newsletter signup forms
+- **Optional merge fields** (name, phone, etc.) - Only if provided by the user in the form
+- **Tags** - Only if configured in the widget settings
+- **List ID** - To identify which MailChimp list to subscribe users to
+
+**When data is sent:**
+Data is only sent when:
+1. A user submits a newsletter signup form on your website
+2. The MailChimp API key is properly configured in the plugin settings
+3. The form submission is valid and passes validation
 
 **Service provider information:**
 - Service provided by: MailChimp (Intuit Inc.)
+- API Endpoint: `https://<dc>.api.mailchimp.com/3.0/`
 - Terms of Service: https://www.intuit.com/legal/
 - Privacy Policy: https://www.intuit.com/privacy/statement/
+- API Documentation: https://mailchimp.com/developer/
 
 **Important notes:**
 - This service is only used when you configure a MailChimp API key in the plugin settings
 - No data is sent to external services unless you explicitly configure the MailChimp integration
 - Users must actively submit the newsletter form for their data to be transmitted
 - All data transmission is encrypted using HTTPS
+- All data processing is handled by MailChimp according to their terms and privacy policy
+- This plugin only facilitates the transmission of user-provided data to MailChimp's servers
 
 == Privacy Policy ==
 

@@ -241,17 +241,46 @@ GNU General Public License for more details.
 
 See [LICENSE](LICENSE) file for full license text.
 
+## 🌐 External Services
+
+This plugin uses the following third-party services:
+
+### MailChimp API Service
+
+**What it is:** MailChimp is an email marketing service that provides API endpoints for managing email subscribers and campaigns.
+
+**What it's used for:** The Newsletter widget connects to MailChimp to subscribe users to your email lists when they submit newsletter signup forms.
+
+**What data is sent and when:**
+- **Email addresses** - Only when users submit newsletter signup forms
+- **Optional merge fields** (name, phone, etc.) - Only if provided by the user in the form
+- **Tags** - Only if configured in the widget settings
+- **List ID** - To identify which MailChimp list to subscribe users to
+
+**When data is sent:** Data is only sent when:
+1. A user submits a newsletter signup form on your website
+2. The MailChimp API key is properly configured in the plugin settings
+3. The form submission is valid and passes validation
+
+**Service Provider:** MailChimp (Intuit Inc.)
+- **Terms of Service:** [https://www.intuit.com/legal/](https://www.intuit.com/legal/)
+- **Privacy Policy:** [https://www.intuit.com/privacy/statement/](https://www.intuit.com/privacy/statement/)
+- **API Documentation:** [https://mailchimp.com/developer/](https://mailchimp.com/developer/)
+
+**Data Processing:** All data processing is handled by MailChimp according to their terms and privacy policy. This plugin only facilitates the transmission of user-provided data to MailChimp's servers.
+
 ## 🔐 Privacy Policy
 
 **DinoPack for Elementor respects your privacy:**
 
-- ✅ No data collection
+- ✅ No data collection by the plugin itself
 - ✅ No external requests (except MailChimp when configured)
-- ✅ All data stays on your server
+- ✅ All data stays on your server (except newsletter signups sent to MailChimp)
 - ✅ GDPR compliant
 - ✅ No tracking or analytics
+- ✅ Users must explicitly submit newsletter forms to send data to MailChimp
 
-The Newsletter widget only connects to MailChimp API when explicitly configured, and only sends the email addresses collected through your forms.
+The Newsletter widget only connects to MailChimp API when explicitly configured, and only sends the email addresses and optional information collected through your newsletter signup forms.
 
 ## 📝 Changelog
 

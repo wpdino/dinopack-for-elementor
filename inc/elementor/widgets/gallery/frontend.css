@@ -4,6 +4,109 @@
     gap: 10px;
 }
 
+/* Video-specific styles */
+.dinopack-gallery-video {
+    position: relative;
+}
+
+.dinopack-gallery-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.dinopack-gallery-video:hover .dinopack-gallery-play-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.dinopack-gallery-play-icon svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* GLightbox Gallery Type Styles */
+/* Hide descriptions for simple gallery */
+.dinopack-hide-description .gslide-description {
+    display: none !important;
+}
+
+/* Override GLightbox styles with higher specificity */
+.glightbox-clean .gslide-description,
+.glightbox-container .gslide-description {
+    background-color: inherit !important;
+}
+
+.glightbox-clean .gslide-title,
+.glightbox-container .gslide-title {
+    color: inherit !important;
+}
+
+.glightbox-clean .gslide-desc,
+.glightbox-container .gslide-desc {
+    color: inherit !important;
+}
+
+.glightbox-clean .gdesc-inner,
+.glightbox-container .gdesc-inner {
+    padding: inherit !important;
+}
+
+/* Description position variations */
+.dinopack-desc-top .ginner-container {
+    flex-direction: column-reverse !important;
+}
+
+.dinopack-desc-top .gslide-description {
+    order: 1 !important;
+}
+
+.dinopack-desc-top .gslide-media {
+    order: 2 !important;
+}
+
+.dinopack-desc-left .ginner-container {
+    flex-direction: row !important;
+}
+
+.dinopack-desc-left .gslide-description {
+    order: 1 !important;
+    max-width: 300px !important;
+}
+
+.dinopack-desc-left .gslide-media {
+    order: 2 !important;
+}
+
+.dinopack-desc-right .ginner-container {
+    flex-direction: row-reverse !important;
+}
+
+.dinopack-desc-right .gslide-description {
+    order: 2 !important;
+    max-width: 300px !important;
+}
+
+.dinopack-desc-right .gslide-media {
+    order: 1 !important;
+}
+
+.dinopack-desc-bottom .ginner-container {
+    flex-direction: column !important;
+}
+
+.dinopack-desc-bottom .gslide-description {
+    order: 2 !important;
+}
+
+.dinopack-desc-bottom .gslide-media {
+    order: 1 !important;
+}
+
 /* Grid Layout */
 .dinopack-gallery-container.dinopack-gallery-type-grid {
     display: grid;

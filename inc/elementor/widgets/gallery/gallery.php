@@ -54,10 +54,23 @@ class Gallery extends Widget_Base {
             [],
             DINOPACK_VERSION
         );
+        wp_register_style(
+            'plyr',
+            DINOPACK_URL . 'inc/elementor/widgets/gallery/assets/glightbox/plyr.min.css',
+            [],
+            DINOPACK_VERSION
+        );
+        wp_register_script(
+            'plyr',
+            DINOPACK_URL . 'inc/elementor/widgets/gallery/assets/glightbox/plyr.min.js',
+            [],
+            DINOPACK_VERSION,
+            true
+        );
         wp_register_script(
             'glightbox',
             DINOPACK_URL . 'inc/elementor/widgets/gallery/assets/glightbox/glightbox.min.js',
-            [],
+            ['plyr'],
             DINOPACK_VERSION,
             true
         );
@@ -124,7 +137,7 @@ class Gallery extends Widget_Base {
      * @return array Style slugs.
      */
     public function get_style_depends() {
-        return ['dinopack-gallery', 'glightbox'];
+        return ['dinopack-gallery', 'glightbox', 'plyr'];
     }
 
     /**
@@ -137,7 +150,7 @@ class Gallery extends Widget_Base {
      * @return array Script slugs.
      */
     public function get_script_depends() {
-        return ['dinopack-gallery', 'glightbox'];
+        return ['dinopack-gallery', 'glightbox', 'plyr'];
     }
 
     /**
@@ -147,7 +160,7 @@ class Gallery extends Widget_Base {
      * @access public
      */
     public function get_keywords() {
-        return ['gallery', 'images', 'photos', 'dinopack'];
+        return ['gallery', 'images', 'photos', 'lightbox', 'dinopack'];
     }
 
     /**
@@ -167,9 +180,9 @@ class Gallery extends Widget_Base {
         );
 
         $this->add_control(
-            'gallery_images',
+            'gallery_media',
             [
-                'label' => esc_html__('Gallery Images', 'dinopack-for-elementor'),
+                'label' => esc_html__('Gallery Media', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::GALLERY,
                 'default' => [],
                 'description' => esc_html__('Select multiple images from the media library', 'dinopack-for-elementor'),
@@ -353,21 +366,39 @@ class Gallery extends Widget_Base {
         );
 
         $this->add_control(
-            'lightbox_skin',
+            'lightbox_show_description',
             [
-                'label' => esc_html__('Skin', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'clean',
-                'options' => [
-                    'clean' => esc_html__('Clean', 'dinopack-for-elementor'),
-                    'modern' => esc_html__('Modern', 'dinopack-for-elementor'),
-                    'minimal' => esc_html__('Minimal', 'dinopack-for-elementor'),
-                ],
+                'label' => esc_html__('Show Description', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'dinopack-for-elementor'),
+                'label_off' => esc_html__('Hide', 'dinopack-for-elementor'),
+                'return_value' => 'yes',
+                'default' => 'no',
                 'condition' => [
                     'enable_lightbox' => 'yes',
                 ],
             ]
         );
+
+        $this->add_control(
+            'lightbox_description_position',
+            [
+                'label' => esc_html__('Description Position', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'bottom',
+                'options' => [
+                    'bottom' => esc_html__('Bottom', 'dinopack-for-elementor'),
+                    'top' => esc_html__('Top', 'dinopack-for-elementor'),
+                    'left' => esc_html__('Left', 'dinopack-for-elementor'),
+                    'right' => esc_html__('Right', 'dinopack-for-elementor'),
+                ],
+                'condition' => [
+                    'enable_lightbox' => 'yes',
+                    'lightbox_show_description' => 'yes',
+                ],
+            ]
+        );
+
 
         $this->add_control(
             'lightbox_open_effect',
@@ -941,6 +972,98 @@ class Gallery extends Widget_Base {
         );
 
         $this->end_controls_section();
+
+        // Style Tab - Lightbox
+        $this->start_controls_section(
+            'section_style_lightbox',
+            [
+                'label' => esc_html__('Lightbox', 'dinopack-for-elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'enable_lightbox' => 'yes',
+                    'lightbox_show_description' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lightbox_description_background',
+            [
+                'label' => esc_html__('Background Color', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '.glightbox-clean .gslide-description' => 'background-color: {{VALUE}} !important;',
+                    '.glightbox-container .gslide-description' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lightbox_description_text_color',
+            [
+                'label' => esc_html__('Text Color', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#000000',
+                'selectors' => [
+                    '.glightbox-clean .gslide-description' => 'color: {{VALUE}} !important;',
+                    '.glightbox-container .gslide-description' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'lightbox_description_title_color',
+            [
+                'label' => esc_html__('Title Color', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#000000',
+                'selectors' => [
+                    '.glightbox-clean .gslide-title' => 'color: {{VALUE}} !important;',
+                    '.glightbox-container .gslide-title' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'lightbox_description_typography',
+                'label' => esc_html__('Description Typography', 'dinopack-for-elementor'),
+                'selector' => '.glightbox-clean .gslide-desc, .glightbox-container .gslide-desc',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'lightbox_title_typography',
+                'label' => esc_html__('Title Typography', 'dinopack-for-elementor'),
+                'selector' => '.glightbox-clean .gslide-title, .glightbox-container .gslide-title',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'lightbox_description_padding',
+            [
+                'label' => esc_html__('Padding', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'default' => [
+                    'top' => '20',
+                    'right' => '20',
+                    'bottom' => '20',
+                    'left' => '20',
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '.glightbox-clean .gdesc-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '.glightbox-container .gdesc-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -951,12 +1074,12 @@ class Gallery extends Widget_Base {
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $gallery_images = $settings['gallery_images'];
+        $gallery_media = $settings['gallery_media'];
         $gallery_layout = $settings['gallery_type'];
         $enable_lightbox = $settings['enable_lightbox'] === 'yes';
         
-        // No gallery images, show placeholder
-        if (empty($gallery_images)) {
+        // No gallery media, show placeholder
+        if (empty($gallery_media)) {
             echo '<div class="dinopack-gallery-placeholder">' . esc_html__('Please select images from the media library', 'dinopack-for-elementor') . '</div>';
             return;
         }
@@ -974,7 +1097,9 @@ class Gallery extends Widget_Base {
             $lightbox_height = isset($settings['lightbox_height']) ? $settings['lightbox_height'] : ['size' => 90, 'unit' => 'vh'];
             
             $this->add_render_attribute('gallery-container', 'data-lightbox-settings', wp_json_encode([
-                'skin' => isset($settings['lightbox_skin']) ? $settings['lightbox_skin'] : 'clean',
+                'skin' => 'clean',
+                'showDescription' => isset($settings['lightbox_show_description']) ? $settings['lightbox_show_description'] === 'yes' : false,
+                'descPosition' => isset($settings['lightbox_description_position']) ? $settings['lightbox_description_position'] : 'bottom',
                 'openEffect' => isset($settings['lightbox_open_effect']) ? $settings['lightbox_open_effect'] : 'fade',
                 'closeEffect' => isset($settings['lightbox_close_effect']) ? $settings['lightbox_close_effect'] : 'fade',
                 'slideEffect' => isset($settings['lightbox_slide_effect']) ? $settings['lightbox_slide_effect'] : 'slide',
@@ -993,82 +1118,82 @@ class Gallery extends Widget_Base {
         ?>
         <div <?php $this->print_render_attribute_string('gallery-container'); ?>>
             <?php
-            foreach ($gallery_images as $index => $image) :
-                $image_url = Group_Control_Image_Size::get_attachment_image_src($image['id'], 'thumbnail', $settings);
-                if (empty($image_url)) {
-                    $image_url = $image['url'];
-                }
-                
-                $full_image_url = wp_get_attachment_image_url($image['id'], 'full');
-                if (empty($full_image_url)) {
-                    $full_image_url = $image['url'];
-                }
-                
-                $image_title = get_the_title($image['id']);
-                $image_caption = wp_get_attachment_caption($image['id']);
-                
-                $item_key = 'gallery-item-' . $index;
-                $hover_effect = isset($settings['hover_effect']) ? $settings['hover_effect'] : 'default';
-                $show_zoom_icon = isset($settings['zoom_icon']) ? $settings['zoom_icon'] === 'yes' : true;
-                
-                $this->add_render_attribute($item_key, 'class', [
-                    'dinopack-gallery-item',
-                    'dinopack-hover-' . $hover_effect
-                ]);
-                
-                ?>
-                <div <?php $this->print_render_attribute_string($item_key); ?>>
-                    <div class="dinopack-gallery-item-inner">
-                        <?php if ($enable_lightbox) : ?>
-                            <a href="<?php echo esc_url($full_image_url); ?>" 
-                               class="glightbox dinopack-gallery-link" 
-                               data-gallery="gallery-<?php echo esc_attr($this->get_id()); ?>"
-                               data-title="<?php echo esc_attr($image_title); ?>"
-                               data-description="<?php echo esc_attr($image_caption); ?>">
-                                <img src="<?php echo esc_url($image_url); ?>" 
-                                     alt="<?php echo esc_attr($image_title); ?>" 
-                                     class="dinopack-gallery-image">
-                                     
-                                <?php if ($hover_effect === 'overlay') : ?>
-                                    <div class="dinopack-gallery-overlay"></div>
-                                <?php endif; ?>
-                                
-                                <?php if ($show_zoom_icon) : ?>
-                                    <div class="dinopack-gallery-zoom-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M10.5 7V14M7 10.5H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                    </div>
-                                <?php endif; ?>
-                            </a>
-                        <?php else : ?>
-                            <div class="dinopack-gallery-image-wrapper">
-                                <img src="<?php echo esc_url($image_url); ?>" 
-                                     alt="<?php echo esc_attr($image_title); ?>" 
-                                     class="dinopack-gallery-image">
-                                     
-                                <?php if ($hover_effect === 'overlay') : ?>
-                                    <div class="dinopack-gallery-overlay"></div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <?php if ($settings['show_title'] === 'yes' || $settings['show_caption'] === 'yes') : ?>
-                            <div class="dinopack-gallery-content">
-                                <?php if ($settings['show_title'] === 'yes' && !empty($image_title)) : ?>
-                                    <h3 class="dinopack-gallery-title"><?php echo esc_html($image_title); ?></h3>
-                                <?php endif; ?>
-                                
-                                <?php if ($settings['show_caption'] === 'yes' && !empty($image_caption)) : ?>
-                                    <p class="dinopack-gallery-caption"><?php echo esc_html($image_caption); ?></p>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+        foreach ($gallery_media as $index => $media) :
+            $image_url = Group_Control_Image_Size::get_attachment_image_src($media['id'], 'thumbnail', $settings);
+            if (empty($image_url)) {
+                $image_url = $media['url'];
+            }
+            
+            $full_image_url = wp_get_attachment_image_url($media['id'], 'full');
+            if (empty($full_image_url)) {
+                $full_image_url = $media['url'];
+            }
+            
+            $image_title = get_the_title($media['id']);
+            $image_caption = wp_get_attachment_caption($media['id']);
+            
+            $item_key = 'gallery-item-' . $index;
+            $hover_effect = isset($settings['hover_effect']) ? $settings['hover_effect'] : 'default';
+            $show_zoom_icon = isset($settings['zoom_icon']) ? $settings['zoom_icon'] === 'yes' : true;
+            
+            $this->add_render_attribute($item_key, 'class', [
+                'dinopack-gallery-item',
+                'dinopack-hover-' . $hover_effect,
+            ]);
+            
+            ?>
+            <div <?php $this->print_render_attribute_string($item_key); ?>>
+                <div class="dinopack-gallery-item-inner">
+                    <?php if ($enable_lightbox) : ?>
+                        <a href="<?php echo esc_url($full_image_url); ?>" 
+                           class="glightbox dinopack-gallery-link" 
+                           data-gallery="gallery-<?php echo esc_attr($this->get_id()); ?>"
+                           data-title="<?php echo esc_attr($image_title); ?>"
+                           data-description="<?php echo esc_attr($image_caption); ?>">
+                            <img src="<?php echo esc_url($image_url); ?>" 
+                                 alt="<?php echo esc_attr($image_title); ?>" 
+                                 class="dinopack-gallery-image">
+                                 
+                            <?php if ($hover_effect === 'overlay') : ?>
+                                <div class="dinopack-gallery-overlay"></div>
+                            <?php endif; ?>
+                            
+                            <?php if ($show_zoom_icon) : ?>
+                                <div class="dinopack-gallery-zoom-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10.5 7V14M7 10.5H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            <?php endif; ?>
+                        </a>
+                    <?php else : ?>
+                        <div class="dinopack-gallery-image-wrapper">
+                            <img src="<?php echo esc_url($image_url); ?>" 
+                                 alt="<?php echo esc_attr($image_title); ?>" 
+                                 class="dinopack-gallery-image">
+                                 
+                            <?php if ($hover_effect === 'overlay') : ?>
+                                <div class="dinopack-gallery-overlay"></div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if ($settings['show_title'] === 'yes' || $settings['show_caption'] === 'yes') : ?>
+                        <div class="dinopack-gallery-content">
+                            <?php if ($settings['show_title'] === 'yes' && !empty($image_title)) : ?>
+                                <h3 class="dinopack-gallery-title"><?php echo esc_html($image_title); ?></h3>
+                            <?php endif; ?>
+                            
+                            <?php if ($settings['show_caption'] === 'yes' && !empty($image_caption)) : ?>
+                                <p class="dinopack-gallery-caption"><?php echo esc_html($image_caption); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
-                <?php
-            endforeach;
+            </div>
+            <?php
+        endforeach;
             ?>
         </div>
         <?php
