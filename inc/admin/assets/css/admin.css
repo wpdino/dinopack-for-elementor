@@ -293,7 +293,9 @@
 	font-size: 14px;
 	background: white;
 }
-
+.wpdino-settings-wrap .wpdino-password-input {
+	max-width: 100%;
+}
 .wpdino-settings-wrap .wpdino-field-row .wpdino-input,
 .wpdino-settings-wrap .wpdino-field-row .wpdino-select,
 .wpdino-settings-wrap .wpdino-field-row .wpdino-textarea {
@@ -1213,4 +1215,81 @@
 .dinopack_page_dinopack-docs div.error {
 	margin: 5px 0 15px !important;
 	margin-right: 20px !important;
+}
+
+/* Password Field Toggle */
+.wpdino-password-wrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	max-width: 45%;
+}
+
+.wpdino-field-row .wpdino-password-wrapper {
+	max-width: 90%;
+}
+
+.wpdino-password-input {
+	padding-right: 40px !important;
+	width: 100%;
+}
+
+.wpdino-password-toggle {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 4px;
+	color: #666;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	z-index: 2;
+	pointer-events: auto;
+}
+
+.wpdino-password-toggle:hover {
+	color: #6F9C50;
+	background: rgba(111, 156, 80, 0.1);
+}
+
+.wpdino-password-toggle:focus {
+	outline: none;
+	color: #6F9C50;
+	background: rgba(111, 156, 80, 0.1);
+	box-shadow: 0 0 0 2px rgba(111, 156, 80, 0.2);
+}
+
+.wpdino-password-toggle .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+}
+
+.wpdino-password-toggle.active .dashicons-visibility {
+	display: none;
+}
+
+.wpdino-password-toggle.active .dashicons-hidden {
+	display: inline-block;
+}
+
+.wpdino-password-toggle .dashicons-hidden {
+	display: none;
+}
+
+/* Responsive adjustments for password toggle */
+@media (max-width: 768px) {
+	.wpdino-password-wrapper {
+		max-width: 100%;
+	}
+	
+	.wpdino-field-row .wpdino-password-wrapper {
+		max-width: 100%;
+	}
 }

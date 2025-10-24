@@ -172,10 +172,15 @@ class DinoPack_Field_Renderer {
 			<label for="<?php echo esc_attr( $field_id ); ?>" class="wpdino-label">
 				<?php echo esc_html( $field['label'] ); ?>
 			</label>
-			<input type="password" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" 
-				   value="<?php echo esc_attr( $value ); ?>" 
-				   class="wpdino-input <?php echo esc_attr( $field_class ); ?>"
-				   <?php if ( isset( $field['placeholder'] ) ) echo 'placeholder="' . esc_attr( $field['placeholder'] ) . '"'; ?> />
+			<div class="wpdino-password-wrapper">
+				<input type="password" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" 
+					   value="<?php echo esc_attr( $value ); ?>" 
+					   class="wpdino-input wpdino-password-input <?php echo esc_attr( $field_class ); ?>"
+					   <?php if ( isset( $field['placeholder'] ) ) echo 'placeholder="' . esc_attr( $field['placeholder'] ) . '"'; ?> />
+				<span class="wpdino-password-toggle" data-target="#<?php echo esc_attr( $field_id ); ?>">
+					<span class="dashicons dashicons-visibility"></span>
+				</span>
+			</div>
 			<?php $this->render_field_description( $field ); ?>
 		</div>
 		<?php

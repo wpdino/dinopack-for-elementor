@@ -22,6 +22,7 @@
 			this.initImageSelect();
 			this.initFormValidation();
 			this.initColorPickers();
+			this.initPasswordToggle();
 			this.showNotices();
 		},
 
@@ -60,6 +61,9 @@
 			
 			// Image select changes
 			$(document).on('change', '.wpdino-image-select-group input[type="radio"]', this.handleImageSelectChange);
+			
+			// Password toggle
+			$(document).on('click', '.wpdino-password-toggle', this.togglePasswordVisibility);
 			
 			// Smooth scrolling for anchor links
 			$(document).on('click', 'a[href^="#"]', this.smoothScroll);
@@ -203,6 +207,43 @@
 						palettes: true
 					});
 				});
+			}
+		},
+
+		/**
+		 * Initialize password toggle functionality
+		 */
+		initPasswordToggle: function() {
+			// Add hidden icon to all password toggle buttons
+			$('.wpdino-password-toggle').each(function() {
+				const $toggle = $(this);
+				if (!$toggle.find('.dashicons-hidden').length) {
+					$toggle.append('<span class="dashicons dashicons-hidden"></span>');
+				}
+			});
+		},
+
+		/**
+		 * Toggle password visibility
+		 */
+		togglePasswordVisibility: function(e) {
+			e.preventDefault();
+			
+			const $toggle = $(this);
+			const target = $toggle.data('target');
+			const $input = $(target);
+			
+			if (!$input.length) {
+				return;
+			}
+			
+			// Toggle input type
+			if ($input.attr('type') === 'password') {
+				$input.attr('type', 'text');
+				$toggle.addClass('active');
+			} else {
+				$input.attr('type', 'password');
+				$toggle.removeClass('active');
 			}
 		},
 
