@@ -159,7 +159,7 @@ Data is only sent when:
 **Service provider information:**
 - Service provided by: MailChimp (Intuit Inc.)
 - API Endpoint: `https://<dc>.api.mailchimp.com/3.0/`
-- Terms of Service: https://www.intuit.com/legal/
+- Terms of Service: https://mailchimp.com/legal/terms/
 - Privacy Policy: https://www.intuit.com/privacy/statement/
 - API Documentation: https://mailchimp.com/developer/
 
