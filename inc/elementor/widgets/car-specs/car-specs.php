@@ -89,7 +89,7 @@ class Car_Specs extends Widget_Base {
      * @access public
      */
     public function get_icon() {
-        return 'eicon-car';
+        return 'eicon-cogs';
     }
 
     /**
