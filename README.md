@@ -263,7 +263,7 @@ This plugin uses the following third-party services:
 3. The form submission is valid and passes validation
 
 **Service Provider:** MailChimp (Intuit Inc.)
-- **Terms of Service:** [https://www.intuit.com/legal/](https://www.intuit.com/legal/)
+- **Terms of Service:** [https://mailchimp.com/legal/terms/](https://mailchimp.com/legal/terms/)
 - **Privacy Policy:** [https://www.intuit.com/privacy/statement/](https://www.intuit.com/privacy/statement/)
 - **API Documentation:** [https://mailchimp.com/developer/](https://mailchimp.com/developer/)
 
