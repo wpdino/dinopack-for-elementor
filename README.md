@@ -22,7 +22,7 @@
 
 ## ✨ Features
 
-- 🎨 **10+ Premium Widgets** - Advanced widgets for every need
+- 🎨 **12+ Premium Widgets** - Advanced widgets for every need
 - 🎯 **Multiple Styles** - Pre-designed styles for each widget
 - 📱 **Fully Responsive** - Mobile-first design approach
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
@@ -96,6 +96,24 @@ Display WooCommerce products with:
 - Product filtering
 - Rating display
 - Add to cart functionality
+
+### 11. **Restaurant Menu Widget**
+Perfect for restaurant websites with:
+- Menu items with categories
+- Item name, description, and price
+- Optional images for each item
+- Dietary badges (Spicy, Vegetarian, Gluten Free)
+- List and Grid layouts
+- Customizable styling for all elements
+
+### 12. **Car Specs Widget**
+Ideal for automotive websites with:
+- Vehicle name and image display
+- Grouped specifications by category (Engine, Transmission, etc.)
+- Custom icons for each specification
+- Label and value pairs
+- Vertical and Horizontal layouts
+- Fully customizable styling options
 
 ## 📋 Requirements
 
@@ -297,6 +315,8 @@ The Newsletter widget only connects to MailChimp API when explicitly configured,
 - Price Table Widget
 - Progress Bar Widget (line, circle)
 - WooCommerce Products Widget
+- Restaurant Menu Widget with menu items, prices, images, and dietary badges
+- Car Specs Widget for automotive websites with vehicle specifications
 - Admin settings panel
 - Custom Elementor controls
 - Full responsive design

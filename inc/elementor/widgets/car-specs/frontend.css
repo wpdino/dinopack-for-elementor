@@ -1,0 +1,163 @@
+/* Car Specs Widget Styles */
+
+.dinopack-car-specs {
+    width: 100%;
+}
+
+/* Vehicle Name */
+.dinopack-car-specs-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+/* Vehicle Image */
+.dinopack-car-specs-image {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.dinopack-car-specs-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Layout Horizontal */
+.dinopack-car-specs-layout-horizontal {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.dinopack-car-specs-layout-horizontal .dinopack-car-specs-image {
+    flex: 0 0 40%;
+    margin-bottom: 0;
+}
+
+.dinopack-car-specs-layout-horizontal .dinopack-car-specs-content {
+    flex: 1;
+}
+
+/* Specs Content */
+.dinopack-car-specs-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dinopack-car-specs-layout-horizontal .dinopack-car-specs-content {
+    gap: 25px;
+}
+
+/* Category Wrapper */
+.dinopack-car-specs-category-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Category */
+.dinopack-car-specs-category {
+    font-size: 22px;
+    font-weight: 600;
+    color: #6F9C50;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* Specs Items */
+.dinopack-car-specs-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.dinopack-car-specs-layout-horizontal .dinopack-car-specs-items {
+    grid-template-columns: 1fr;
+}
+
+/* Spec Item */
+.dinopack-car-specs-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.dinopack-car-specs-item:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Spec Icon */
+.dinopack-car-specs-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6F9C50;
+    font-size: 20px;
+}
+
+.dinopack-car-specs-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Spec Item Content */
+.dinopack-car-specs-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Spec Label */
+.dinopack-car-specs-label {
+    font-size: 13px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* Spec Value */
+.dinopack-car-specs-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dinopack-car-specs-layout-horizontal {
+        flex-direction: column;
+    }
+    
+    .dinopack-car-specs-layout-horizontal .dinopack-car-specs-image {
+        flex: none;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dinopack-car-specs-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .dinopack-car-specs-name {
+        font-size: 24px;
+    }
+}
+

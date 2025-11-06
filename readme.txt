@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A powerful collection of advanced Elementor widgets including WooCommerce products, Blog layouts, Newsletter with MailChimp, and more.
+A powerful collection of advanced Elementor widgets including WooCommerce products, Blog layouts, Newsletter with MailChimp, Restaurant Menu, Car Specs, and more.
 
 == Description ==
 
@@ -27,6 +27,8 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Price Table Widget** - Professional pricing tables with customizable features and popular badge
 * **Progress Bar Widget** - Animated progress bars in line and circle formats
 * **WooCommerce Products Widget** - Display products with customizable layouts and styling
+* **Restaurant Menu Widget** - Perfect for restaurant websites with menu items, prices, images, and dietary badges
+* **Car Specs Widget** - Ideal for automotive websites with vehicle specifications and customizable layouts
 
 = Widget Features =
 
@@ -120,6 +122,8 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 * Price Table Widget
 * Progress Bar Widget (line, circle)
 * WooCommerce Products Widget
+* Restaurant Menu Widget with menu items, prices, images, and dietary badges
+* Car Specs Widget for automotive websites with vehicle specifications
 * Admin settings panel
 * MailChimp API integration
 * Full Elementor editor compatibility
