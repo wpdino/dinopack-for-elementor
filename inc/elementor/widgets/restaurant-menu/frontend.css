@@ -5,7 +5,7 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 1px 1px 5px 1px rgba(178.5, 178.5, 178.5, 0.2);
-    padding: 30px;
+    padding: 20px;
     transition: all 0.3s ease;
 }
 
@@ -17,7 +17,6 @@
     margin: 0 0 30px 0;
     padding-bottom: 15px;
     border-bottom: 2px solid #6F9C50;
-    text-align: center;
 }
 
 /* Menu Items Container */
@@ -48,7 +47,7 @@
 
 .dinopack-menu-layout-grid .dinopack-menu-item {
     flex-direction: column;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: none;
     border-right: 1px solid #e0e0e0;
     padding: 20px;
 }
@@ -198,10 +197,6 @@
     
     .dinopack-menu-layout-grid .dinopack-menu-item {
         border-right: none;
-        border-bottom: 1px solid #e0e0e0;
-    }
-    
-    .dinopack-menu-layout-grid .dinopack-menu-item:last-child {
         border-bottom: none;
     }
     

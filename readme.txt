@@ -5,7 +5,7 @@ Tags: elementor, widgets, page builder, woocommerce, blog
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,11 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.0.1 =
+* Added Restaurant Menu Widget with global title, dietary badges, adaptive alignment, and icon-box styling
+* Added Car Specs Widget with grouped specifications, icon support, and dual layout modes
+* Updated plugin documentation to cover the new widgets
+
 = 1.0.0 =
 * Initial release
 * Advanced Heading Widget with text rotator
@@ -122,8 +127,6 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 * Price Table Widget
 * Progress Bar Widget (line, circle)
 * WooCommerce Products Widget
-* Restaurant Menu Widget with menu items, prices, images, and dietary badges
-* Car Specs Widget for automotive websites with vehicle specifications
 * Admin settings panel
 * MailChimp API integration
 * Full Elementor editor compatibility

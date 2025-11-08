@@ -6,7 +6,7 @@
 ![PHP Version](https://img.shields.io/badge/PHP-7.0+-purple.svg)
 ![Elementor](https://img.shields.io/badge/Elementor-2.0+-pink.svg)
 ![License](https://img.shields.io/badge/License-GPL%20v2-green.svg)
-![Version](https://img.shields.io/badge/Version-1.0.0-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.0.1-orange.svg)
 
 **A powerful collection of advanced Elementor widgets to supercharge your WordPress website**
 
@@ -98,22 +98,21 @@ Display WooCommerce products with:
 - Add to cart functionality
 
 ### 11. **Restaurant Menu Widget**
-Perfect for restaurant websites with:
-- Menu items with categories
-- Item name, description, and price
-- Optional images for each item
-- Dietary badges (Spicy, Vegetarian, Gluten Free)
-- List and Grid layouts
-- Customizable styling for all elements
+Perfect for restaurant, café, and bar menus with:
+- Global menu title replacing individual category headings
+- Menu item name, description, price, and dietary badges (Spicy, Vegetarian, Gluten Free)
+- Optional item imagery that respects Elementor's placeholder and hides cleanly when removed
+- Automatic content alignment shifts for imageless rows
+- Icon-box inspired container styling with radius, shadow, and item separators
+- Toggleable list and grid layouts with responsive controls
 
 ### 12. **Car Specs Widget**
-Ideal for automotive websites with:
-- Vehicle name and image display
-- Grouped specifications by category (Engine, Transmission, etc.)
-- Custom icons for each specification
-- Label and value pairs
-- Vertical and Horizontal layouts
-- Fully customizable styling options
+Ideal for automotive, dealership, and rental sites with:
+- Vehicle title block featuring name, subtitle, and featured image
+- Repeater-based specification groups (Engine, Transmission, Dimensions, etc.)
+- Individual spec items supporting icons, labels, and custom values
+- Vertical or horizontal layout modes per breakpoint
+- Global styling controls for cards, typography, spacing, and separators
 
 ## 📋 Requirements
 
@@ -301,6 +300,15 @@ The Newsletter widget only connects to MailChimp API when explicitly configured,
 
 ## 📝 Changelog
 
+### Version 1.0.1 - 2025-11-08
+
+#### Added
+- Restaurant Menu Widget with menu title, dietary badges, adaptive alignment, and icon-box styling
+- Car Specs Widget with grouped specifications, icon support, and dual layout modes
+
+#### Updated
+- README documentation describing the new widgets and features
+
 ### Version 1.0.0 - Initial Release
 
 #### Added
@@ -314,8 +322,6 @@ The Newsletter widget only connects to MailChimp API when explicitly configured,
 - Price Table Widget
 - Progress Bar Widget (line, circle)
 - WooCommerce Products Widget
-- Restaurant Menu Widget with menu items, prices, images, and dietary badges
-- Car Specs Widget for automotive websites with vehicle specifications
 - Admin settings panel
 - Custom Elementor controls
 - Full responsive design

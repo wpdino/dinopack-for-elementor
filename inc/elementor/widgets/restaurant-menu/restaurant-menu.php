@@ -160,6 +160,35 @@ class Restaurant_Menu extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'menu_title_alignment',
+            [
+                'label' => esc_html__('Title Alignment', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-menu-title' => 'text-align: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_title' => 'yes',
+                ],
+            ]
+        );
+
         $this->add_control(
             'menu_items',
             [

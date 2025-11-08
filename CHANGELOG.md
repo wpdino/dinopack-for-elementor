@@ -5,6 +5,15 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-11-08
+
+### Added
+- Restaurant Menu Widget featuring global menu title, dietary badges, adaptive layouts, and enhanced styling controls
+- Car Specs Widget with grouped specification repeater, icon support, and vertical/horizontal layout modes
+
+### Updated
+- Documentation to highlight the new widgets and their capabilities
+
 ## [1.0.0] - 2024-01-01
 
 ### Added
