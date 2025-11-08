@@ -236,7 +236,6 @@ Need help? We're here for you!
 
 - 🌐 Visit [wpdino.com](https://wpdino.com)
 - 📧 Email: support@wpdino.com
-- 💬 Community Forum: [wpdino.com/forum](https://wpdino.com/forum)
 
 ## 📄 License
 
