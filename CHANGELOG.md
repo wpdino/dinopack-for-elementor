@@ -5,6 +5,27 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-01-XX
+
+### Added
+- Widget enable/disable feature in General settings tab
+- "Widgets" subsection in General settings with individual checkboxes for each widget
+- Subsection field type support in settings page renderer
+- CSS Grid layout for widget checkboxes (3 columns on desktop, responsive on mobile/tablet)
+- Widget filtering system that checks enabled status before registering widgets with Elementor
+
+### Changed
+- Widget registration now respects enabled/disabled status from settings
+- Settings page field rendering improved to support subsection grouping
+- Widget checkboxes now display in a clean 3-column grid layout
+
+### Technical
+- Modified `class-dinopack-settings-page.php` to add widget management functionality
+- Updated `class-dinopack-elementor-widgets.php` to check widget enabled status before registration
+- Enhanced `class-dinopack-field-renderer.php` to support subsection field type
+- Added CSS grid styling in `admin.css` for responsive widget checkbox layout
+- All widgets are enabled by default for backward compatibility
+
 ## [1.0.1] - 2025-11-08
 
 ### Added

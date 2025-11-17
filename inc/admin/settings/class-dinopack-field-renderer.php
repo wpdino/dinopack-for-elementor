@@ -40,6 +40,12 @@ class DinoPack_Field_Renderer {
 			return;
 		}
 
+		// Handle subsection type (doesn't need value)
+		if ( isset( $field['type'] ) && $field['type'] === 'subsection' ) {
+			$this->render_subsection_field( $field );
+			return;
+		}
+
 		// For all other field types, ensure id and name exist
 		if ( ! isset( $field['id'] ) || ! isset( $field['name'] ) ) {
 			return;
@@ -141,6 +147,28 @@ class DinoPack_Field_Renderer {
 				}
 			}
 			?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render subsection field (displays a subsection title)
+	 *
+	 * @since 1.0.2
+	 * @param array $field Field configuration array
+	 */
+	private function render_subsection_field( $field ) {
+		$is_widgets_subsection = ( isset( $field['id'] ) && $field['id'] === 'widgets_subsection' );
+		?>
+		<div class="wpdino-subsection<?php echo $is_widgets_subsection ? ' wpdino-widgets-subsection' : ''; ?>">
+			<?php if ( ! empty( $field['label'] ) ) : ?>
+			<h3 class="wpdino-subsection-title">
+				<?php echo esc_html( $field['label'] ); ?>
+			</h3>
+			<?php endif; ?>
+			<?php if ( ! empty( $field['description'] ) ) : ?>
+			<p class="wpdino-subsection-description"><?php echo wp_kses_post( $field['description'] ); ?></p>
+			<?php endif; ?>
 		</div>
 		<?php
 	}
@@ -254,8 +282,11 @@ class DinoPack_Field_Renderer {
 	 * Render checkbox field
 	 */
 	private function render_checkbox_field( $field, $field_id, $field_name, $value, $field_class ) {
+		// Check if this is a widget field
+		$is_widget_field = ( strpos( $field_id, 'widget_enable_' ) === 0 );
+		$field_group_class = $is_widget_field ? ' wpdino-widget-field' : '';
 		?>
-		<div class="wpdino-field-group">
+		<div class="wpdino-field-group<?php echo esc_attr( $field_group_class ); ?>">
 			<label class="wpdino-checkbox">
 				<input type="checkbox" name="<?php echo esc_attr( $field_name ); ?>"
 					   <?php checked( $value ); ?> />

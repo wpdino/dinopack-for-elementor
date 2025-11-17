@@ -5,7 +5,7 @@ Tags: elementor, widgets, page builder, woocommerce, blog
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,13 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.0.2 =
+* Added widget enable/disable feature in General settings tab
+* Added "Widgets" subsection in settings with individual checkboxes for each widget
+* Widget checkboxes now display in a clean 3-column grid layout (responsive)
+* Widget registration now respects enabled/disabled status from settings
+* All widgets are enabled by default for backward compatibility
+
 = 1.0.1 =
 * Added Restaurant Menu Widget with global title, dietary badges, adaptive alignment, and icon-box styling
 * Added Car Specs Widget with grouped specifications, icon support, and dual layout modes
@@ -134,6 +141,9 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 * Performance optimizations
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+New widget management feature allows you to enable/disable individual widgets from the settings panel. All widgets remain enabled by default, so no action is required unless you want to hide specific widgets from the Elementor panel.
 
 = 1.0.0 =
 Initial release of DinoPack for Elementor. Install to get access to all widgets and features.

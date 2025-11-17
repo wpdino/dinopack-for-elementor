@@ -71,6 +71,29 @@ class Dinopack_Elementor_Widgets {
 	}
 
 	/**
+	 * Check if widget is enabled
+	 *
+	 * @since 1.0.2
+	 * @access private
+	 * @param string $widget_slug Widget slug
+	 * @return bool
+	 */
+	private function is_widget_enabled( $widget_slug ) {
+		// Check if settings class exists
+		if ( ! class_exists( '\DinoPack\DinoPack_Settings' ) ) {
+			return true; // Default to enabled if settings not available
+		}
+		
+		$settings = \DinoPack\DinoPack_Settings::instance();
+		$setting_key = 'widget_enable_' . $widget_slug;
+		
+		// Get setting value (defaults to true if not set)
+		$is_enabled = $settings->get_setting( $setting_key, true );
+		
+		return (bool) $is_enabled;
+	}
+
+	/**
 	 * Init Widgets
 	 *
 	 * Include widgets files and register them
@@ -83,6 +106,12 @@ class Dinopack_Elementor_Widgets {
 		// Include Widget files
 		foreach ( glob( __DIR__ . '/widgets/*', GLOB_ONLYDIR | GLOB_NOSORT ) as $path ) {
 			$slug = str_replace( __DIR__ . '/widgets/', '', $path );
+			
+			// Check if widget is enabled
+			if ( ! $this->is_widget_enabled( $slug ) ) {
+				continue; // Skip disabled widgets
+			}
+			
 			$slug_ = str_replace( '-', '_', $slug );
 			$file = trailingslashit( $path ) . $slug . '.php';
 

@@ -145,6 +145,11 @@ class DinoPack_Settings {
 		foreach ( $sections as $section ) {
 			if ( ! empty( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $field ) {
+					// Skip subsection fields (they don't have values)
+					if ( isset( $field['type'] ) && $field['type'] === 'subsection' ) {
+						continue;
+					}
+					
 					// Handle row type (nested fields)
 					if ( isset( $field['type'] ) && $field['type'] === 'row' && ! empty( $field['fields'] ) ) {
 						foreach ( $field['fields'] as $row_field ) {
@@ -237,6 +242,11 @@ class DinoPack_Settings {
 
 		// Process each field dynamically
 		foreach ( $all_fields as $field_id => $field ) {
+			// Skip subsection fields (they don't have values)
+			if ( isset( $field['type'] ) && $field['type'] === 'subsection' ) {
+				continue;
+			}
+			
 			$field_name = isset( $field['name'] ) ? $field['name'] : $field_id;
 			$default_value = isset( $field['default'] ) ? $field['default'] : '';
 			
@@ -426,6 +436,11 @@ class DinoPack_Settings {
 		foreach ( $sections as $section ) {
 			if ( ! empty( $section['fields'] ) ) {
 				foreach ( $section['fields'] as $field ) {
+					// Skip subsection fields (they don't have values)
+					if ( isset( $field['type'] ) && $field['type'] === 'subsection' ) {
+						continue;
+					}
+					
 					// Handle row type (nested fields)
 					if ( isset( $field['type'] ) && $field['type'] === 'row' && ! empty( $field['fields'] ) ) {
 						foreach ( $field['fields'] as $row_field ) {
@@ -596,9 +611,101 @@ class DinoPack_Settings {
 	}
 
 	/**
+	 * Get available widgets list
+	 *
+	 * @since 1.0.2
+	 * @return array Array of widget slugs and their display names
+	 */
+	private function get_available_widgets() {
+		$widgets = array();
+		$widgets_dir = DINOPACK_PATH . 'inc/elementor/widgets/';
+		
+		// Widget name mapping for better display names
+		$widget_names = array(
+			'advanced-heading' => esc_html__( 'Advanced Heading', 'dinopack-for-elementor' ),
+			'blog' => esc_html__( 'Blog', 'dinopack-for-elementor' ),
+			'button' => esc_html__( 'Button', 'dinopack-for-elementor' ),
+			'car-specs' => esc_html__( 'Car Specs', 'dinopack-for-elementor' ),
+			'gallery' => esc_html__( 'Gallery', 'dinopack-for-elementor' ),
+			'icon-box' => esc_html__( 'Icon Box', 'dinopack-for-elementor' ),
+			'newsletter' => esc_html__( 'Newsletter', 'dinopack-for-elementor' ),
+			'popup' => esc_html__( 'Popup', 'dinopack-for-elementor' ),
+			'price-table' => esc_html__( 'Price Table', 'dinopack-for-elementor' ),
+			'progress-bar' => esc_html__( 'Progress Bar', 'dinopack-for-elementor' ),
+			'restaurant-menu' => esc_html__( 'Restaurant Menu', 'dinopack-for-elementor' ),
+			'woo-products' => esc_html__( 'WooCommerce Products', 'dinopack-for-elementor' ),
+		);
+		
+		if ( ! is_dir( $widgets_dir ) ) {
+			return $widgets;
+		}
+		
+		foreach ( glob( $widgets_dir . '*', GLOB_ONLYDIR | GLOB_NOSORT ) as $path ) {
+			$slug = basename( $path );
+			$file = trailingslashit( $path ) . $slug . '.php';
+			
+			if ( file_exists( $file ) ) {
+				// Use mapped name if available, otherwise convert slug to readable name
+				if ( isset( $widget_names[ $slug ] ) ) {
+					$name = $widget_names[ $slug ];
+				} else {
+					$name = str_replace( '-', ' ', $slug );
+					$name = ucwords( $name );
+				}
+				$widgets[ $slug ] = $name;
+			}
+		}
+		
+		// Sort widgets alphabetically by name
+		asort( $widgets );
+		
+		return $widgets;
+	}
+
+	/**
 	 * Settings sections configuration
 	 */
 	public function get_settings_sections() {
+		$available_widgets = $this->get_available_widgets();
+		$widget_fields = array();
+		
+		// Add widget checkboxes
+		foreach ( $available_widgets as $widget_slug => $widget_name ) {
+			$widget_fields[] = array(
+				'type' => 'checkbox',
+				'id'   => 'widget_enable_' . $widget_slug,
+				'name' => 'widget_enable_' . $widget_slug,
+				'label' => $widget_name,
+				'description' => '',
+				'default' => true, // All widgets enabled by default
+			);
+		}
+		
+		// Build fields array
+		$general_fields = array(
+			array(
+				'type' => 'password',
+				'id'   => 'dinopack_mailchimp_api_key',
+				'name' => 'dinopack_mailchimp_api_key',
+				'label' => esc_html__( 'MailChimp API Key', 'dinopack-for-elementor' ),
+				/* translators: MailChimp API key description */
+				'description' => sprintf( wp_kses_post( __( 'To use Newsletter widget enter your MailChimp API key. You can find it in your MailChimp account under <a target="_blank" href="%s">Account > Extras > API keys</a>.', 'dinopack-for-elementor' ) ), esc_url( 'https://mailchimp.com/help/about-api-keys/' ) ),
+				'default' => '',
+			),
+		);
+		
+		// Add widgets subsection
+		if ( ! empty( $widget_fields ) ) {
+			$general_fields[] = array(
+				'type' => 'subsection',
+				'id'   => 'widgets_subsection',
+				'name' => 'widgets_subsection',
+				'label' => esc_html__( 'Widgets', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Enable or disable widgets to show in the Elementor panel. All widgets are enabled by default.', 'dinopack-for-elementor' ),
+			);
+			$general_fields = array_merge( $general_fields, $widget_fields );
+		}
+		
 		return array(
 			'general' => array(
 				'id'          => 'general',
@@ -606,17 +713,7 @@ class DinoPack_Settings {
 				'description' => esc_html__( 'Configure basic DinoPack settings.', 'dinopack-for-elementor' ),
 				'callback'    => null,
 				'icon'        => 'dashicons-admin-generic',
-				'fields'      => array(
-					array(
-						'type' => 'password',
-						'id'   => 'dinopack_mailchimp_api_key',
-						'name' => 'dinopack_mailchimp_api_key',
-						'label' => esc_html__( 'MailChimp API Key', 'dinopack-for-elementor' ),
-						/* translators: MailChimp API key description */
-						'description' => sprintf( wp_kses_post( __( 'To use Newsletter widget enter your MailChimp API key. You can find it in your MailChimp account under <a target="_blank" href="%s">Account > Extras > API keys</a>.', 'dinopack-for-elementor' ) ), esc_url( 'https://mailchimp.com/help/about-api-keys/' ) ),
-						'default' => '',
-					),
-				),
+				'fields'      => $general_fields,
 			),
 			'tools' => array(
 				'id' => 'tools',
@@ -862,8 +959,37 @@ class DinoPack_Settings {
 								
 								<?php
 								if ( ! empty( $section['fields'] ) ) {
+									$in_widgets_section = false;
+									$widget_fields_started = false;
+									
 									foreach ( $section['fields'] as $field ) {
+										// Check if we're entering the widgets subsection
+										if ( isset( $field['type'] ) && $field['type'] === 'subsection' && isset( $field['id'] ) && $field['id'] === 'widgets_subsection' ) {
+											$in_widgets_section = true;
+										}
+										
+										// Check if this is a widget field
+										$is_widget_field = ( isset( $field['id'] ) && strpos( $field['id'], 'widget_enable_' ) === 0 );
+										
+										// Open wrapper when first widget field is encountered
+										if ( $in_widgets_section && $is_widget_field && ! $widget_fields_started ) {
+											echo '<div class="wpdino-widgets-grid-wrapper">';
+											$widget_fields_started = true;
+										}
+										
+										// Close wrapper if we've left widget fields (next non-widget field after widgets)
+										if ( $widget_fields_started && ! $is_widget_field && isset( $field['type'] ) && $field['type'] !== 'subsection' ) {
+											echo '</div>';
+											$widget_fields_started = false;
+											$in_widgets_section = false;
+										}
+										
 										$this->render_field( $field );
+									}
+									
+									// Close wrapper if still open at the end
+									if ( $widget_fields_started ) {
+										echo '</div>';
 									}
 								}
 								
