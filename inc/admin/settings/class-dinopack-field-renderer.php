@@ -204,6 +204,11 @@ class DinoPack_Field_Renderer {
 				<input type="password" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" 
 					   value="<?php echo esc_attr( $value ); ?>" 
 					   class="wpdino-input wpdino-password-input <?php echo esc_attr( $field_class ); ?>"
+					   autocomplete="off"
+					   data-lpignore="true"
+					   data-form-type="other"
+					   readonly
+					   onfocus="this.removeAttribute('readonly')"
 					   <?php if ( isset( $field['placeholder'] ) ) echo 'placeholder="' . esc_attr( $field['placeholder'] ) . '"'; ?> />
 				<span class="wpdino-password-toggle" data-target="#<?php echo esc_attr( $field_id ); ?>">
 					<span class="dashicons dashicons-visibility"></span>

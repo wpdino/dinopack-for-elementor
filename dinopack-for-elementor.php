@@ -126,6 +126,9 @@ final class Plugin {
 		include_once DINOPACK_PATH . 'inc/admin/settings/class-dinopack-settings-page.php';
 		include_once DINOPACK_PATH . 'inc/admin/settings/class-dinopack-field-renderer.php';
 
+		// AI Helper for AI-powered widgets
+		include_once DINOPACK_PATH . 'inc/class-dinopack-ai-helper.php';
+
 		// Initialize settings page
 		if ( class_exists( '\DinoPack\DinoPack_Settings' ) ) {
 			\DinoPack\DinoPack_Settings::instance();

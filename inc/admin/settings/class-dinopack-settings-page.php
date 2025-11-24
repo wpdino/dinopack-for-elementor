@@ -203,6 +203,11 @@ class DinoPack_Settings {
 	 * Get all settings
 	 */
 	public static function get_all_settings() {
+		// Ensure settings are loaded if instance exists
+		$instance = self::instance();
+		if ( empty( self::$settings ) ) {
+			$instance->load_settings();
+		}
 		return self::$settings;
 	}
 
@@ -210,7 +215,13 @@ class DinoPack_Settings {
 	 * Update all settings
 	 */
 	public function update_all_settings( $new_settings ) {
-		self::$settings = wp_parse_args( $new_settings, $this->get_defaults() );
+		// Get defaults to ensure all fields are included
+		$defaults = $this->get_defaults();
+		
+		// Merge new settings with defaults, but ensure new_settings values take precedence
+		// This ensures unchecked checkboxes (false) are saved correctly
+		self::$settings = array_merge( $defaults, $new_settings );
+		
 		return update_option( self::OPTION_NAME, self::$settings );
 	}
 
@@ -659,7 +670,13 @@ class DinoPack_Settings {
 		// Sort widgets alphabetically by name
 		asort( $widgets );
 		
-		return $widgets;
+		/**
+		 * Filter available widgets to allow extensions (like PRO) to add their own widgets.
+		 *
+		 * @since 1.0.0
+		 * @param array $widgets Array of widget slugs => widget names.
+		 */
+		return apply_filters( 'dinopack_available_widgets', $widgets );
 	}
 
 	/**
@@ -706,7 +723,7 @@ class DinoPack_Settings {
 			$general_fields = array_merge( $general_fields, $widget_fields );
 		}
 		
-		return array(
+		$sections = array(
 			'general' => array(
 				'id'          => 'general',
 				'title'       => esc_html__( 'General', 'dinopack-for-elementor' ),
@@ -714,6 +731,56 @@ class DinoPack_Settings {
 				'callback'    => null,
 				'icon'        => 'dashicons-admin-generic',
 				'fields'      => $general_fields,
+			),
+			'ai_settings' => array(
+				'id'          => 'ai_settings',
+				'title'       => esc_html__( 'AI Settings', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Configure AI-powered widgets settings. Enter your OpenAI API key to enable AI features.', 'dinopack-for-elementor' ),
+				'icon'        => 'dashicons-lightbulb',
+				'fields'      => array(
+					array(
+						'id'          => 'openai_api_key',
+						'name'        => 'openai_api_key',
+						'type'        => 'password',
+						'label'       => esc_html__( 'OpenAI API Key', 'dinopack-for-elementor' ),
+						'description' => sprintf(
+							/* translators: %1$s is the link to OpenAI API keys page */
+							wp_kses_post( __( 'Enter your OpenAI API key for AI-powered widgets. Get your key from <a href="%1$s" target="_blank" rel="noopener noreferrer">https://platform.openai.com/api-keys</a>', 'dinopack-for-elementor' ) ),
+							esc_url( 'https://platform.openai.com/api-keys' )
+						),
+						'default'     => '',
+						'placeholder' => 'sk-...',
+					),
+					array(
+						'id'          => 'ai_model',
+						'name'        => 'ai_model',
+						'type'        => 'select',
+						'label'       => esc_html__( 'Default AI Model', 'dinopack-for-elementor' ),
+						'description' => sprintf(
+							/* translators: %1$s is the link to OpenAI models documentation */
+							wp_kses_post( __( 'Select the default AI model to use for content generation. <a href="%1$s" target="_blank" rel="noopener noreferrer">Check available models</a>', 'dinopack-for-elementor' ) ),
+							esc_url( 'https://platform.openai.com/docs/models' )
+						),
+						'default'     => 'gpt-3.5-turbo',
+						'options'     => array(
+							'gpt-3.5-turbo' => 'GPT-3.5 Turbo (Recommended)',
+							'gpt-4'         => 'GPT-4',
+							'gpt-4-turbo-preview' => 'GPT-4 Turbo Preview',
+							'gpt-4-0125-preview' => 'GPT-4 0125 Preview',
+						),
+					),
+					array(
+						'id'          => 'ai_temperature',
+						'name'        => 'ai_temperature',
+						'type'        => 'number',
+						'label'       => esc_html__( 'AI Temperature', 'dinopack-for-elementor' ),
+						'description' => esc_html__( 'Controls randomness in AI responses (0.0 = focused, 1.0 = creative).', 'dinopack-for-elementor' ),
+						'default'     => 0.7,
+						'min'         => 0,
+						'max'         => 1,
+						'step'        => 0.1,
+					),
+				),
 			),
 			'tools' => array(
 				'id' => 'tools',
@@ -724,6 +791,14 @@ class DinoPack_Settings {
 				'fields' => array(),
 			),
 		);
+
+		/**
+		 * Filter settings sections to allow extensions (like PRO) to add their own sections.
+		 *
+		 * @since 1.0.0
+		 * @param array $sections Settings sections array.
+		 */
+		return apply_filters( 'dinopack_settings_sections', $sections );
 	}
 
 	/**
@@ -864,7 +939,7 @@ class DinoPack_Settings {
 		$settings = self::get_all_settings();
 		
 		// Define password field IDs
-		$password_fields = ['dinopack_mailchimp_api_key'];
+		$password_fields = ['dinopack_mailchimp_api_key', 'openai_api_key'];
 		
 		foreach ( $settings as $key => $value ) {
 			// Mask password values
@@ -896,10 +971,31 @@ class DinoPack_Settings {
 			<div class="wpdino-header">
 				<div class="wpdino-header-content">					
 					<h1>
-						<?php echo esc_html( 'DinoPack For Elementor', 'dinopack-for-elementor' ); ?>
-						<small><?php esc_html_e('Lite', 'dinopack-for-elementor')?></small>
+						<?php 
+					/**
+					 * Filter the plugin name displayed in settings header.
+					 *
+					 * @since 1.0.0
+					 * @param string $name Plugin name.
+					 */
+					$dinopack_name = apply_filters( 'dinopack_name', esc_html__( 'DinoPack For Elementor', 'dinopack-for-elementor' ) );
+						
+					echo wp_kses_post( $dinopack_name );
+						?>
 					</h1>
-					<span class="wpdino-version"><?php esc_html_e('v', 'dinopack-for-elementor'); ?><?php echo esc_html( DINOPACK_VERSION ); ?></span>					
+					<span class="wpdino-version">
+						<?php esc_html_e('v', 'dinopack-for-elementor'); ?>
+						<?php
+						/**
+						 * Filter the plugin version displayed in settings header.
+						 *
+						 * @since 1.0.0
+						 * @param string $version Plugin version.
+						 */
+						$dinopack_version = apply_filters( 'dinopack_version', DINOPACK_VERSION );
+						echo esc_html( $dinopack_version );
+						?>
+					</span>					
 				</div>
 			</div>
 
@@ -929,7 +1025,7 @@ class DinoPack_Settings {
 							<?php endforeach; ?>
 						</div>
 						
-						<form method="post" action="" class="wpdino-form">
+						<form method="post" action="" class="wpdino-form" autocomplete="off">
 							<?php wp_nonce_field( 'wpdino_settings_save', 'wpdino_settings_nonce' ); ?>
 							
 							<?php

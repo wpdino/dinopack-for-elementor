@@ -35,16 +35,12 @@
 	font-size: 32px;
 	font-weight: 500;
 	margin: 0;
-	display: flex;
-	align-items: center;
 	gap: 12px;
 }
 .wpdino-header-content small {
-	font-size: 14px;
-	font-weight: 400;
-	color: #111;
-	padding-top: 8px;
-	opacity: 0.65;
+	font-size: inherit;
+	font-weight: inherit;
+	color: #6F9C50;
 }
 .wpdino-icon {
 	font-size: 36px;
@@ -83,6 +79,7 @@
 
 .wpdino-content {
 	min-width: 0;
+	background: white;
 }
 
 .wpdino-sidebar {
@@ -168,6 +165,7 @@
 	border-bottom: 1px solid #e8f5e9;
 	padding: 0;
 	margin: 0;
+	background:#f8f9fa;
 }
 
 .wpdino-tab-btn {
@@ -315,10 +313,25 @@
 	gap: 20px;
 	margin-top: 0;
 	margin-bottom: 25px;
+	counter-reset: widget-counter;
 }
 
 .wpdino-widgets-grid-wrapper .wpdino-field-group {
 	margin-bottom: 0;
+}
+
+/* Numbered list styling for widgets */
+.wpdino-widgets-grid-wrapper .wpdino-widget-field {
+	position: relative;
+	counter-increment: widget-counter;
+}
+
+.wpdino-widgets-grid-wrapper .wpdino-widget-field .wpdino-checkbox::before {
+	content: counter(widget-counter) ".";
+	font-weight: 400;
+	color: #000;
+	min-width: 24px;
+	display: inline-block;
 }
 
 /* Responsive adjustments for widgets grid */
@@ -538,6 +551,14 @@
 .wpdino-btn-success {
 	background: linear-gradient(135deg, #28a745 0%, #218838 100%);
 	color: white !important;
+}
+
+.wpdino-btn-activate-license {
+	background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+	color: white !important;
+}
+.wpdino-btn-activate-license:hover {
+	background: linear-gradient(135deg, #c82333 0%, #bd2130 100%) !important;
 }
 
 .wpdino-btn-large {
