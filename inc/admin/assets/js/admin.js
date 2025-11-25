@@ -23,6 +23,7 @@
 			this.initFormValidation();
 			this.initColorPickers();
 			this.initPasswordToggle();
+			this.initUnsavedChangesTracking();
 			this.showNotices();
 		},
 
@@ -58,6 +59,9 @@
 			
 			// Input changes for live preview
 			$(document).on('change', '.wpdino-input, .wpdino-select, .wpdino-textarea', this.handleInputChange);
+			
+			// Track form changes for unsaved changes warning
+			$(document).on('input change', '.wpdino-form input, .wpdino-form select, .wpdino-form textarea', this.trackFormChanges);
 			
 			// Image select changes
 			$(document).on('change', '.wpdino-image-select-group input[type="radio"]', this.handleImageSelectChange);
@@ -214,13 +218,168 @@
 		 * Initialize password toggle functionality
 		 */
 		initPasswordToggle: function() {
-			// Add hidden icon to all password toggle buttons
-			$('.wpdino-password-toggle').each(function() {
-				const $toggle = $(this);
-				if (!$toggle.find('.dashicons-hidden').length) {
-					$toggle.append('<span class="dashicons dashicons-hidden"></span>');
+			// Initialize all password fields - they're already masked from PHP
+			$('.wpdino-password-input').each(function() {
+				const $input = $(this);
+				const isMasked = $input.data('masked') === true || $input.data('masked') === 'true';
+				const actualValue = $input.data('actual-value') || '';
+				
+				// If we have an actual value from PHP, use it
+				if (actualValue) {
+					$input.data('actual-value', actualValue);
+					$input.data('visible', false);
+					$input.data('masked', true);
+				} else {
+					// Field is empty or visible by default
+					$input.data('visible', true);
+					$input.data('masked', false);
 				}
 			});
+			
+			// Handle keydown to capture actual characters being typed
+			$('.wpdino-password-input').on('keydown', function(e) {
+				const $input = $(this);
+				const isVisible = $input.data('visible') === true;
+				
+				// If masked, we need to handle the input differently
+				if (!isVisible) {
+					const currentValue = $input.data('actual-value') || '';
+					const key = e.key;
+					
+					// Handle backspace
+					if (key === 'Backspace') {
+						e.preventDefault();
+						const newValue = currentValue.slice(0, -1);
+						$input.data('actual-value', newValue);
+						if (newValue) {
+							$input.val('•'.repeat(newValue.length));
+						} else {
+							$input.val('');
+						}
+						// Trigger change tracking for password field
+						setTimeout(function() {
+							$input.trigger('change');
+						}, 0);
+						return false;
+					}
+					
+					// Handle delete
+					if (key === 'Delete') {
+						e.preventDefault();
+						const cursorPos = $input[0].selectionStart || 0;
+						const newValue = currentValue.slice(0, cursorPos) + currentValue.slice(cursorPos + 1);
+						$input.data('actual-value', newValue);
+						if (newValue) {
+							$input.val('•'.repeat(newValue.length));
+						} else {
+							$input.val('');
+						}
+						// Trigger change tracking for password field
+						setTimeout(function() {
+							$input.trigger('change');
+						}, 0);
+						return false;
+					}
+					
+					// Handle printable characters
+					if (key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+						e.preventDefault();
+						const cursorPos = $input[0].selectionStart || 0;
+						const newValue = currentValue.slice(0, cursorPos) + key + currentValue.slice(cursorPos);
+						$input.data('actual-value', newValue);
+						$input.val('•'.repeat(newValue.length));
+						// Set cursor position
+						setTimeout(function() {
+							$input[0].setSelectionRange(cursorPos + 1, cursorPos + 1);
+							// Trigger change tracking for password field
+							$input.trigger('change');
+						}, 0);
+						return false;
+					}
+				}
+			});
+			
+			// Handle paste events
+			$('.wpdino-password-input').on('paste', function(e) {
+				const $input = $(this);
+				const isVisible = $input.data('visible') === true;
+				
+				if (!isVisible) {
+					e.preventDefault();
+					const pastedText = (e.originalEvent.clipboardData || window.clipboardData).getData('text');
+					const currentValue = $input.data('actual-value') || '';
+					const cursorPos = $input[0].selectionStart || 0;
+					const newValue = currentValue.slice(0, cursorPos) + pastedText + currentValue.slice(cursorPos);
+					$input.data('actual-value', newValue);
+					if (newValue) {
+						$input.val('•'.repeat(newValue.length));
+					} else {
+						$input.val('');
+					}
+					// Trigger change tracking for password field
+					setTimeout(function() {
+						$input.trigger('change');
+					}, 0);
+					return false;
+				}
+			});
+			
+			// Handle input events when field is visible (to update actual-value)
+			$('.wpdino-password-input').on('input', function() {
+				const $input = $(this);
+				const isVisible = $input.data('visible') === true;
+				
+				// If visible, update the actual value from the input
+				if (isVisible) {
+					const currentValue = $input.val();
+					$input.data('actual-value', currentValue);
+				}
+			});
+		},
+
+		/**
+		 * Mask password field value
+		 */
+		maskPasswordField: function($input) {
+			// Get current value - if it's already masked (contains only dots), use stored value
+			let actualValue = $input.val();
+			if (actualValue && actualValue.match(/^•+$/)) {
+				// Value is already masked, use stored value
+				actualValue = $input.data('actual-value') || '';
+			} else {
+				// Value is visible, store it
+				$input.data('actual-value', actualValue);
+			}
+			
+			// Store actual value
+			$input.data('visible', false);
+			$input.data('masked', true);
+			
+			// Replace with dots
+			if (actualValue) {
+				$input.val('•'.repeat(actualValue.length));
+			} else {
+				$input.val('');
+			}
+		},
+
+		/**
+		 * Unmask password field value
+		 */
+		unmaskPasswordField: function($input) {
+			// Get current value - if it's masked (contains only dots), use stored value
+			let actualValue = $input.val();
+			if (actualValue && actualValue.match(/^•+$/)) {
+				// Value is masked, use stored value
+				actualValue = $input.data('actual-value') || '';
+			} else {
+				// Value is visible, update stored value
+				$input.data('actual-value', actualValue);
+			}
+			
+			// Restore actual value
+			$input.val(actualValue);
+			$input.data('visible', true);
 		},
 
 		/**
@@ -237,14 +396,181 @@
 				return;
 			}
 			
-			// Toggle input type
-			if ($input.attr('type') === 'password') {
-				$input.attr('type', 'text');
-				$toggle.addClass('active');
-			} else {
-				$input.attr('type', 'password');
+			const isVisible = $input.data('visible') === true;
+			
+			if (isVisible) {
+				// Hide (mask) the password
+				WPDinoAdmin.maskPasswordField($input);
 				$toggle.removeClass('active');
+			} else {
+				// Show (unmask) the password
+				WPDinoAdmin.unmaskPasswordField($input);
+				$toggle.addClass('active');
 			}
+		},
+
+		/**
+		 * Initialize unsaved changes tracking
+		 */
+		initUnsavedChangesTracking: function() {
+			// Store initial form state
+			this.formHasChanges = false;
+			this.initialFormState = {};
+			
+			// Initially disable save button
+			$('.wpdino-form button[type="submit"]').addClass('inactive').prop('disabled', true);
+			
+			// Check if page was just reloaded after successful save (settings-updated parameter)
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.get('settings-updated') === 'true') {
+				// Settings were just saved, wait a moment for page to fully load
+				setTimeout(function() {
+					WPDinoAdmin.captureInitialFormState();
+				}, 500);
+			} else {
+				// Capture initial form state immediately
+				this.captureInitialFormState();
+			}
+			
+			// Warn before leaving page if there are unsaved changes
+			$(window).on('beforeunload', function(e) {
+				if (WPDinoAdmin.formHasChanges) {
+					// Standard way to show browser warning
+					e.preventDefault();
+					e.returnValue = ''; // Chrome requires returnValue to be set
+					return ''; // Some browsers require return value
+				}
+			});
+			
+			// Show/hide unsaved changes notification
+			this.updateUnsavedChangesNotification();
+		},
+
+		/**
+		 * Capture initial form state
+		 */
+		captureInitialFormState: function() {
+			// Capture initial form state
+			$('.wpdino-form').find('input, select, textarea').each(function() {
+				const $field = $(this);
+				const name = $field.attr('name');
+				if (name) {
+					// Handle checkboxes separately
+					if ($field.attr('type') === 'checkbox') {
+						WPDinoAdmin.initialFormState[name] = $field.is(':checked');
+					} else if ($field.hasClass('wpdino-password-input')) {
+						// For password fields, use the actual value from data attribute
+						WPDinoAdmin.initialFormState[name] = $field.data('actual-value') || '';
+					} else {
+						WPDinoAdmin.initialFormState[name] = $field.val();
+					}
+				}
+			});
+		},
+
+		/**
+		 * Track form changes
+		 */
+		trackFormChanges: function() {
+			const $field = $(this);
+			const name = $field.attr('name');
+			
+			if (!name) {
+				return;
+			}
+			
+			// Get current value
+			let currentValue;
+			if ($field.attr('type') === 'checkbox') {
+				currentValue = $field.is(':checked');
+			} else if ($field.hasClass('wpdino-password-input')) {
+				// For password fields, use the actual value from data attribute
+				currentValue = $field.data('actual-value') || '';
+			} else {
+				currentValue = $field.val();
+			}
+			
+			// Get initial value
+			const initialValue = WPDinoAdmin.initialFormState[name];
+			
+			// Check if value has changed
+			if (currentValue !== initialValue) {
+				WPDinoAdmin.formHasChanges = true;
+			} else {
+				// Check if any other field has changes
+				let hasAnyChanges = false;
+				$('.wpdino-form').find('input, select, textarea').each(function() {
+					const $f = $(this);
+					const n = $f.attr('name');
+					if (n) {
+						let v;
+						if ($f.attr('type') === 'checkbox') {
+							v = $f.is(':checked');
+						} else if ($f.hasClass('wpdino-password-input')) {
+							// For password fields, use the actual value from data attribute
+							v = $f.data('actual-value') || '';
+						} else {
+							v = $f.val();
+						}
+						if (v !== WPDinoAdmin.initialFormState[n]) {
+							hasAnyChanges = true;
+							return false; // break
+						}
+					}
+				});
+				WPDinoAdmin.formHasChanges = hasAnyChanges;
+			}
+			
+			// Update notification
+			WPDinoAdmin.updateUnsavedChangesNotification();
+		},
+
+		/**
+		 * Update unsaved changes notification
+		 */
+		updateUnsavedChangesNotification: function() {
+			let $notification = $('.wpdino-unsaved-changes-notice');
+			const $saveButton = $('.wpdino-form button[type="submit"]');
+			
+			if (this.formHasChanges) {
+				// Show notification if it doesn't exist
+				if (!$notification.length) {
+					$notification = $('<div class="wpdino-unsaved-changes-notice wpdino-admin-notice wpdino-admin-notice-warning">' +
+						'<span class="dashicons dashicons-warning"></span>' +
+						'<span>' + (wpdinoAdmin && wpdinoAdmin.strings && wpdinoAdmin.strings.unsavedChanges 
+							? wpdinoAdmin.strings.unsavedChanges 
+							: 'You have unsaved changes. Please save your changes before leaving this page.') + '</span>' +
+						'</div>');
+					$('.wpdino-header').after($notification);
+				}
+				$notification.fadeIn();
+				
+				// Activate save button (green)
+				$saveButton.removeClass('inactive').prop('disabled', false);
+			} else {
+				// Hide notification
+				if ($notification.length) {
+					$notification.fadeOut(function() {
+						$(this).remove();
+					});
+				}
+				
+				// Deactivate save button (gray)
+				$saveButton.addClass('inactive').prop('disabled', true);
+			}
+		},
+
+		/**
+		 * Clear form changes tracking
+		 */
+		clearFormChangesTracking: function() {
+			this.formHasChanges = false;
+			
+			// Update initial form state to current state
+			this.captureInitialFormState();
+			
+			// Update notification
+			this.updateUnsavedChangesNotification();
 		},
 
 		/**
@@ -554,6 +880,15 @@
 			const $form = $(this);
 			const $submitBtn = $form.find('button[type="submit"]');
 			
+			// Unmask all password fields before submission to send actual values
+			$form.find('.wpdino-password-input').each(function() {
+				const $input = $(this);
+				const actualValue = $input.data('actual-value');
+				if (actualValue !== undefined) {
+					$input.val(actualValue);
+				}
+			});
+			
 			// Validate all fields
 			let isValid = true;
 			$form.find('input, textarea, select').each(function() {
@@ -568,12 +903,19 @@
 				return false;
 			}
 
-			// Show loading state
-			$submitBtn.addClass('loading').prop('disabled', true);
+			// Form is valid and will submit - clear unsaved changes tracking
+			WPDinoAdmin.clearFormChangesTracking();
+			
+			// Remove beforeunload handler to allow form submission
+			// It will be re-initialized on page reload
+			$(window).off('beforeunload');
+
+			// Enable button and show loading state
+			$submitBtn.removeClass('inactive').prop('disabled', false).addClass('loading');
 			
 			// Re-enable after delay (in case of page reload)
 			setTimeout(function() {
-				$submitBtn.removeClass('loading').prop('disabled', false);
+				$submitBtn.removeClass('loading');
 			}, 3000);
 		},
 

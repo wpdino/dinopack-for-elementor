@@ -192,26 +192,34 @@ class DinoPack_Field_Renderer {
 	}
 
 	/**
-	 * Render password field
+	 * Render password field (using text input with JavaScript masking to avoid browser password manager)
 	 */
 	private function render_password_field( $field, $field_id, $field_name, $value, $field_class ) {
+		// Mask the value for display if it exists
+		$display_value = '';
+		$is_masked = false;
+		if ( ! empty( $value ) ) {
+			$display_value = str_repeat( '•', strlen( $value ) );
+			$is_masked = true;
+		}
 		?>
 		<div class="wpdino-field-group">
 			<label for="<?php echo esc_attr( $field_id ); ?>" class="wpdino-label">
 				<?php echo esc_html( $field['label'] ); ?>
 			</label>
 			<div class="wpdino-password-wrapper">
-				<input type="password" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" 
-					   value="<?php echo esc_attr( $value ); ?>" 
+				<input type="text" id="<?php echo esc_attr( $field_id ); ?>" name="<?php echo esc_attr( $field_name ); ?>" 
+					   value="<?php echo esc_attr( $display_value ); ?>" 
 					   class="wpdino-input wpdino-password-input <?php echo esc_attr( $field_class ); ?>"
 					   autocomplete="off"
 					   data-lpignore="true"
 					   data-form-type="other"
-					   readonly
-					   onfocus="this.removeAttribute('readonly')"
+					   data-masked="<?php echo $is_masked ? 'true' : 'false'; ?>"
+					   data-actual-value="<?php echo esc_attr( $value ); ?>"
 					   <?php if ( isset( $field['placeholder'] ) ) echo 'placeholder="' . esc_attr( $field['placeholder'] ) . '"'; ?> />
 				<span class="wpdino-password-toggle" data-target="#<?php echo esc_attr( $field_id ); ?>">
 					<span class="dashicons dashicons-visibility"></span>
+					<span class="dashicons dashicons-hidden"></span>
 				</span>
 			</div>
 			<?php $this->render_field_description( $field ); ?>

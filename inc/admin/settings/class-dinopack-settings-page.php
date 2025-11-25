@@ -371,6 +371,7 @@ class DinoPack_Settings {
 				'copyError'     => esc_html__( 'Failed to copy. Please select and copy manually.', 'dinopack-for-elementor' ),
 				'error'         => esc_html__( 'An error occurred. Please try again.', 'dinopack-for-elementor' ),
 				'invalidFile'   => esc_html__( 'Please select a valid JSON file.', 'dinopack-for-elementor' ),
+				'unsavedChanges' => esc_html__( 'You have unsaved changes. Please save your changes before leaving this page.', 'dinopack-for-elementor' ),
 			)
 		) );
 	}
@@ -707,6 +708,7 @@ class DinoPack_Settings {
 				'label' => esc_html__( 'MailChimp API Key', 'dinopack-for-elementor' ),
 				/* translators: MailChimp API key description */
 				'description' => sprintf( wp_kses_post( __( 'To use Newsletter widget enter your MailChimp API key. You can find it in your MailChimp account under <a target="_blank" href="%s">Account > Extras > API keys</a>.', 'dinopack-for-elementor' ) ), esc_url( 'https://mailchimp.com/help/about-api-keys/' ) ),
+				'placeholder' => esc_html__( 'Enter your MailChimp API key', 'dinopack-for-elementor' ),
 				'default' => '',
 			),
 		);
