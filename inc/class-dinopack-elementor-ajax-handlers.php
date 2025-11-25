@@ -338,3 +338,217 @@ function dinopack_localize_newsletter_ajax() {
 }
 
 add_action('wp_enqueue_scripts', 'dinopack_localize_newsletter_ajax');
+
+/**
+ * Generate AI Product Description
+ */
+function dinopack_generate_product_description() {
+    // Verify nonce
+    if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'dinopack_ajax')) {
+        wp_send_json_error(['message' => 'Security check failed']);
+    }
+
+    if (!class_exists('WooCommerce')) {
+        wp_send_json_error(['message' => 'WooCommerce is not installed']);
+    }
+
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+    $description_type = isset($_POST['description_type']) ? sanitize_text_field(wp_unslash($_POST['description_type'])) : 'full';
+    $tone = isset($_POST['tone']) ? sanitize_text_field(wp_unslash($_POST['tone'])) : 'professional';
+    $custom_prompt = isset($_POST['custom_prompt']) ? sanitize_textarea_field(wp_unslash($_POST['custom_prompt'])) : '';
+
+    if (empty($product_id)) {
+        wp_send_json_error(['message' => 'Product ID is required']);
+    }
+
+    $product = wc_get_product($product_id);
+    if (!$product) {
+        wp_send_json_error(['message' => 'Product not found']);
+    }
+
+    // Check if AI Helper class exists
+    if (!class_exists('\DinoPack\AI_Helper')) {
+        wp_send_json_error(['message' => 'AI Helper class not found']);
+    }
+
+    // Build prompt based on product data
+    $product_name = $product->get_name();
+    $product_price = $product->get_price_html();
+    $product_sku = $product->get_sku();
+    $product_categories = wp_get_post_terms($product_id, 'product_cat', ['fields' => 'names']);
+    $product_tags = wp_get_post_terms($product_id, 'product_tag', ['fields' => 'names']);
+    $product_attributes = $product->get_attributes();
+
+    $prompt = "Write a " . esc_html($tone) . " product description";
+    
+    switch ($description_type) {
+        case 'short':
+            $prompt .= " (2-3 sentences)";
+            break;
+        case 'features':
+            $prompt .= " focusing on key features";
+            break;
+        case 'benefits':
+            $prompt .= " focusing on benefits";
+            break;
+        default:
+            $prompt .= " (comprehensive)";
+    }
+    
+    $prompt .= " for the following product:\n\n";
+    $prompt .= "Product Name: " . $product_name . "\n";
+    
+    if (!empty($product_price)) {
+        $prompt .= "Price: " . strip_tags($product_price) . "\n";
+    }
+    
+    if (!empty($product_sku)) {
+        $prompt .= "SKU: " . $product_sku . "\n";
+    }
+    
+    if (!empty($product_categories)) {
+        $prompt .= "Categories: " . implode(', ', $product_categories) . "\n";
+    }
+    
+    if (!empty($product_tags)) {
+        $prompt .= "Tags: " . implode(', ', $product_tags) . "\n";
+    }
+    
+    if (!empty($product_attributes)) {
+        $prompt .= "Attributes:\n";
+        foreach ($product_attributes as $attribute) {
+            $name = wc_attribute_label($attribute->get_name());
+            $values = $attribute->get_options();
+            $prompt .= "- " . $name . ": " . implode(', ', $values) . "\n";
+        }
+    }
+    
+    if (!empty($custom_prompt)) {
+        $prompt .= "\nAdditional Instructions: " . $custom_prompt . "\n";
+    }
+    
+    $prompt .= "\nMake the description engaging, SEO-friendly, and compelling for potential customers.";
+
+    // Make AI request
+    $response = \DinoPack\AI_Helper::make_request($prompt, ['max_tokens' => 500]);
+
+    if (is_wp_error($response)) {
+        wp_send_json_error(['message' => $response->get_error_message()]);
+    }
+
+    if (isset($response['content'])) {
+        wp_send_json_success(['content' => $response['content']]);
+    }
+
+    wp_send_json_error(['message' => 'Failed to generate description']);
+}
+
+add_action('wp_ajax_dinopack_generate_product_description', 'dinopack_generate_product_description');
+add_action('wp_ajax_nopriv_dinopack_generate_product_description', 'dinopack_generate_product_description');
+
+/**
+ * Summarize Product Reviews with AI
+ */
+function dinopack_summarize_product_reviews() {
+    // Verify nonce
+    if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'dinopack_ajax')) {
+        wp_send_json_error(['message' => 'Security check failed']);
+    }
+
+    if (!class_exists('WooCommerce')) {
+        wp_send_json_error(['message' => 'WooCommerce is not installed']);
+    }
+
+    $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
+    $summary_type = isset($_POST['summary_type']) ? sanitize_text_field(wp_unslash($_POST['summary_type'])) : 'overview';
+    $max_reviews = isset($_POST['max_reviews']) ? intval($_POST['max_reviews']) : 10;
+
+    if (empty($product_id)) {
+        wp_send_json_error(['message' => 'Product ID is required']);
+    }
+
+    $product = wc_get_product($product_id);
+    if (!$product) {
+        wp_send_json_error(['message' => 'Product not found']);
+    }
+
+    // Get product reviews
+    $args = [
+        'post_id' => $product_id,
+        'status' => 'approve',
+        'number' => min($max_reviews, 50),
+        'orderby' => 'date',
+        'order' => 'DESC',
+    ];
+
+    $comments = get_comments($args);
+
+    if (empty($comments)) {
+        wp_send_json_error(['message' => 'No reviews found for this product']);
+    }
+
+    // Check if AI Helper class exists
+    if (!class_exists('\DinoPack\AI_Helper')) {
+        wp_send_json_error(['message' => 'AI Helper class not found']);
+    }
+
+    // Build reviews text
+    $reviews_text = "Product: " . $product->get_name() . "\n\n";
+    $reviews_text .= "Customer Reviews:\n\n";
+    
+    foreach ($comments as $index => $comment) {
+        $rating = get_comment_meta($comment->comment_ID, 'rating', true);
+        $reviews_text .= "Review " . ($index + 1) . ":\n";
+        if (!empty($rating)) {
+            $reviews_text .= "Rating: " . $rating . "/5\n";
+        }
+        $reviews_text .= "Comment: " . $comment->comment_content . "\n\n";
+    }
+
+    // Build prompt based on summary type
+    $prompt = "Analyze the following product reviews and provide a ";
+    
+    switch ($summary_type) {
+        case 'pros_cons':
+            $prompt .= "summary organized as Pros and Cons. List the main positive points and negative points mentioned by customers.";
+            break;
+        case 'key_points':
+            $prompt .= "summary of key points mentioned in the reviews. Focus on the most frequently mentioned aspects.";
+            break;
+        case 'sentiment':
+            $prompt .= "sentiment analysis. Describe the overall customer sentiment (positive, negative, neutral) and provide insights.";
+            break;
+        default:
+            $prompt .= "comprehensive overview of the reviews. Summarize the main themes, customer satisfaction, and key feedback.";
+    }
+    
+    $prompt .= "\n\n" . $reviews_text;
+    $prompt .= "\n\nProvide a clear, well-structured summary that would be helpful for potential customers.";
+
+    // Make AI request
+    $response = \DinoPack\AI_Helper::make_request($prompt, ['max_tokens' => 800]);
+
+    if (is_wp_error($response)) {
+        wp_send_json_error(['message' => $response->get_error_message()]);
+    }
+
+    if (isset($response['content'])) {
+        // Format content for pros/cons display
+        $content = $response['content'];
+        if ($summary_type === 'pros_cons') {
+            // Try to format as pros/cons if the AI response contains them
+            if (preg_match('/pros?|advantages?|positive/i', $content) && preg_match('/cons?|disadvantages?|negative/i', $content)) {
+                // The content likely already has pros/cons structure
+                $content = '<div class="pros-cons">' . $content . '</div>';
+            }
+        }
+        
+        wp_send_json_success(['content' => $content]);
+    }
+
+    wp_send_json_error(['message' => 'Failed to generate summary']);
+}
+
+add_action('wp_ajax_dinopack_summarize_product_reviews', 'dinopack_summarize_product_reviews');
+add_action('wp_ajax_nopriv_dinopack_summarize_product_reviews', 'dinopack_summarize_product_reviews');
+

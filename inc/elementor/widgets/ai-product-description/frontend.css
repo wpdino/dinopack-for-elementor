@@ -1,0 +1,73 @@
+/**
+ * AI Product Description Widget Styles
+ */
+
+.dinopack-ai-product-description {
+    position: relative;
+}
+
+.dinopack-generate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #6F9C50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.dinopack-generate-btn:hover {
+    background: #5a7d3f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dinopack-generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.dinopack-btn-loader .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.dinopack-ai-description {
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.dinopack-ai-description p {
+    margin-bottom: 1em;
+}
+
+.dinopack-ai-description .dinopack-placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.dinopack-ai-error {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
