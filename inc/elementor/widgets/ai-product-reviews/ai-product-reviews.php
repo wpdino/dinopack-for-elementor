@@ -483,7 +483,7 @@ class Ai_Product_Reviews extends Widget_Base {
         $this->add_render_attribute('wrapper', 'data-ajax-nonce', wp_create_nonce('dinopack_ajax'));
 
         ?>
-        <div <?php echo $this->get_render_attribute_string('wrapper'); ?>>
+        <div <?php $this->print_render_attribute_string('wrapper'); ?>>
             <div class="dinopack-ai-review-summary" data-widget-id="<?php echo esc_attr($widget_id); ?>">
                 <?php if (!empty($generated_content)): ?>
                     <div class="elementor-widget-container" 

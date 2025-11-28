@@ -399,7 +399,7 @@ function dinopack_generate_product_description() {
     $prompt .= "Product Name: " . $product_name . "\n";
     
     if (!empty($product_price)) {
-        $prompt .= "Price: " . strip_tags($product_price) . "\n";
+        $prompt .= "Price: " . wp_strip_all_tags($product_price) . "\n";
     }
     
     if (!empty($product_sku)) {

@@ -284,6 +284,96 @@ class DinoPack_Settings {
 	}
 
 	/**
+	 * Add UTM tracking parameters to URL
+	 *
+	 * @param string $url The original URL
+	 * @param string $content The content identifier for utm_content
+	 * @return string URL with UTM parameters
+	 */
+	private function add_utm_params( $url, $content = '' ) {
+		$utm_params = array(
+			'utm_source' => 'plugin',
+			'utm_medium' => 'settings_page',
+			'utm_campaign' => 'dinopack_free',
+		);
+		
+		if ( ! empty( $content ) ) {
+			$utm_params['utm_content'] = $content;
+		}
+		
+		$separator = strpos( $url, '?' ) !== false ? '&' : '?';
+		return $url . $separator . http_build_query( $utm_params );
+	}
+
+	/**
+	 * Render PRO upsell banner
+	 */
+	private function render_pro_upsell() {
+		// Check if PRO version is already installed
+		if ( class_exists( 'DinoPackPro\Plugin' ) ) {
+			return; // Don't show upsell if PRO is installed
+		}
+		?>
+		<div class="wpdino-card wpdino-pro-card">
+			<div class="wpdino-pro-header">
+				<div class="wpdino-pro-badge">
+					<?php esc_html_e( 'PRO', 'dinopack-for-elementor' ); ?>
+				</div>
+				<h2><?php esc_html_e( 'Upgrade to DinoPack PRO', 'dinopack-for-elementor' ); ?></h2>
+				<p><?php esc_html_e( 'Unlock advanced AI-powered widgets and premium features to take your Elementor designs to the next level.', 'dinopack-for-elementor' ); ?></p>
+				
+				<div class="wpdino-pro-features">
+					<ul>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI Content Generator', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI Content Summarizer', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI FAQ Generator', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI SEO Optimizer', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI Social Media Post Generator', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'AI Image Generator', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'Premium Widgets Collection', 'dinopack-for-elementor' ); ?>
+						</li>
+						<li>
+							<span class="dashicons dashicons-yes"></span>
+							<?php esc_html_e( 'Priority Support', 'dinopack-for-elementor' ); ?>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="wpdino-pro-cta">
+					<a href="<?php echo esc_url( $this->add_utm_params( 'https://wpdino.com/plugins/dinopack-pro-for-elementor/', 'pro_upgrade_button' ) ); ?>" target="_blank" class="wpdino-btn wpdino-btn-primary">
+						<?php esc_html_e( 'Get DinoPack PRO', 'dinopack-for-elementor' ); ?>
+						<span class="dashicons dashicons-arrow-right-alt"></span>
+					</a>
+					<p>
+						<?php esc_html_e( '30-day money-back guarantee', 'dinopack-for-elementor' ); ?>
+					</p>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Render admin notices
 	 */
 	private function render_admin_notices() {
@@ -321,18 +411,21 @@ class DinoPack_Settings {
 	 */
 	public function enqueue_scripts( $hook ) {
 
-		// Check for our settings page hook - try multiple possible variations 
+		// Only load on the settings page
 		$valid_hooks = array(
-			'toplevel_page_dinopack-settings'
+			'toplevel_page_dinopack-settings',
+			'dinopack_page_dinopack-settings'
 		);
 		
-		// Also load on our post type admin pages as fallback
-		$is_dinopack_page = (
-			in_array( $hook, $valid_hooks ) ||
-			strpos( $hook, 'dinopack-settings' ) !== false
-		);
+		// Check if we're on the settings page
+		$is_settings_page = in_array( $hook, $valid_hooks );
 		
-		if ( ! $is_dinopack_page ) {
+		// Also check by GET parameter as fallback
+		if ( ! $is_settings_page && isset( $_GET['page'] ) && $_GET['page'] === 'dinopack-settings' ) {
+			$is_settings_page = true;
+		}
+		
+		if ( ! $is_settings_page ) {
 			return;
 		}
 
@@ -1004,7 +1097,7 @@ class DinoPack_Settings {
 			<!-- Admin Notices -->
 			<?php $this->render_admin_notices(); ?>
 
-			<div class="wpdino-main">
+			<div class="wpdino-main<?php echo class_exists( 'DinoPackPro\Plugin' ) ? ' wpdino-main-no-sidebar' : ''; ?>">
 				
 				<!-- Settings Content -->
 				<div class="wpdino-content">
@@ -1117,29 +1210,58 @@ class DinoPack_Settings {
 						</form>
 					</div>
 				</div>
+				
+				<!-- Sidebar -->
+				<div class="wpdino-sidebar">
+					<?php $this->render_pro_upsell(); ?>
+				</div>
 			</div>
 
 			<!-- Footer -->
 			<div class="wpdino-footer">
 				<div class="wpdino-footer-content">
 					<div class="wpdino-footer-left">
-						<p>
-							<?php 
-							printf( 
-								/* translators: DinoPack version and WPDINO link */
-								esc_html__( 'DinoPack For Elementor v%1$s by %2$s', 'dinopack-for-elementor' ), 
+						<?php
+						$footer_left_content = sprintf(
+							/* translators: DinoPack version and WPDINO link */
+							'<p>%s</p>',
+							sprintf(
+								esc_html__( 'DinoPack For Elementor v%1$s by %2$s', 'dinopack-for-elementor' ),
 								esc_attr( DINOPACK_VERSION ),
-								'<a href="https://wpdino.com" target="_blank">WPDINO</a>' 
-							); ?>
-						</p>
+								'<a href="' . esc_url( $this->add_utm_params( 'https://wpdino.com', 'footer_brand_link' ) ) . '" target="_blank">WPDINO</a>'
+							)
+						);
+						/**
+						 * Filter the footer left content.
+						 *
+						 * @since 1.0.0
+						 *
+						 * @param string $footer_left_content The footer left HTML content.
+						 */
+						echo wp_kses_post( apply_filters( 'dinopack_settings_footer_left', $footer_left_content ) );
+						?>
 					</div>
-					<!-- <div class="wpdino-footer-right">
-						<a href="https://wpdino.com" target="_blank"><?php esc_html_e( 'WPDINO.com', 'dinopack-for-elementor' ); ?></a>
-						<span>|</span>
-						<a href="https://wpdino.com/docs/dinopack-for-elementor/" target="_blank"><?php esc_html_e( 'Documentation', 'dinopack-for-elementor' ); ?></a>
-						<span>|</span>
-						<a href="https://wpdino.com/support/" target="_blank"><?php esc_html_e( 'Support', 'dinopack-for-elementor' ); ?></a>
-					</div> -->
+					<div class="wpdino-footer-right">
+						<?php
+						$footer_right_links = sprintf(
+							'<a href="%1$s" target="_blank">%2$s</a><span>|</span><a href="%3$s" target="_blank">%4$s</a><span>|</span><a href="%5$s" target="_blank">%6$s</a>',
+							esc_url( $this->add_utm_params( 'https://wpdino.com', 'footer_home_link' ) ),
+							esc_html__( 'WPDINO', 'dinopack-for-elementor' ),
+							esc_url( $this->add_utm_params( 'https://wpdino.com/docs/dinopack-for-elementor/', 'footer_documentation' ) ),
+							esc_html__( 'Documentation', 'dinopack-for-elementor' ),
+							esc_url( $this->add_utm_params( 'https://wordpress.org/support/plugin/dinopack-for-elementor/', 'footer_support' ) ),
+							esc_html__( 'Support', 'dinopack-for-elementor' )
+						);
+						/**
+						 * Filter the footer right links content.
+						 *
+						 * @since 1.0.0
+						 *
+						 * @param string $footer_right_links The footer right links HTML content.
+						 */
+						echo wp_kses_post( apply_filters( 'dinopack_settings_footer_right', $footer_right_links ) );
+						?>
+					</div>
 				</div>
 			</div>
 		</div>

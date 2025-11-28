@@ -1028,6 +1028,7 @@ class Woo_Products extends Widget_Base {
         }
 
         // Set up WooCommerce loop
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WooCommerce core global variable
         global $woocommerce_loop;
         $woocommerce_loop['columns'] = (int) $settings['columns'];
 
