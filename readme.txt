@@ -1,6 +1,6 @@
 === DinoPack for Elementor ===
 Contributors: wpdino
-Donate link: https://buymeacoffee.com/gladyouarehere
+Donate link: https://paypal.me/dinostd/10usd
 Tags: elementor, widgets, page builder, woocommerce, blog
 Requires at least: 6.6
 Tested up to: 6.8
