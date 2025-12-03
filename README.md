@@ -6,7 +6,7 @@
 ![PHP Version](https://img.shields.io/badge/PHP-7.0+-purple.svg)
 ![Elementor](https://img.shields.io/badge/Elementor-2.0+-pink.svg)
 ![License](https://img.shields.io/badge/License-GPL%20v2-green.svg)
-![Version](https://img.shields.io/badge/Version-1.0.1-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.0.3-orange.svg)
 
 **A powerful collection of advanced Elementor widgets to supercharge your WordPress website**
 
@@ -22,13 +22,14 @@
 
 ## ✨ Features
 
-- 🎨 **12+ Premium Widgets** - Advanced widgets for every need
+- 🎨 **14+ Premium Widgets** - Advanced widgets for every need
 - 🎯 **Multiple Styles** - Pre-designed styles for each widget
 - 📱 **Fully Responsive** - Mobile-first design approach
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
 - 🛠️ **Highly Customizable** - Extensive styling options
 - 🔌 **MailChimp Integration** - Mailchimp Newsletter widget with API support
 - 🛒 **WooCommerce Support** - Dedicated products widget
+- 🤖 **AI-Powered Features** - OpenAI integration for product descriptions and review summaries
 - 🌐 **Translation Ready** - WPML and multilingual compatible
 - ♿ **Accessibility** - Built with accessibility in mind
 - 🔒 **Privacy Focused** - No data collection or external requests
@@ -114,12 +115,32 @@ Ideal for automotive, dealership, and rental sites with:
 - Vertical or horizontal layout modes per breakpoint
 - Global styling controls for cards, typography, spacing, and separators
 
+### 13. **AI Product Description Generator**
+AI-powered product description generator for WooCommerce products:
+- Automatically generates product descriptions using OpenAI
+- Customizable prompts and content types
+- Multiple tone options (professional, friendly, casual, etc.)
+- Word count control
+- Generates SEO-optimized content
+- Editable generated content in Elementor editor
+- Requires OpenAI API key (configure in DinoPack Settings)
+
+### 14. **AI Product Review Summarizer**
+Automatically summarize and analyze product reviews using AI:
+- Analyzes multiple product reviews at once
+- Generates comprehensive summaries
+- Multiple summary types (overview, pros/cons, detailed analysis)
+- Configurable review count (1-50 reviews)
+- Editable generated summaries in Elementor editor
+- Requires OpenAI API key (configure in DinoPack Settings)
+
 ## 📋 Requirements
 
 - WordPress 6.6 or higher
 - Elementor 2.0.0 or higher
 - PHP 7.0 or higher
-- WooCommerce (optional - only for Products widget)
+- WooCommerce (required for Products widget and AI widgets)
+- OpenAI API Key (required for AI-powered widgets, configure in DinoPack Settings)
 
 ## 🚀 Installation
 
@@ -153,6 +174,17 @@ Ideal for automotive, dealership, and rental sites with:
 4. Save settings
 5. Add the Newsletter widget to your page
 6. Select your MailChimp list from the dropdown
+
+### OpenAI Setup (for AI Widgets)
+
+1. Go to **DinoPack Settings** in WordPress admin
+2. Navigate to the AI Settings tab
+3. Enter your OpenAI API key (get one from https://platform.openai.com/api-keys)
+4. Select your preferred AI model (default: gpt-3.5-turbo)
+5. Configure temperature and other settings (optional)
+6. Save settings
+7. Add AI Product Description Generator or AI Product Review Summarizer widget to your page
+8. Select a WooCommerce product and click "Generate Content" or "Summarize Reviews" in the widget settings
 
 ## 🎯 Usage
 
@@ -261,6 +293,40 @@ See [LICENSE](LICENSE) file for full license text.
 
 This plugin uses the following third-party services:
 
+### OpenAI API Service
+
+**What it is:** OpenAI provides artificial intelligence services through their API for generating text content.
+
+**What it's used for:** The AI Product Description Generator and AI Product Review Summarizer widgets use OpenAI's API to automatically generate product descriptions and summarize product reviews.
+
+**What data is sent and when:**
+- **Product information** (name, price, SKU, categories, attributes) - Only when generating product descriptions
+- **Product reviews** (review text, ratings, reviewer names) - Only when summarizing product reviews
+- **User prompts** - Custom prompts and instructions provided in widget settings
+- **API key** - Your OpenAI API key (stored securely in WordPress database, transmitted only to OpenAI's API)
+
+**When data is sent:** Data is only sent when:
+1. A user clicks the "Generate Content" or "Summarize Reviews" button in the Elementor editor
+2. The OpenAI API key is properly configured in the plugin settings
+3. A valid WooCommerce product is selected in the widget settings
+4. The generation request is manually initiated from the Elementor editor
+
+**Service Provider:** OpenAI, L.L.C.
+- **Terms of Service:** [https://openai.com/policies/terms-of-use](https://openai.com/policies/terms-of-use)
+- **Privacy Policy:** [https://openai.com/policies/privacy-policy](https://openai.com/policies/privacy-policy)
+- **API Documentation:** [https://platform.openai.com/docs/](https://platform.openai.com/docs/)
+- **API Pricing:** [https://openai.com/pricing](https://openai.com/pricing)
+
+**Important notes:**
+- This service is only used when you configure an OpenAI API key in the plugin settings
+- No data is sent to external services unless you explicitly configure the OpenAI integration
+- Content generation must be manually triggered by the site administrator from the Elementor editor
+- All data transmission is encrypted using HTTPS
+- OpenAI may use API data to improve their services (see OpenAI's privacy policy for details)
+- You are responsible for ensuring compliance with OpenAI's usage policies
+- API usage may incur costs based on OpenAI's pricing - check their pricing page for current rates
+- Generated content is stored in your WordPress database as part of the widget settings
+
 ### MailChimp API Service
 
 **What it is:** MailChimp is an email marketing service that provides API endpoints for managing email subscribers and campaigns.
@@ -290,15 +356,46 @@ This plugin uses the following third-party services:
 **DinoPack for Elementor respects your privacy:**
 
 - ✅ No data collection by the plugin itself
-- ✅ No external requests (except MailChimp when configured)
-- ✅ All data stays on your server (except newsletter signups sent to MailChimp)
+- ✅ No external requests (except MailChimp and OpenAI when configured)
+- ✅ All data stays on your server (except newsletter signups sent to MailChimp and product data sent to OpenAI for content generation)
 - ✅ GDPR compliant
 - ✅ No tracking or analytics
 - ✅ Users must explicitly submit newsletter forms to send data to MailChimp
+- ✅ AI content generation must be manually triggered by administrators
 
-The Newsletter widget only connects to MailChimp API when explicitly configured, and only sends the email addresses and optional information collected through your newsletter signup forms.
+**Data Transmission:**
+- **MailChimp**: The Newsletter widget only connects to MailChimp API when explicitly configured, and only sends the email addresses and optional information collected through your newsletter signup forms.
+- **OpenAI**: The AI widgets only connect to OpenAI API when explicitly configured, and only send product information and review data when you manually trigger content generation from the Elementor editor. OpenAI may use this data to improve their services as outlined in their privacy policy.
+
+**Data Storage:**
+- API keys are stored securely in your WordPress database
+- Generated content is stored in your WordPress database as part of the widget settings
+- No personal user data is collected or stored by the plugin itself
 
 ## 📝 Changelog
+
+### Version 1.0.3 - 2025-01-XX
+
+#### Added
+- AI Product Description Generator widget for WooCommerce products
+- AI Product Review Summarizer widget for analyzing and summarizing product reviews
+- OpenAI API integration with configurable API key, model, and settings
+- AI Settings tab in DinoPack Settings page
+- Shortcode support in Price Table currency field
+- Shortcode-based button option for Price Table widget (alternative to URL buttons)
+- Enhanced content saving in Elementor editor for AI-generated content
+- Improved AJAX handling for AI widget content generation
+
+#### Changed
+- Price Table widget now supports shortcodes in currency field for dynamic currency display
+- Price Table widget now supports shortcode-based buttons as alternative to URL buttons
+- Improved widget content persistence in Elementor editor
+
+#### Technical
+- Added `class-dinopack-ai-helper.php` for OpenAI API integration
+- Added AJAX handlers for AI content generation
+- Enhanced Elementor editor scripts for AI widgets
+- Updated widget registration to include AI widgets
 
 ### Version 1.0.2 - 2025-11-17
 

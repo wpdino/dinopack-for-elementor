@@ -299,6 +299,17 @@ class Price_Table extends Widget_Base {
         );
 
         $this->add_control(
+            'button_shortcode',
+            [
+                'label' => esc_html__('Button Shortcode', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::TEXTAREA,
+                'description' => esc_html__('Enter a shortcode to render the button. This will override the Button Text and Button URL fields if provided.', 'dinopack-for-elementor'),
+                'placeholder' => esc_html__('e.g., [shortcode]', 'dinopack-for-elementor'),
+                'default' => '',
+            ]
+        );
+
+        $this->add_control(
             'popular',
             [
                 'label' => esc_html__('Popular', 'dinopack-for-elementor'),
@@ -678,7 +689,7 @@ class Price_Table extends Widget_Base {
                 <?php endif; ?>
                 
                 <div class="dinopack-price-table-price-wrapper">
-                    <span class="dinopack-price-table-currency"><?php echo esc_html($settings['currency']); ?></span>
+                    <span class="dinopack-price-table-currency"><?php echo wp_kses_post( do_shortcode( $settings['currency'] ) ); ?></span>
                     <span class="dinopack-price-table-price"><?php echo esc_html($settings['price']); ?></span>
                     <span class="dinopack-price-table-period"><?php echo esc_html($settings['period']); ?></span>
                 </div>
@@ -713,7 +724,9 @@ class Price_Table extends Widget_Base {
             </div>
             
             <div class="dinopack-price-table-footer">
-                <?php if ($settings['button_text']): ?>
+                <?php if (!empty($settings['button_shortcode'])): ?>
+                    <?php echo do_shortcode( $settings['button_shortcode'] ); ?>
+                <?php elseif ($settings['button_text']): ?>
                     <?php
                     $button_classes = ['dinopack-price-table-button'];
                     if (!empty($settings['button_hover_animation'])) {
