@@ -5,6 +5,52 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-12-03
+
+### Added
+- AI Product Description Generator widget for WooCommerce products
+  - Automatically generates product descriptions using OpenAI
+  - Customizable prompts, content types, and tone options
+  - Word count control for generated content
+  - Editable generated content in Elementor editor
+- AI Product Review Summarizer widget for WooCommerce products
+  - Analyzes and summarizes multiple product reviews using AI
+  - Multiple summary types (overview, pros/cons, detailed analysis)
+  - Configurable review count (1-50 reviews)
+  - Editable generated summaries in Elementor editor
+- OpenAI API integration
+  - AI Settings tab in DinoPack Settings page
+  - Configurable OpenAI API key, model, temperature, and other settings
+  - Secure API key storage in WordPress database
+- Price Table widget enhancements
+  - Shortcode support in currency field for dynamic currency display
+  - Shortcode-based button option as alternative to URL buttons
+- Enhanced content saving in Elementor editor for AI-generated content
+- Improved AJAX handling for AI widget content generation
+
+### Changed
+- Price Table widget now supports shortcodes in currency field
+- Price Table widget now supports shortcode-based buttons as alternative to URL buttons
+- Improved widget content persistence in Elementor editor
+- Updated documentation to include AI widgets and OpenAI integration
+
+### Technical
+- Added `class-dinopack-ai-helper.php` for OpenAI API integration
+- Added AJAX handlers for AI content generation (`dinopack_generate_product_description`, `dinopack_summarize_product_reviews`)
+- Enhanced Elementor editor scripts for AI widgets with proper content saving
+- Updated widget registration to include AI widgets
+- Improved error handling for AI API requests
+
+### Privacy & Security
+- Added OpenAI privacy policy information to readme files
+- Updated plugin privacy policy to include OpenAI data transmission details
+- All API keys stored securely in WordPress database
+- Content generation requires manual trigger from Elementor editor
+
+### Requirements
+- WooCommerce now required for AI widgets
+- OpenAI API key required for AI widgets (configure in DinoPack Settings)
+
 ## [1.0.2] - 2025-11-17
 
 ### Added

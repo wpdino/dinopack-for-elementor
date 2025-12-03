@@ -3,11 +3,11 @@
  * Plugin Name:         DinoPack for Elementor
  * Plugin URI:          https://wpdino.com/plugins/dinopack-for-elementor/
  * Description:         DinoPack for Elementor is a collection of creative and advanced widgets, expertly crafted by the WPDINO team to enhance your Elementor experience.
- * Version:             1.0.2
+ * Version:             1.0.3
  * Author:              WPDINO
  * Author URI:          https://wpdino.com
  * Requires at least:   6.6
- * Tested up to:        6.8
+ * Tested up to:        6.9
  * Requires Plugins: elementor
  * Requires PHP: 7.0
  * Tags: elementor, widgets, page builder, templates, blocks, design
@@ -22,13 +22,23 @@
  *    email addresses and optional merge fields are transmitted to MailChimp API for processing.
  *    This data is handled according to MailChimp's privacy policy and terms of service.
  * 
- * 2. Plugin Settings: Admin settings are stored locally in your WordPress database.
- *    No personal data from settings is transmitted to external servers.
+ * 2. AI Content Generation: When using AI-powered widgets (AI Product Description Generator
+ *    and AI Product Review Summarizer), product information and review data are transmitted
+ *    to OpenAI API for content generation. This includes product names, descriptions, prices,
+ *    SKUs, categories, attributes, and review text. OpenAI may use this data to improve their
+ *    services as outlined in their privacy policy. Content generation must be manually triggered
+ *    by the site administrator from the Elementor editor.
  * 
- * 3. No Tracking: This plugin does not track user behavior or collect analytics data.
+ * 3. Plugin Settings: Admin settings (including API keys) are stored locally in your WordPress
+ *    database. API keys are only transmitted to their respective service providers (MailChimp
+ *    or OpenAI) when making API requests. No personal data from settings is transmitted to
+ *    external servers except as part of API requests.
  * 
- * For more information about MailChimp's data handling, please visit:
- * https://mailchimp.com/legal/privacy/
+ * 4. No Tracking: This plugin does not track user behavior or collect analytics data.
+ * 
+ * For more information about external service data handling:
+ * - MailChimp: https://mailchimp.com/legal/privacy/
+ * - OpenAI: https://openai.com/policies/privacy-policy
  * 
  * All other data remains on your website and is not transmitted to external servers.
  * 

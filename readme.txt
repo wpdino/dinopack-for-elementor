@@ -3,9 +3,9 @@ Contributors: wpdino
 Donate link: https://paypal.me/dinostd/10usd
 Tags: elementor, widgets, page builder, woocommerce, blog
 Requires at least: 6.6
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,8 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **WooCommerce Products Widget** - Display products with customizable layouts and styling
 * **Restaurant Menu Widget** - Perfect for restaurant websites with menu items, prices, images, and dietary badges
 * **Car Specs Widget** - Ideal for automotive websites with vehicle specifications and customizable layouts
+* **AI Product Description Generator** - AI-powered product description generator for WooCommerce products using OpenAI
+* **AI Product Review Summarizer** - Automatically summarize and analyze product reviews using AI technology
 
 = Widget Features =
 
@@ -37,6 +39,7 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Responsive Design** - All widgets are fully responsive and mobile-friendly
 * **MailChimp Integration** - Newsletter widget with secure API integration
 * **WooCommerce Support** - Dedicated widget for displaying products
+* **AI-Powered Widgets** - OpenAI integration for product descriptions and review summaries
 * **AJAX Functionality** - Blog load more and newsletter submission without page reload
 * **Performance Optimized** - Lightweight code with minimal impact on site speed
 * **Cross-browser Compatible** - Works on all modern browsers
@@ -53,7 +56,8 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * WordPress 6.6 or higher
 * Elementor 2.0.0 or higher
 * PHP 7.0 or higher
-* WooCommerce (optional, only for WooCommerce Products widget)
+* WooCommerce (required for WooCommerce Products widget and AI widgets)
+* OpenAI API Key (required for AI-powered widgets, configure in DinoPack Settings)
 
 == Installation ==
 
@@ -109,6 +113,16 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.0.3 =
+* Added AI Product Description Generator widget for WooCommerce products
+* Added AI Product Review Summarizer widget for analyzing and summarizing product reviews
+* AI widgets integrate with OpenAI API for content generation
+* Added OpenAI API key configuration in DinoPack Settings
+* Price Table widget now supports shortcodes in currency field
+* Price Table widget now supports shortcode-based buttons as alternative to URL buttons
+* Improved widget content saving in Elementor editor for AI-generated content
+* Enhanced AJAX handling for AI widget content generation
+
 = 1.0.2 =
 * Added widget enable/disable feature in General settings tab
 * Added "Widgets" subsection in settings with individual checkboxes for each widget
@@ -142,6 +156,9 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+This update adds two powerful AI-powered widgets for WooCommerce: AI Product Description Generator and AI Product Review Summarizer. These widgets require an OpenAI API key to be configured in DinoPack Settings. The Price Table widget now supports shortcodes in the currency field and shortcode-based buttons. All widgets remain enabled by default.
+
 = 1.0.2 =
 New widget management feature allows you to enable/disable individual widgets from the settings panel. All widgets remain enabled by default, so no action is required unless you want to hide specific widgets from the Elementor panel.
 
@@ -155,6 +172,41 @@ For support, documentation, and updates, visit [wpdino.com](https://wpdino.com)
 == External Services ==
 
 This plugin uses the following third-party/external services:
+
+= OpenAI API Service =
+
+**What the service is and what it is used for:**
+OpenAI provides artificial intelligence services through their API. The AI Product Description Generator and AI Product Review Summarizer widgets use OpenAI's API to generate product descriptions and summarize product reviews automatically.
+
+**What data is sent and when:**
+- **Product information** (name, price, SKU, categories, attributes) - Only when generating product descriptions
+- **Product reviews** (review text, ratings, reviewer names) - Only when summarizing product reviews
+- **User prompts** - Custom prompts and instructions provided in widget settings
+- **API key** - Your OpenAI API key (stored securely in WordPress database, never transmitted to external servers except OpenAI)
+
+**When data is sent:**
+Data is only sent when:
+1. A user clicks the "Generate Content" or "Summarize Reviews" button in the Elementor editor
+2. The OpenAI API key is properly configured in the plugin settings
+3. A valid WooCommerce product is selected in the widget settings
+4. The generation request is initiated from the Elementor editor
+
+**Service provider information:**
+- Service provided by: OpenAI, L.L.C.
+- API Endpoint: `https://api.openai.com/v1/`
+- Terms of Service: https://openai.com/policies/terms-of-use
+- Privacy Policy: https://openai.com/policies/privacy-policy
+- API Documentation: https://platform.openai.com/docs/
+
+**Important notes:**
+- This service is only used when you configure an OpenAI API key in the plugin settings
+- No data is sent to external services unless you explicitly configure the OpenAI integration
+- Content generation must be manually triggered from the Elementor editor
+- All data transmission is encrypted using HTTPS
+- All data processing is handled by OpenAI according to their terms and privacy policy
+- OpenAI may use API data to improve their services (see OpenAI's privacy policy for details)
+- You are responsible for ensuring compliance with OpenAI's usage policies
+- API usage may incur costs based on OpenAI's pricing (see https://openai.com/pricing)
 
 = MailChimp API Service =
 
@@ -190,4 +242,18 @@ Data is only sent when:
 
 == Privacy Policy ==
 
-This plugin does not collect, store, or share any personal data by default. All data remains on your website and is not transmitted to external servers unless you configure the MailChimp integration. When MailChimp is configured, only email addresses and optional merge fields from newsletter subscription forms are sent to MailChimp's secure API endpoint.
+This plugin does not collect, store, or share any personal data by default. All data remains on your website and is not transmitted to external servers unless you configure the MailChimp or OpenAI integrations.
+
+**Data Transmission:**
+- **MailChimp Integration**: When configured, only email addresses and optional merge fields from newsletter subscription forms are sent to MailChimp's secure API endpoint.
+- **OpenAI Integration**: When configured, product information and review data are sent to OpenAI's API for content generation. This includes product names, descriptions, prices, SKUs, categories, attributes, and review text. OpenAI may use this data to improve their services as outlined in their privacy policy.
+
+**Data Storage:**
+- API keys are stored securely in your WordPress database
+- Generated content is stored in your WordPress database as part of the widget settings
+- No personal user data is collected or stored by the plugin itself
+
+**User Control:**
+- All external service integrations are optional and must be explicitly configured
+- Content generation must be manually triggered by the site administrator
+- You can disable AI widgets entirely through the plugin settings
