@@ -1,7 +1,7 @@
 === DinoPack for Elementor ===
 Contributors: wpdino
 Donate link: https://paypal.me/dinostd/10usd
-Tags: elementor, widgets, page builder, woocommerce, blog
+Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 7.0
