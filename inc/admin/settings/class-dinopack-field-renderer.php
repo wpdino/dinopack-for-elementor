@@ -296,17 +296,34 @@ class DinoPack_Field_Renderer {
 	 */
 	private function render_checkbox_field( $field, $field_id, $field_name, $value, $field_class ) {
 		// Check if this is a widget field
-		$is_widget_field = ( strpos( $field_id, 'widget_enable_' ) === 0 );
+		$is_widget_field = ( strpos( $field_id, 'widget_enable_' ) === 0 || strpos( $field_id, 'widget_pro_' ) === 0 );
+		$is_pro_widget = isset( $field['is_pro'] ) && $field['is_pro'];
+		$is_disabled = isset( $field['disabled'] ) && $field['disabled'];
+		
 		$field_group_class = $is_widget_field ? ' wpdino-widget-field' : '';
+		if ( $is_pro_widget ) {
+			$field_group_class .= ' wpdino-pro-widget-field';
+		}
 		?>
 		<div class="wpdino-field-group<?php echo esc_attr( $field_group_class ); ?>">
-			<label class="wpdino-checkbox">
+			<label class="wpdino-checkbox<?php echo $is_disabled ? ' wpdino-checkbox-disabled' : ''; ?>">
 				<input type="checkbox" name="<?php echo esc_attr( $field_name ); ?>"
-					   <?php checked( $value ); ?> />
+					   <?php checked( $value ); ?>
+					   <?php echo $is_disabled ? 'disabled="disabled"' : ''; ?>
+					   <?php if ( $is_pro_widget ) : ?>
+					   data-pro-widget="true"
+					   <?php endif; ?> />
 				<span class="wpdino-checkbox-mark"></span>
-				<?php echo esc_html( $field['label'] ); ?>
+				<span class="wpdino-checkbox-label">
+					<?php echo esc_html( $field['label'] ); ?>
+					<?php if ( $is_pro_widget ) : ?>
+						<span class="wpdino-pro-badge-small"><?php esc_html_e( 'PRO', 'dinopack-for-elementor' ); ?></span>
+					<?php endif; ?>
+				</span>
 			</label>
-			<?php $this->render_field_description( $field ); ?>
+			<?php if ( ! empty( $field['description'] ) ) : ?>
+				<p class="wpdino-field-description wpdino-widget-description"><?php echo esc_html( $field['description'] ); ?></p>
+			<?php endif; ?>
 		</div>
 		<?php
 	}

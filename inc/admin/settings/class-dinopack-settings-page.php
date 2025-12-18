@@ -258,6 +258,11 @@ class DinoPack_Settings {
 				continue;
 			}
 			
+			// Skip PRO widgets (they're promo/info only)
+			if ( isset( $field['is_pro'] ) && $field['is_pro'] ) {
+				continue;
+			}
+			
 			$field_name = isset( $field['name'] ) ? $field['name'] : $field_id;
 			$default_value = isset( $field['default'] ) ? $field['default'] : '';
 			
@@ -774,6 +779,115 @@ class DinoPack_Settings {
 	}
 
 	/**
+	 * Get PRO widgets list with names and descriptions
+	 *
+	 * @since 1.0.2
+	 * @return array Array of widget slugs => array( 'name' => string, 'description' => string )
+	 */
+	private function get_pro_widgets() {
+		// If PRO version is already installed, don't show the promo list at all
+		if ( class_exists( 'DinoPackPro\Plugin' ) ) {
+			return array();
+		}
+		
+		// PRO widget name and description mapping
+		$pro_widgets_info = array(
+			'ai-content-generator' => array(
+				'name' => esc_html__( 'AI Content Generator', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Generate blog posts and articles using AI.', 'dinopack-for-elementor' ),
+			),
+			'ai-content-summarizer' => array(
+				'name' => esc_html__( 'AI Content Summarizer', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Automatically summarize your content using AI.', 'dinopack-for-elementor' ),
+			),
+			'ai-faq-generator' => array(
+				'name' => esc_html__( 'AI FAQ Generator', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Generate FAQs from blog content using AI.', 'dinopack-for-elementor' ),
+			),
+			'ai-image-generator' => array(
+				'name' => esc_html__( 'AI Image Generator', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Generate images using DALL-E API.', 'dinopack-for-elementor' ),
+			),
+			'ai-seo-optimizer' => array(
+				'name' => esc_html__( 'AI SEO Optimizer', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Optimize your content for SEO using AI.', 'dinopack-for-elementor' ),
+			),
+			'ai-social-media-post-generator' => array(
+				'name' => esc_html__( 'AI Social Media Post Generator', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Create social media posts from blog content.', 'dinopack-for-elementor' ),
+			),
+			'audio-playlist' => array(
+				'name' => esc_html__( 'Audio Playlist', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display audio files in a beautiful playlist format.', 'dinopack-for-elementor' ),
+			),
+			'before-after' => array(
+				'name' => esc_html__( 'Before After', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Compare images with a before/after slider.', 'dinopack-for-elementor' ),
+			),
+			'chart-visualizer' => array(
+				'name' => esc_html__( 'Chart Visualizer', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Create beautiful charts and graphs for data visualization.', 'dinopack-for-elementor' ),
+			),
+			'countdown-timer' => array(
+				'name' => esc_html__( 'Countdown Timer', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display a countdown to a target date/time.', 'dinopack-for-elementor' ),
+			),
+			'cta-box' => array(
+				'name' => esc_html__( 'CTA Box', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Create compelling call-to-action boxes.', 'dinopack-for-elementor' ),
+			),
+			'image-accordion' => array(
+				'name' => esc_html__( 'Image Accordion', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display images in an interactive accordion layout.', 'dinopack-for-elementor' ),
+			),
+			'lottie-gallery' => array(
+				'name' => esc_html__( 'Lottie Gallery', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Showcase Lottie animations in a gallery format.', 'dinopack-for-elementor' ),
+			),
+			'offcanvas-bar' => array(
+				'name' => esc_html__( 'Offcanvas Bar', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Create slide-in sidebars and panels.', 'dinopack-for-elementor' ),
+			),
+			'reading-time-calculator' => array(
+				'name' => esc_html__( 'Reading Time Calculator', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display estimated reading time for your content.', 'dinopack-for-elementor' ),
+			),
+			'related-posts' => array(
+				'name' => esc_html__( 'Related Posts', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display related posts suggestions.', 'dinopack-for-elementor' ),
+			),
+			'review-carousel' => array(
+				'name' => esc_html__( 'Review Carousel', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Showcase reviews in a beautiful carousel.', 'dinopack-for-elementor' ),
+			),
+			'testimonials-slider' => array(
+				'name' => esc_html__( 'Smart Testimonials Slider', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display testimonials in a modern slider/carousel layout with ratings.', 'dinopack-for-elementor' ),
+			),
+			'tilt-card' => array(
+				'name' => esc_html__( 'Tilt Card', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Create interactive 3D tilt effect cards.', 'dinopack-for-elementor' ),
+			),
+			'video-gallery' => array(
+				'name' => esc_html__( 'Video Gallery', 'dinopack-for-elementor' ),
+				'description' => esc_html__( 'Display videos in a beautiful gallery with lightbox.', 'dinopack-for-elementor' ),
+			),
+		);
+		
+		// We always return the full PRO widget list in the free version,
+		// regardless of whether the PRO plugin files are present.
+		// This is purely for promo/info purposes.
+		$widgets = $pro_widgets_info;
+
+		// Sort widgets alphabetically by name
+		uasort( $widgets, function( $a, $b ) {
+			return strcmp( $a['name'], $b['name'] );
+		} );
+
+		return $widgets;
+	}
+
+	/**
 	 * Settings sections configuration
 	 */
 	public function get_settings_sections() {
@@ -790,6 +904,26 @@ class DinoPack_Settings {
 				'description' => '',
 				'default' => true, // All widgets enabled by default
 			);
+		}
+		
+		// Get PRO widgets (only if PRO is not activated)
+		$pro_widgets = $this->get_pro_widgets();
+		$pro_widget_fields = array();
+		
+		// Add PRO widget checkboxes (promo/info only, disabled but checked)
+		if ( ! empty( $pro_widgets ) ) {
+			foreach ( $pro_widgets as $widget_slug => $widget_info ) {
+				$pro_widget_fields[] = array(
+					'type' => 'checkbox',
+					'id'   => 'widget_pro_' . $widget_slug,
+					'name' => 'widget_pro_' . $widget_slug,
+					'label' => $widget_info['name'],
+					'description' => ! empty( $widget_info['description'] ) ? $widget_info['description'] : '',
+					'default' => true, // Show as checked by default (available in PRO)
+					'disabled' => true, // Disabled (non-interactive)
+					'is_pro' => true, // Mark as PRO widget (excluded from form processing)
+				);
+			}
 		}
 		
 		// Build fields array
@@ -816,6 +950,21 @@ class DinoPack_Settings {
 				'description' => esc_html__( 'Enable or disable widgets to show in the Elementor panel. All widgets are enabled by default.', 'dinopack-for-elementor' ),
 			);
 			$general_fields = array_merge( $general_fields, $widget_fields );
+			
+			// Add PRO widgets subsection if PRO widgets exist
+			if ( ! empty( $pro_widget_fields ) ) {
+				$general_fields[] = array(
+					'type' => 'subsection',
+					'id'   => 'pro_widgets_subsection',
+					'name' => 'pro_widgets_subsection',
+					'label' => esc_html__( 'PRO Widgets', 'dinopack-for-elementor' ),
+					'description' => sprintf(
+						wp_kses_post( __( 'These widgets are available in <a href="%s" target="_blank">DinoPack PRO</a>. Upgrade to unlock these powerful features.', 'dinopack-for-elementor' ) ),
+						esc_url( $this->add_utm_params( 'https://wpdino.com/plugins/dinopack-pro-for-elementor/', 'pro_widgets_section' ) )
+					),
+				);
+				$general_fields = array_merge( $general_fields, $pro_widget_fields );
+			}
 		}
 		
 		$sections = array(
@@ -1151,19 +1300,31 @@ class DinoPack_Settings {
 								<?php
 								if ( ! empty( $section['fields'] ) ) {
 									$in_widgets_section = false;
+									$in_pro_widgets_section = false;
 									$widget_fields_started = false;
 									
 									foreach ( $section['fields'] as $field ) {
 										// Check if we're entering the widgets subsection
-										if ( isset( $field['type'] ) && $field['type'] === 'subsection' && isset( $field['id'] ) && $field['id'] === 'widgets_subsection' ) {
-											$in_widgets_section = true;
+										if ( isset( $field['type'] ) && $field['type'] === 'subsection' ) {
+											if ( isset( $field['id'] ) && $field['id'] === 'widgets_subsection' ) {
+												$in_widgets_section = true;
+												$in_pro_widgets_section = false;
+											} elseif ( isset( $field['id'] ) && $field['id'] === 'pro_widgets_subsection' ) {
+												$in_pro_widgets_section = true;
+												$in_widgets_section = false;
+												// Close previous widget grid if open
+												if ( $widget_fields_started ) {
+													echo '</div>';
+													$widget_fields_started = false;
+												}
+											}
 										}
 										
-										// Check if this is a widget field
-										$is_widget_field = ( isset( $field['id'] ) && strpos( $field['id'], 'widget_enable_' ) === 0 );
+										// Check if this is a widget field (free or pro)
+										$is_widget_field = ( isset( $field['id'] ) && ( strpos( $field['id'], 'widget_enable_' ) === 0 || strpos( $field['id'], 'widget_pro_' ) === 0 ) );
 										
 										// Open wrapper when first widget field is encountered
-										if ( $in_widgets_section && $is_widget_field && ! $widget_fields_started ) {
+										if ( ( $in_widgets_section || $in_pro_widgets_section ) && $is_widget_field && ! $widget_fields_started ) {
 											echo '<div class="wpdino-widgets-grid-wrapper">';
 											$widget_fields_started = true;
 										}
@@ -1173,6 +1334,7 @@ class DinoPack_Settings {
 											echo '</div>';
 											$widget_fields_started = false;
 											$in_widgets_section = false;
+											$in_pro_widgets_section = false;
 										}
 										
 										$this->render_field( $field );
@@ -1244,7 +1406,7 @@ class DinoPack_Settings {
 					<div class="wpdino-footer-right">
 						<?php
 						$footer_right_links = sprintf(
-							'<a href="%1$s" target="_blank">%2$s</a><span>|</span><a href="%3$s" target="_blank">%4$s</a><span>|</span><a href="%5$s" target="_blank">%6$s</a>',
+							'<div class="wpdino-footer-links"><a href="%1$s" target="_blank">%2$s</a><span>|</span><a href="%3$s" target="_blank">%4$s</a><span>|</span><a href="%5$s" target="_blank">%6$s</a></div>',
 							esc_url( $this->add_utm_params( 'https://wpdino.com', 'footer_home_link' ) ),
 							esc_html__( 'WPDINO', 'dinopack-for-elementor' ),
 							esc_url( $this->add_utm_params( 'https://wpdino.com/docs/dinopack-for-elementor/', 'footer_documentation' ) ),
@@ -1252,6 +1414,24 @@ class DinoPack_Settings {
 							esc_url( $this->add_utm_params( 'https://wordpress.org/support/plugin/dinopack-for-elementor/', 'footer_support' ) ),
 							esc_html__( 'Support', 'dinopack-for-elementor' )
 						);
+
+						// Social links (Facebook, X, Instagram).
+						$footer_social_links = sprintf(
+							'<div class="wpdino-footer-social">
+								<a href="%1$s" target="_blank" aria-label="%4$s"><span class="dashicons dashicons-facebook-alt"></span></a>
+								<a href="%2$s" target="_blank" aria-label="%5$s"><span class="dashicons dashicons-twitter"></span></a>
+								<a href="%3$s" target="_blank" aria-label="%6$s"><span class="dashicons dashicons-camera"></span></a>
+							</div>',
+							esc_url( 'https://www.facebook.com/profile.php?id=61584792480483' ),
+							esc_url( 'https://x.com/wpdinocom' ),
+							esc_url( 'https://www.instagram.com/_wpdino_/' ),
+							esc_attr__( 'Follow WPDINO on Facebook', 'dinopack-for-elementor' ),
+							esc_attr__( 'Follow WPDINO on X (Twitter)', 'dinopack-for-elementor' ),
+							esc_attr__( 'Follow WPDINO on Instagram', 'dinopack-for-elementor' )
+						);
+
+						$footer_right_content = $footer_right_links . $footer_social_links;
+
 						/**
 						 * Filter the footer right links content.
 						 *
@@ -1259,7 +1439,7 @@ class DinoPack_Settings {
 						 *
 						 * @param string $footer_right_links The footer right links HTML content.
 						 */
-						echo wp_kses_post( apply_filters( 'dinopack_settings_footer_right', $footer_right_links ) );
+						echo wp_kses_post( apply_filters( 'dinopack_settings_footer_right', $footer_right_content ) );
 						?>
 					</div>
 				</div>

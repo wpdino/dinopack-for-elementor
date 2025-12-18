@@ -885,8 +885,20 @@
 		 */
 		handleFormSubmission: function(e) {
 			const $form = $(this);
-			const $submitBtn = $form.find('button[type="submit"]');
-			
+
+			// Detect which submit button triggered the submit
+			let $submitBtn = null;
+			if (e.originalEvent && e.originalEvent.submitter) {
+				// Modern browsers: use native submitter reference
+				$submitBtn = $(e.originalEvent.submitter);
+			} else if (document.activeElement && $(document.activeElement).is('button[type="submit"]')) {
+				// Fallback: focused submit button
+				$submitBtn = $(document.activeElement);
+			} else {
+				// Last fallback: first submit button
+				$submitBtn = $form.find('button[type="submit"]').first();
+			}
+
 			// Unmask all password fields before submission to send actual values
 			$form.find('.wpdino-password-input').each(function() {
 				const $input = $(this);
@@ -895,7 +907,7 @@
 					$input.val(actualValue);
 				}
 			});
-			
+
 			// Validate all fields
 			let isValid = true;
 			$form.find('input, textarea, select').each(function() {
@@ -912,18 +924,19 @@
 
 			// Form is valid and will submit - clear unsaved changes tracking
 			WPDinoAdmin.clearFormChangesTracking();
-			
+
 			// Remove beforeunload handler to allow form submission
-			// It will be re-initialized on page reload
 			$(window).off('beforeunload');
 
-			// Enable button and show loading state
-			$submitBtn.removeClass('inactive').prop('disabled', false).addClass('loading');
-			
-			// Re-enable after delay (in case of page reload)
-			setTimeout(function() {
-				$submitBtn.removeClass('loading');
-			}, 3000);
+			// Apply loading state ONLY to the button that actually submitted the form
+			if ($submitBtn && $submitBtn.length) {
+				$submitBtn.removeClass('inactive').prop('disabled', false).addClass('loading');
+
+				// Safety: remove loading class after a delay in case of no redirect
+				setTimeout(function() {
+					$submitBtn.removeClass('loading');
+				}, 3000);
+			}
 		},
 
 		/**

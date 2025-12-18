@@ -103,6 +103,17 @@ class DinoPack_Admin_Menus {
 	 */
 	public function plugin_action_links( $links, $plugin_file, $plugin_data, $context ) {
 
+		$new_links = array();
+
+		// Add Go Pro link first if PRO version is not installed
+		if ( ! class_exists( 'DinoPackPro\Plugin' ) ) {
+			$new_links['go_pro'] = sprintf( 
+				'<a href="%1$s" target="_blank" class="dinopack-gopro" style="color:#6F9C50;font-weight:bold;">%2$s</a>',
+				esc_url( self::$goProLink ), 
+				esc_html__( 'Get DinoPack PRO', 'dinopack-for-elementor' )
+			);
+		}
+
 		// Settings link
 		$settings_link = sprintf(
 			'<a href="%1$s" aria-label="%2$s">%3$s</a>',
@@ -110,28 +121,17 @@ class DinoPack_Admin_Menus {
 			esc_attr__( 'Go to DinoPack Settings page', 'dinopack-for-elementor' ),
 			esc_html__( 'Settings', 'dinopack-for-elementor' )
 		);
-
-		// Add settings link to the beginning of the array
-		array_unshift( $links, $settings_link );
-
-		// Add Go Pro link if PRO version is not installed
-		if ( ! class_exists( 'DinoPackPro\Plugin' ) ) {
-			$links['go_pro'] = sprintf( 
-				'<a href="%1$s" target="_blank" class="dinopack-gopro" style="color:#6F9C50;font-weight:bold;">%2$s <span class="dinopack-premium-badge" style="background-color: #6F9C50; color: #fff; margin-left: 5px; font-size: 11px; min-height: 16px; border-radius: 8px; display: inline-block; font-weight: 600; line-height: 1.6; padding: 0 8px">%3$s</span></a>',
-				esc_url( self::$goProLink ), 
-				esc_html__( 'Get DinoPack PRO', 'dinopack-for-elementor' ),
-				esc_html__( 'PRO', 'dinopack-for-elementor' )
-			);
-		}
+		$new_links['settings'] = $settings_link;
 
 		// Add Docs link
-		$links['docs'] = sprintf(
+		$new_links['docs'] = sprintf(
 			'<a href="%1$s" target="_blank">%2$s</a>',
 			esc_url( self::$docsLink ),
 			esc_html__( 'Docs', 'dinopack-for-elementor' )
 		);
 
-		return $links;
+		// Merge with existing links (like Deactivate, etc.)
+		return array_merge( $new_links, $links );
 	}
 
 	/**

@@ -367,6 +367,15 @@
 	display: inline-block;
 }
 
+/* Don't show numbers for PRO widgets */
+.wpdino-widgets-grid-wrapper .wpdino-pro-widget-field {
+	counter-increment: none;
+}
+
+.wpdino-widgets-grid-wrapper .wpdino-pro-widget-field .wpdino-checkbox::before {
+	content: none;
+}
+
 /* Responsive adjustments for widgets grid */
 @media (max-width: 1200px) {
 	.wpdino-widgets-grid-wrapper {
@@ -513,6 +522,73 @@
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
 	margin-top: -2px;
+}
+
+/* Disabled checkbox styles */
+.wpdino-settings-wrap .wpdino-checkbox-disabled {
+	opacity: 0.8;
+	cursor: not-allowed;
+}
+
+.wpdino-settings-wrap .wpdino-checkbox-disabled .wpdino-checkbox-mark {
+	border-color: #d0d0d0;
+}
+
+.wpdino-settings-wrap .wpdino-checkbox-disabled:hover .wpdino-checkbox-mark {
+	border-color: #d0d0d0;
+}
+
+/* Disabled but checked checkbox (PRO widgets) */
+.wpdino-settings-wrap .wpdino-checkbox-disabled input[type="checkbox"]:checked + .wpdino-checkbox-mark {
+	background: #6F9C50;
+	border-color: #6F9C50;
+	opacity: 0.7;
+}
+
+.wpdino-settings-wrap .wpdino-checkbox-disabled input[type="checkbox"]:checked + .wpdino-checkbox-mark::after {
+	content: '';
+	width: 6px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+	margin-top: -2px;
+}
+
+/* PRO widget badge */
+.wpdino-pro-badge-small {
+	background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+	color: #1b5e20;
+	font-size: 9px;
+	font-weight: 700;
+	padding: 2px 6px;
+	border-radius: 10px;
+	margin-left: 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 1.4;
+}
+
+.wpdino-pro-widget-field .wpdino-checkbox-label {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+/* PRO widget description */
+.wpdino-widget-description {
+	font-size: 12px;
+	color: #666;
+	margin-top: 4px;
+	margin-left: 32px;
+	line-height: 1.4;
+	opacity: 0.8;
+}
+
+.wpdino-pro-widget-field .wpdino-widget-description {
+	color: #888;
 }
 
 /* Radio Button Styles */
@@ -932,13 +1008,47 @@
 .wpdino-footer-right {
 	display: flex;
 	align-items: center;
-	gap: 15px;
+	gap: 20px;
 }
 
 .wpdino-footer-right span {
 	color: #fff;
 	font-size: 14px;
 	opacity: 0.6;
+}
+
+.wpdino-footer-links {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.wpdino-footer-social {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.wpdino-footer-social a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+}
+
+.wpdino-footer-social a:hover {
+	background: rgba(255, 255, 255, 0.18);
+	color: #6F9C50;
+}
+
+.wpdino-footer-social .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
 }
 
 /* Responsive Design */
