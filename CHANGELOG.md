@@ -5,6 +5,52 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2025-12-XX
+
+### Added
+- AI Product Image Generator widget for WooCommerce products
+  - Generate product images using DALL-E AI based on product information
+  - Multiple image styles: Photorealistic, Illustration, 3D Render, Lifestyle, Product Shot, Minimal
+  - Multiple image sizes: Square (1024x1024), Portrait (1024x1792), Landscape (1792x1024)
+  - Custom prompt support for specific image requirements
+  - Auto-upload generated images to WordPress media library
+  - Option to automatically set generated image as product featured image
+  - Fully customizable styling (width, height, alignment, border, shadow)
+  - Real-time preview update in Elementor editor
+- AI Product SEO Meta Generator widget for WooCommerce products
+  - Generate SEO-optimized titles (50-60 characters recommended)
+  - Generate compelling meta descriptions (150-160 characters recommended)
+  - Generate focus keywords (5-8 relevant keywords)
+  - Multiple generation types: All, Title only, Description only, Keywords only
+  - Custom prompt support for specific SEO requirements
+  - Auto-save generated meta to product (Yoast SEO compatible)
+  - Character count display for SEO optimization guidance
+  - Display controls to show/hide each SEO element
+  - Fully customizable styling for all elements
+  - Real-time preview update in Elementor editor
+
+### Changed
+- Improved preview refresh in Elementor editor for all AI widgets
+  - Enhanced editor scripts with comprehensive preview update logic
+  - Multiple fallback methods to ensure preview updates correctly
+  - Better handling of media controls and text controls
+- Enhanced error messages for AI widgets
+  - Specific error message when OpenAI API key is missing
+  - Clear instructions on where to configure the API key
+  - Better error message display duration (8 seconds for important errors)
+  - Improved error handling for all AI API requests
+
+### Technical
+- Added AJAX handlers for new AI widgets (`dinopack_generate_product_image`, `dinopack_generate_product_seo`)
+- Enhanced AI Helper class with DALL-E image generation support
+- Improved editor.js scripts for all AI widgets with comprehensive preview refresh logic
+- Added API key validation before making AI requests
+- Better error message handling and user feedback
+- Updated widget registration to include new AI widgets
+
+### Requirements
+- DALL-E API access required for AI Product Image Generator (included with OpenAI API key)
+
 ## [1.0.3] - 2025-12-03
 
 ### Added

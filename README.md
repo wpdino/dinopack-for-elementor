@@ -22,7 +22,7 @@
 
 ## ✨ Features
 
-- 🎨 **14+ Premium Widgets** - Advanced widgets for every need
+- 🎨 **16+ Premium Widgets** - Advanced widgets for every need
 - 🎯 **Multiple Styles** - Pre-designed styles for each widget
 - 📱 **Fully Responsive** - Mobile-first design approach
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
@@ -134,6 +134,30 @@ Automatically summarize and analyze product reviews using AI:
 - Editable generated summaries in Elementor editor
 - Requires OpenAI API key (configure in DinoPack Settings)
 
+### 15. **AI Product Image Generator**
+Generate product images using DALL-E AI:
+- Automatically generates product images based on product information
+- Multiple image styles (photorealistic, illustration, 3D render, lifestyle, product shot, minimal)
+- Multiple image sizes (square, portrait, landscape)
+- Custom prompt support for specific image requirements
+- Auto-upload to WordPress media library
+- Option to set as product featured image
+- Fully customizable styling (width, height, alignment, border, shadow)
+- Requires OpenAI API key with DALL-E access (configure in DinoPack Settings)
+
+### 16. **AI Product SEO Meta Generator**
+Generate SEO-optimized meta data for WooCommerce products:
+- Generates SEO-optimized titles (50-60 characters)
+- Creates compelling meta descriptions (150-160 characters)
+- Generates focus keywords (5-8 relevant keywords)
+- Multiple generation types (all, title only, description only, keywords only)
+- Custom prompt support for specific SEO requirements
+- Auto-save to product meta fields (Yoast SEO compatible)
+- Character count display for SEO optimization
+- Display controls to show/hide each element
+- Fully customizable styling
+- Requires OpenAI API key (configure in DinoPack Settings)
+
 ## 📋 Requirements
 
 - WordPress 6.6 or higher
@@ -183,8 +207,12 @@ Automatically summarize and analyze product reviews using AI:
 4. Select your preferred AI model (default: gpt-3.5-turbo)
 5. Configure temperature and other settings (optional)
 6. Save settings
-7. Add AI Product Description Generator or AI Product Review Summarizer widget to your page
-8. Select a WooCommerce product and click "Generate Content" or "Summarize Reviews" in the widget settings
+7. Add any AI widget to your page:
+   - **AI Product Description Generator** - Select a product and click "Generate Description"
+   - **AI Product Review Summarizer** - Select a product and click "Summarize Reviews"
+   - **AI Product Image Generator** - Select a product, choose style and size, then click "Generate Image"
+   - **AI Product SEO Meta Generator** - Select a product, choose SEO type, then click "Generate SEO Meta"
+8. Generated content will appear in the widget and can be edited directly in the Elementor editor
 
 ## 🎯 Usage
 

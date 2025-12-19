@@ -2141,3 +2141,201 @@ msgstr ""
 #: inc/class-dinopack-admin-menus.php:121
 msgid "Upgrade to Pro"
 msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:796
+msgid "AI Content Generator"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:797
+msgid "Generate blog posts and articles using AI."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:800
+msgid "AI Content Summarizer"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:801
+msgid "Automatically summarize your content using AI."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:804
+msgid "AI FAQ Generator"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:805
+msgid "Generate FAQs from blog content using AI."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:808
+msgid "AI Image Generator"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:809
+msgid "Generate images using DALL-E API."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:812
+msgid "AI SEO Optimizer"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:813
+msgid "Optimize your content for SEO using AI."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:816
+msgid "AI Social Media Post Generator"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:817
+msgid "Create social media posts from blog content."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:820
+msgid "Audio Playlist"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:821
+msgid "Display audio files in a beautiful playlist format."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:824
+msgid "Before After"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:825
+msgid "Compare images with a before/after slider."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:828
+msgid "Chart Visualizer"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:829
+msgid "Create beautiful charts and graphs for data visualization."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:832
+msgid "Countdown Timer"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:833
+msgid "Display a countdown to a target date/time."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:836
+msgid "CTA Box"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:837
+msgid "Create compelling call-to-action boxes."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:840
+msgid "Image Accordion"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:841
+msgid "Display images in an interactive accordion layout."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:844
+msgid "Lottie Gallery"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:845
+msgid "Showcase Lottie animations in a gallery format."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:848
+msgid "Offcanvas Bar"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:849
+msgid "Create slide-in sidebars and panels."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:852
+msgid "Reading Time Calculator"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:853
+msgid "Display estimated reading time for your content."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:856
+msgid "Related Posts"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:857
+msgid "Display related posts suggestions."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:860
+msgid "Review Carousel"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:861
+msgid "Showcase reviews in a beautiful carousel."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:864
+msgid "Smart Testimonials Slider"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:865
+msgid "Display testimonials in a modern slider/carousel layout with ratings."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:868
+msgid "Tilt Card"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:869
+msgid "Create interactive 3D tilt effect cards."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:872
+msgid "Video Gallery"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:873
+msgid "Display videos in a beautiful gallery with lightbox."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:960
+msgid "PRO Widgets"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:962
+#, php-format
+msgid "These widgets are available in <a href=\"%s\" target=\"_blank\">DinoPack PRO</a>. Upgrade to unlock these powerful features."
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:1391
+#, php-format
+msgid "DinoPack For Elementor v%1$s by %2$s"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:1428
+msgid "Follow WPDINO on Facebook"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:1429
+msgid "Follow WPDINO on X (Twitter)"
+msgstr ""
+
+#: inc/admin/settings/class-dinopack-settings-page.php:1430
+msgid "Follow WPDINO on Instagram"
+msgstr ""
+
+#: inc/class-dinopack-admin-menus.php:113
+msgid "Get DinoPack PRO"
+msgstr ""
+
+#: inc/class-dinopack-admin-menus.php:130
+msgid "Docs"
+msgstr ""
+
+#: inc/class-dinopack-admin-menus.php:147
+msgid "Upgrade to PRO"
+msgstr ""

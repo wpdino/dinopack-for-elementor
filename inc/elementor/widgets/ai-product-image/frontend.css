@@ -1,0 +1,62 @@
+/**
+ * AI Product Image Widget Frontend Styles
+ */
+
+.dinopack-ai-product-image {
+    position: relative;
+}
+
+.dinopack-ai-product-image .dinopack-ai-image-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.dinopack-ai-product-image .dinopack-ai-image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.dinopack-ai-product-image .dinopack-ai-image-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+}
+
+.dinopack-ai-product-image .dinopack-ai-image-placeholder .dinopack-placeholder {
+    color: #999;
+    font-style: italic;
+    margin: 0;
+}
+
+.dinopack-ai-product-image .dinopack-ai-loading-state {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.dinopack-ai-product-image .dinopack-ai-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #6F9C50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: dinopack-spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes dinopack-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.dinopack-ai-product-image .dinopack-ai-error {
+    color: #d63638;
+    background-color: #fcf0f1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+

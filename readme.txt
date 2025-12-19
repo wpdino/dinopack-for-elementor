@@ -31,6 +31,8 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Car Specs Widget** - Ideal for automotive websites with vehicle specifications and customizable layouts
 * **AI Product Description Generator** - AI-powered product description generator for WooCommerce products using OpenAI
 * **AI Product Review Summarizer** - Automatically summarize and analyze product reviews using AI technology
+* **AI Product Image Generator** - Generate product images using DALL-E AI with multiple styles and sizes
+* **AI Product SEO Meta Generator** - Generate SEO-optimized titles, descriptions, and keywords for products
 
 = Widget Features =
 
@@ -39,7 +41,7 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Responsive Design** - All widgets are fully responsive and mobile-friendly
 * **MailChimp Integration** - Newsletter widget with secure API integration
 * **WooCommerce Support** - Dedicated widget for displaying products
-* **AI-Powered Widgets** - OpenAI integration for product descriptions and review summaries
+* **AI-Powered Widgets** - OpenAI integration for product descriptions, review summaries, image generation, and SEO optimization
 * **AJAX Functionality** - Blog load more and newsletter submission without page reload
 * **Performance Optimized** - Lightweight code with minimal impact on site speed
 * **Cross-browser Compatible** - Works on all modern browsers
@@ -112,6 +114,18 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 8. Gallery Widget with lightbox functionality
 
 == Changelog ==
+
+= 1.0.4 =
+* Added AI Product Image Generator widget - Generate product images using DALL-E AI
+* Added AI Product SEO Meta Generator widget - Generate SEO-optimized titles, descriptions, and keywords
+* AI Image Generator supports multiple styles (photorealistic, illustration, 3D render, lifestyle, etc.)
+* AI Image Generator supports multiple image sizes (square, portrait, landscape)
+* AI Image Generator can auto-upload images to media library and set as featured image
+* AI SEO Meta Generator generates optimized SEO titles (50-60 chars), meta descriptions (150-160 chars), and focus keywords
+* AI SEO Meta Generator can auto-save generated meta to product (Yoast SEO compatible)
+* Improved preview refresh in Elementor editor for all AI widgets
+* Enhanced error messages for missing API key with specific instructions
+* Better error handling and user feedback for AI widget operations
 
 = 1.0.3 =
 * Added AI Product Description Generator widget for WooCommerce products
