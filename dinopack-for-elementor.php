@@ -3,7 +3,7 @@
  * Plugin Name:         DinoPack for Elementor
  * Plugin URI:          https://wpdino.com/plugins/dinopack-for-elementor/
  * Description:         DinoPack for Elementor is a collection of creative and advanced widgets, expertly crafted by the WPDINO team to enhance your Elementor experience.
- * Version:             1.0.3
+ * Version:             1.0.4
  * Author:              WPDINO
  * Author URI:          https://wpdino.com
  * Requires at least:   6.6
@@ -22,12 +22,12 @@
  *    email addresses and optional merge fields are transmitted to MailChimp API for processing.
  *    This data is handled according to MailChimp's privacy policy and terms of service.
  * 
- * 2. AI Content Generation: When using AI-powered widgets (AI Product Description Generator
- *    and AI Product Review Summarizer), product information and review data are transmitted
- *    to OpenAI API for content generation. This includes product names, descriptions, prices,
- *    SKUs, categories, attributes, and review text. OpenAI may use this data to improve their
- *    services as outlined in their privacy policy. Content generation must be manually triggered
- *    by the site administrator from the Elementor editor.
+ * 2. AI Content Generation: When using AI-powered widgets (AI Product Description Generator,
+ *    AI Product Review Summarizer, AI Product Image Generator, and AI Product SEO Meta Generator),
+ *    product information and review data are transmitted to OpenAI API for content generation.
+ *    This includes product names, descriptions, prices, SKUs, categories, attributes, and review text.
+ *    OpenAI may use this data to improve their services as outlined in their privacy policy.
+ *    Content generation must be manually triggered by the site administrator from the Elementor editor.
  * 
  * 3. Plugin Settings: Admin settings (including API keys) are stored locally in your WordPress
  *    database. API keys are only transmitted to their respective service providers (MailChimp
