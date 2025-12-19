@@ -2339,3 +2339,281 @@ msgstr ""
 #: inc/class-dinopack-admin-menus.php:147
 msgid "Upgrade to PRO"
 msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:107
+msgid "AI Product Image"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:188
+msgid "Select Product"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:192
+msgid "Select a WooCommerce product to generate image for."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:199
+msgid "Image Style"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:202
+msgid "Photorealistic"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:203
+msgid "Illustration"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:204
+msgid "3D Render"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:205
+msgid "Lifestyle"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:206
+msgid "Product Shot"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:207
+msgid "Minimal"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:216
+msgid "Image Size"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:219
+msgid "Square (1024x1024)"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:220
+msgid "Portrait (1024x1792)"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:221
+msgid "Landscape (1792x1024)"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:230
+msgid "Custom Instructions"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:233
+msgid "Add any specific instructions for the image generation..."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:234
+msgid "Optional: Add custom instructions to guide the AI image generation."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:243
+msgid "Generate Image"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:253
+msgid "Generated Image"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:259
+msgid "AI-generated image will appear here. You can set it as the product featured image."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:266
+msgid "Set as Product Featured Image"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:271
+msgid "Automatically set the generated image as the product featured image."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:339
+msgid "Object Fit"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:342
+msgid "Cover"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:343
+msgid "Contain"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:344
+msgid "Fill"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:345
+msgid "None"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:346
+msgid "Scale Down"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:488
+msgid "Use the widget settings to generate an AI-powered product image."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:491
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:494
+msgid "Please select a product and use the widget settings to generate image."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:521
+msgid "Generating image..."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-image/ai-product-image.php:529
+msgid "Use the widget settings to generate an AI-powered product image."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:107
+msgid "AI Product SEO"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:188
+msgid "Select Product"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:192
+msgid "Select a WooCommerce product to generate SEO meta for."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:199
+msgid "SEO Type"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:202
+msgid "All (Title, Description, Keywords)"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:203
+msgid "SEO Title Only"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:204
+msgid "Meta Description Only"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:205
+msgid "Focus Keywords Only"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:214
+msgid "Custom Instructions"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:217
+msgid "Add any specific SEO instructions..."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:218
+msgid "Optional: Add custom instructions to guide the AI SEO generation."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:227
+msgid "Generate SEO Meta"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:237
+msgid "SEO Title"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:240
+msgid "Optimized SEO title (50-60 characters recommended)."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:251
+msgid "Meta Description"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:255
+msgid "SEO meta description (150-160 characters recommended)."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:266
+msgid "Focus Keywords"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:269
+msgid "Comma-separated list of focus keywords."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:279
+msgid "Auto-save to Product"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:284
+msgid "Automatically save generated SEO meta to the product."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:294
+msgid "Display"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:302
+msgid "Show SEO Title"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:313
+msgid "Show Meta Description"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:324
+msgid "Show Focus Keywords"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:346
+msgid "Title Color"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:365
+msgid "Description Color"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:384
+msgid "Keywords Color"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:535
+msgid "SEO Title:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:537
+#, php-format
+msgid "(%d characters)"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:543
+msgid "Meta Description:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:551
+msgid "Focus Keywords:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:558
+msgid "Use the widget settings to generate AI-powered SEO meta for your product."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:585
+msgid "Generating SEO meta..."
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:591
+msgid "SEO Title:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:599
+msgid "Meta Description:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:607
+msgid "Focus Keywords:"
+msgstr ""
+
+#: inc/elementor/widgets/ai-product-seo/ai-product-seo.php:614
+msgid "Use the widget settings to generate AI-powered SEO meta for your product."
+msgstr ""
