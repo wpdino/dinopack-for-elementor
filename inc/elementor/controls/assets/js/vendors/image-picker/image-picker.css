@@ -29,6 +29,8 @@ ul.thumbnails.wpdino_image_picker_selector li.group_title {
 ul.thumbnails.wpdino_image_picker_selector li {
 	flex: 0 0 calc(50% - 7.5px);
 	max-width: calc(50% - 7.5px);
+	display: flex;
+	align-items: stretch;
 }
 ul.thumbnails.wpdino_image_picker_selector li .thumbnail {
 	padding: 12px;
@@ -41,12 +43,16 @@ ul.thumbnails.wpdino_image_picker_selector li .thumbnail {
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 ul.thumbnails.wpdino_image_picker_selector li .thumbnail img {
 	-webkit-user-drag: none; 
     margin: 0 0 8px;
     width: 100%;
-    height: auto;
+    object-fit: contain;
+    object-position: center;
     transition: all 0.2s ease-in-out;
 }
 
@@ -69,4 +75,23 @@ ul.thumbnails.wpdino_image_picker_selector li .thumbnail.selected {
 
 ul.thumbnails.wpdino_image_picker_selector li .thumbnail.selected img {
     border-color: #ffffff;
+}
+
+ul.thumbnails.wpdino_image_picker_selector li .thumbnail .image_picker_label {
+	margin-top: auto;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 500;
+	color: #495057;
+	line-height: 1.4;
+	padding-top: 4px;
+}
+
+ul.thumbnails.wpdino_image_picker_selector li .thumbnail.selected .image_picker_label {
+	color: #6F9C50;
+	font-weight: 600;
+}
+
+ul.thumbnails.wpdino_image_picker_selector li .thumbnail:hover .image_picker_label {
+	color: #6F9C50;
 }

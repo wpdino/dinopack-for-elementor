@@ -297,11 +297,18 @@ class Restaurant_Menu extends Widget_Base {
             'layout',
             [
                 'label' => esc_html__('Layout', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'list',
                 'options' => [
-                    'list' => esc_html__('List', 'dinopack-for-elementor'),
-                    'grid' => esc_html__('Grid', 'dinopack-for-elementor'),
+					'list' => [
+						'label' => esc_html__('List', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/list.png', __FILE__),
+					],
+					'grid' => [
+						'label' => esc_html__('Grid', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/grid.png', __FILE__),
+					],
                 ],
                 'prefix_class' => 'dinopack-menu-layout-',
             ]

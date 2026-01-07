@@ -181,12 +181,22 @@ class Blog extends Widget_Base {
             'layout',
             [
                 'label' => esc_html__('Layout', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'grid',
                 'options' => [
-                    'grid' => esc_html__('Grid', 'dinopack-for-elementor'),
-                    'list' => esc_html__('List', 'dinopack-for-elementor'),
-                    'masonry' => esc_html__('Masonry', 'dinopack-for-elementor'),
+					'grid' => [
+						'label' => esc_html__('Grid', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/grid.png', __FILE__),
+					],
+					'list' => [
+						'label' => esc_html__('List', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/list.png', __FILE__),
+					],
+					'masonry' => [
+						'label' => esc_html__('Masonry', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/masonry.png', __FILE__),
+					],
                 ],
                 'prefix_class' => 'dinopack-blog-layout-',
                 'render_type' => 'template',

@@ -211,11 +211,18 @@ class Progress_Bar extends Widget_Base {
             'progress_type',
             [
                 'label' => esc_html__('Type', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'line',
                 'options' => [
-                    'line' => esc_html__('Line', 'dinopack-for-elementor'),
-                    'circle' => esc_html__('Circle', 'dinopack-for-elementor'),
+					'line' => [
+						'label' => esc_html__('Line', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/line.png', __FILE__),
+					],
+					'circle' => [
+						'label' => esc_html__('Circle', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/circle.png', __FILE__),
+					],
                 ],
             ]
         );

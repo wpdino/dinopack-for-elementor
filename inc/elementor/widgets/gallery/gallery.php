@@ -203,11 +203,18 @@ class Gallery extends Widget_Base {
             'gallery_type',
             [
                 'label' => esc_html__('Gallery Type', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'grid',
                 'options' => [
-                    'grid' => esc_html__('Grid', 'dinopack-for-elementor'),
-                    'masonry' => esc_html__('Masonry', 'dinopack-for-elementor'),
+					'grid' => [
+						'label' => esc_html__('Grid', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/grid.png', __FILE__),
+					],
+					'masonry' => [
+						'label' => esc_html__('Masonry', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/masonry.png', __FILE__),
+					],
                 ],
                 'prefix_class' => 'dinopack-gallery-type-',
             ]

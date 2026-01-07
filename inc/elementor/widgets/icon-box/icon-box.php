@@ -199,11 +199,21 @@ class Icon_Box extends Widget_Base {
             'view',
             [
                 'label' => esc_html__('View', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'options' => [
-                    'default' => esc_html__('Default', 'dinopack-for-elementor'),
-                    'stacked' => esc_html__('Stacked', 'dinopack-for-elementor'),
-                    'framed' => esc_html__('Framed', 'dinopack-for-elementor'),
+					'default' => [
+						'label' => esc_html__('Default', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/default.png', __FILE__),
+					],
+					'stacked' => [
+						'label' => esc_html__('Stacked', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/stacked.png', __FILE__),
+					],
+					'framed' => [
+						'label' => esc_html__('Framed', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/framed.png', __FILE__),
+					],
                 ],
                 'default' => 'default',
                 'prefix_class' => 'dinopack-view-',

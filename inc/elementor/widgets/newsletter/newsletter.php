@@ -367,11 +367,18 @@ class Newsletter extends Widget_Base {
             'layout',
             [
                 'label' => esc_html__('Layout', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'inline',
                 'options' => [
-                    'inline' => esc_html__('Inline', 'dinopack-for-elementor'),
-                    'stacked' => esc_html__('Stacked', 'dinopack-for-elementor'),
+					'inline' => [
+						'label' => esc_html__('Inline', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/inline.png', __FILE__),
+					],
+					'stacked' => [
+						'label' => esc_html__('Stacked', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/stacked.png', __FILE__),
+					],
                 ],
                 'prefix_class' => 'dinopack-newsletter-',
             ]

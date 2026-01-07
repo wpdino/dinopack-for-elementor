@@ -293,11 +293,18 @@ class Car_Specs extends Widget_Base {
             'layout',
             [
                 'label' => esc_html__('Layout', 'dinopack-for-elementor'),
-                'type' => Controls_Manager::SELECT,
+				'label_block' => true,
+                'type' => 'wpdino_select_image',
                 'default' => 'vertical',
                 'options' => [
-                    'vertical' => esc_html__('Vertical', 'dinopack-for-elementor'),
-                    'horizontal' => esc_html__('Horizontal', 'dinopack-for-elementor'),
+					'vertical' => [
+						'label' => esc_html__('Horizontal', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/horizontal.png', __FILE__),
+					],
+					'horizontal' => [
+						'label' => esc_html__('Vertical', 'dinopack-for-elementor'),
+						'image' => plugins_url('assets/images/vertical.png', __FILE__),
+					],
                 ],
                 'prefix_class' => 'dinopack-car-specs-layout-',
             ]
