@@ -115,6 +115,14 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.0.5 =
+* Enhanced widget controls with visual image selectors for better user experience
+* Blog, Gallery, Icon Box, Progress Bar, Car Specs, Restaurant Menu, and Newsletter widgets now use image selectors for layout/type options
+* Fixed Blog widget editor preview - layout changes now update immediately in Elementor editor
+* Fixed Car Specs widget layout labels (Horizontal/Vertical now correctly labeled)
+* Improved image selector CSS for consistent image heights and professional appearance
+* Better real-time preview updates for all widgets with layout controls
+
 = 1.0.4 =
 * Added AI Product Image Generator widget - Generate product images using DALL-E AI
 * Added AI Product SEO Meta Generator widget - Generate SEO-optimized titles, descriptions, and keywords

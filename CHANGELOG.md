@@ -5,6 +5,31 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2025-12-XX
+
+### Changed
+- Enhanced widget controls with visual image selectors
+  - Blog widget: Layout control now uses image selector (Grid, List, Masonry)
+  - Gallery widget: Gallery Type control now uses image selector (Grid, Masonry)
+  - Icon Box widget: View control now uses image selector (Default, Stacked, Framed)
+  - Progress Bar widget: Type control now uses image selector (Line, Circle)
+  - Car Specs widget: Layout control now uses image selector (Vertical, Horizontal)
+  - Restaurant Menu widget: Layout control now uses image selector (List, Grid)
+  - Newsletter widget: Layout control now uses image selector (Inline, Stacked)
+  - All image selectors display consistent preview images for better visual selection
+- Improved Blog widget editor preview
+  - Fixed layout changes not updating in Elementor editor preview
+  - Fixed class name consistency between PHP, CSS, and JavaScript
+  - Improved real-time preview updates when switching between Grid, List, and Masonry layouts
+  - Fixed CSS specificity issues when switching from List to Grid layout
+- Fixed Car Specs widget layout labels
+  - Corrected swapped Horizontal/Vertical layout labels to match actual display behavior
+
+### Technical
+- Enhanced image picker control CSS for consistent image heights
+- Improved editor.js scripts for better layout change detection
+- Better handling of Elementor's prefix_class system in widget previews
+
 ## [1.0.4] - 2025-12-XX
 
 ### Added
