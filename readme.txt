@@ -5,7 +5,7 @@ Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,10 +118,8 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 = 1.0.5 =
 * Enhanced widget controls with visual image selectors for better user experience
 * Blog, Gallery, Icon Box, Progress Bar, Car Specs, Restaurant Menu, and Newsletter widgets now use image selectors for layout/type options
-* Fixed Blog widget editor preview - layout changes now update immediately in Elementor editor
+* Fixed Blog widget editor preview
 * Fixed Car Specs widget layout labels (Horizontal/Vertical now correctly labeled)
-* Improved image selector CSS for consistent image heights and professional appearance
-* Better real-time preview updates for all widgets with layout controls
 
 = 1.0.4 =
 * Added AI Product Image Generator widget - Generate product images using DALL-E AI
