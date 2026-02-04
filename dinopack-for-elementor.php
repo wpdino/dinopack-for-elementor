@@ -107,9 +107,59 @@ final class Plugin {
 
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
 
+		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'register_elementor_v2_editor_placeholders' ), 0 );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'plugin_css' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'plugin_css' ) );
 
+		add_action( 'elementor/editor/footer', array( $this, 'editor_template_library_scripts' ) );
+		add_action( 'elementor/editor/footer', array( $this, 'insert_editor_templates' ) );
+	}
+
+	/**
+	 * Register placeholder scripts for Elementor v2 editor handles (avoids WP 6.9.1 notices).
+	 */
+	public function register_elementor_v2_editor_placeholders() {
+		$placeholders = array(
+			'elementor-v2-editor-controls',
+			'elementor-v2-editor-elements',
+			'elementor-v2-editor-canvas',
+			'elementor-v2-editor-editing-panel',
+			'elementor-v2-editor-props',
+			'elementor-v2-editor-styles-repository',
+		);
+		foreach ( $placeholders as $handle ) {
+			if ( ! wp_script_is( $handle, 'registered' ) ) {
+				wp_register_script( $handle, '', array(), null );
+			}
+		}
+	}
+
+	/**
+	 * Enqueue template library JS (and optional icon URL) in the Elementor editor.
+	 */
+	public function editor_template_library_scripts() {
+		$icon_url = file_exists( DINOPACK_PATH . 'assets/images/letter-d.svg' )
+			? DINOPACK_URL . 'assets/images/letter-d.svg'
+			: ( file_exists( DINOPACK_PATH . 'assets/images/dinopack-logo.svg' ) ? DINOPACK_URL . 'assets/images/dinopack-logo.svg' : '' );
+		wp_enqueue_script(
+			'dinopack-template-library',
+			DINOPACK_URL . 'assets/js/dinopack-template-library.js',
+			array( 'jquery', 'wp-util' ),
+			DINOPACK_VERSION,
+			true
+		);
+		wp_localize_script(
+			'dinopack-template-library',
+			'dinopackTemplateLibraryData',
+			array( 'icon_url' => $icon_url )
+		);
+	}
+
+	/**
+	 * Output editor modal templates (header, loading, toolbar).
+	 */
+	public function insert_editor_templates() {
+		include DINOPACK_PATH . 'inc/elementor/editor-templates/templates.php';
 	}
 
 	/**
@@ -184,7 +234,9 @@ final class Plugin {
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function init() {}
+	public function init() {
+		include_once DINOPACK_PATH . 'inc/elementor/class-dinopack-template-manager.php';
+	}
     
 }
 

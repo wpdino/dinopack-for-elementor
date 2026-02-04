@@ -4,9 +4,291 @@
     flex-direction: column;
 }
 #elementor-panel-category-dinopack-for-elementor {
-	order: -1;
+	order: -5;
 }
 
 #elementor-panel-category-dinopack-for-elementor .icon {
 	color: #6F9C50;
 }
+/**
+ * DinoPack Template Library – Editor modal and grid
+ */
+ #dinopack_main_library_templates_panel,
+ #dinopack-elementor-template-library-toolbar {
+	 -webkit-font-smoothing: antialiased;
+	 -moz-osx-font-smoothing: grayscale;
+ }
+ 
+ .dinopack-templates-library-template-category {
+	 display: block;
+	 width: 100%;
+	 text-align: left;
+	 margin: 30px 0 20px 15px;
+	 padding-bottom: 20px;
+	 border-bottom: 1px solid #dedede;
+ }
+ 
+ .elementor-add-new-section .elementor-add-dinopack-templates-button {
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 padding: 0;
+	 background-color: #6F9C50;
+	 border-radius: 50%;
+	 transition: 0.2s ease all;
+ }
+ 
+ .elementor-add-new-section .elementor-add-dinopack-templates-button .dinopack-button-icon {
+	 display: block;
+	 width: 24px;
+	 height: 24px;
+	 object-fit: contain;
+ }
+ 
+ .elementor-add-new-section .elementor-add-dinopack-templates-button .dinopack-button-letter {
+	 display: block;
+	 font-size: 14px;
+	 font-weight: 700;
+	 line-height: 1;
+	 color: #fff;
+	 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+ }
+ 
+ .elementor-add-new-section .elementor-add-dinopack-templates-button:hover {
+	 opacity: 0.9;
+	 background-color: #5a8a42;
+ }
+ 
+ /* Modal header – WPZOOM-style: grey bar, padding, separator */
+ #dinopack-elementor-template-library-modal .dinopack-modal-header {
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-between;
+	 background-color: #e8e8e8;
+	 padding: 17px 24px;
+	 border-bottom: 1px solid #dcdcde;
+	 min-height: 56px;
+	 box-sizing: border-box;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-header__logo-area {
+	 display: flex;
+	 align-items: center;
+	 flex: 1;
+	 min-width: 0;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-header__logo {
+	 display: flex;
+	 align-items: center;
+	 gap: 12px;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-header__logo-icon {
+	 display: inline-flex;
+	 align-items: center;
+	 justify-content: center;
+	 width: 32px;
+	 height: 32px;
+	 flex-shrink: 0;
+	 background-color: #6F9C50;
+	 border-radius: 50%;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-logo-img {
+	 width: 18px;
+	 height: 18px;
+	 object-fit: contain;
+	 display: block;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-header__title {
+	 font-size: 15px;
+	 font-weight: 600;
+	 text-transform: uppercase;
+	 letter-spacing: 0.02em;
+	 color: #1d2327;
+	 -webkit-font-smoothing: antialiased;
+	 -moz-osx-font-smoothing: grayscale;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-header__items-area {
+	 min-width: 80px;
+	 display: flex;
+	 align-items: center;
+	 justify-content: flex-end;
+	 gap: 8px;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-close {
+	 cursor: pointer;
+	 display: inline-flex;
+	 align-items: center;
+	 justify-content: center;
+	 width: 36px;
+	 height: 36px;
+	 padding: 0;
+	 color: #50575e;
+	 border-radius: 3px;
+ }
+ 
+ #dinopack-elementor-template-library-modal .dinopack-modal-close:hover {
+	 background-color: rgba(0, 0, 0, 0.05);
+	 color: #1d2327;
+ }
+ 
+ .dinopack-header-back-button {
+	 cursor: pointer;
+	 display: inline-flex;
+	 align-items: center;
+	 gap: 6px;
+	 padding: 4px 8px;
+	 font-size: 14px;
+	 color: #50575e;
+ }
+ 
+ .dinopack-header-back-button:hover {
+	 color: #1d2327;
+ }
+ 
+ /* Modal content area – white background, consistent padding */
+ #dinopack-elementor-template-library-modal .dialog-lightbox-content {
+	 background-color: #fff;
+	 padding: 20px 24px 24px;
+ }
+ 
+ #dinopack-elementor-template-library-modal #dinopack-elementor-template-library-toolbar {
+	 margin-bottom: 20px;
+ }
+ 
+ #dinopack-elementor-template-library-modal #dinopack-elementor-template-library-toolbar .elementor-template-library-filter-select {
+	 margin-right: 12px;
+	 margin-bottom: 8px;
+	 padding: 8px 12px;
+	 min-width: 160px;
+ }
+ 
+ #dinopack-elementor-template-library-preview img {
+	 width: 100%;
+	 max-width: 100%;
+	 height: auto;
+ }
+ 
+ .dinopack-main-tiled-view {
+	 margin: 10px -15px 0;
+	 display: flex;
+	 flex-wrap: wrap;
+	 align-items: flex-start;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item {
+	 display: flex;
+	 flex-direction: column;
+	 width: calc(20% - 30px);
+	 margin: 15px;
+	 padding: 8px;
+	 background-color: #fff;
+	 box-shadow: 0 1px 20px 0 rgb(0 0 0 / 7%);
+	 border-radius: 3px;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-template-title {
+	 text-align: left;
+	 font-size: 14px;
+	 margin-bottom: 5px;
+	 font-weight: 500;
+	 color: #555;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-template-thumb {
+	 width: 100%;
+	 height: 180px;
+	 margin-bottom: 5px;
+	 border: 1px solid #ccc;
+	 background-color: #f7f7f7;
+	 overflow: hidden;
+	 position: relative;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 cursor: pointer;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-template-thumb .dinopack-thumb-image {
+	 width: 100%;
+	 max-height: 100%;
+	 object-fit: cover;
+	 object-position: center top;
+	 transition: object-position 0.6s ease-in-out;
+	 display: block;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-template-thumb:hover .dinopack-thumb-image {
+	 object-position: center bottom;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-action-bar {
+	 display: flex;
+	 align-items: center;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-grow {
+	 flex-grow: 1;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-btn-template-insert {
+	 color: #555;
+	 cursor: pointer;
+	 padding: 6px 12px;
+	 border-radius: 3px;
+	 border: 1px solid rgba(0, 0, 0, 0.2);
+	 transition: 0.3s;
+	 font-size: 13px;
+ }
+ 
+ .dinopack-main-tiled-view .dinopack-item .dinopack-btn-template-insert:hover {
+	 background: #f0f0f0;
+	 border-color: #6F9C50;
+	 color: #6F9C50;
+ }
+ 
+ .dinopack-no-results {
+	 padding: 40px 20px;
+	 text-align: center;
+	 color: #666;
+ }
+ 
+ #dinopack-elementor-template-library-toolbar .elementor-template-library-filter-select {
+	 margin-right: 10px;
+	 padding: 6px 10px;
+	 min-width: 140px;
+ }
+ 
+ /* Dark mode (Elementor editor) */
+ .dinopack-dark-mode .dinopack-templates-library-template-category {
+	 border-color: #444;
+ }
+ 
+ .dinopack-dark-mode .dinopack-main-tiled-view .dinopack-item {
+	 background-color: #26292c;
+ }
+ 
+ .dinopack-dark-mode .dinopack-main-tiled-view .dinopack-item .dinopack-template-title {
+	 color: #ddd;
+ }
+ 
+ .dinopack-dark-mode .dinopack-main-tiled-view .dinopack-item .dinopack-btn-template-insert {
+	 color: #ddd;
+	 border-color: #444;
+ }
+ 
+ .dinopack-dark-mode .dinopack-main-tiled-view .dinopack-item .dinopack-btn-template-insert:hover {
+	 background: #333;
+	 border-color: #6F9C50;
+	 color: #6F9C50;
+ }
+ 
+ .dinopack-dark-mode .dinopack-main-tiled-view .dinopack-item .dinopack-template-thumb {
+	 border-color: #444;
+ }
+ 

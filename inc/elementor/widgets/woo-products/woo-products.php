@@ -46,11 +46,15 @@ class Woo_Products extends Widget_Base {
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
+        $woo_deps = [];
+        if ( wp_style_is( 'woocommerce-general', 'registered' ) ) {
+            $woo_deps = [ 'woocommerce-general', 'woocommerce-smallscreen', 'woocommerce-layout' ];
+        }
         wp_register_style(
             'dinopack-woo-products',
             DINOPACK_URL . 'inc/elementor/widgets/woo-products/frontend.css',
-            ['woocommerce-general', 'woocommerce-smallscreen', 'woocommerce-layout'],
-            DINOPACK_VERSION 
+            $woo_deps,
+            DINOPACK_VERSION
         );
 
 
@@ -133,7 +137,11 @@ class Woo_Products extends Widget_Base {
      * @return array Style slugs.
      */
     public function get_style_depends() {
-        return ['woocommerce-general', 'woocommerce-smallscreen', 'woocommerce-layout', 'dinopack-woo-products'];
+        $deps = [ 'dinopack-woo-products' ];
+        if ( wp_style_is( 'woocommerce-general', 'registered' ) ) {
+            $deps = array_merge( [ 'woocommerce-general', 'woocommerce-smallscreen', 'woocommerce-layout' ], $deps );
+        }
+        return $deps;
     }
 
     /**
