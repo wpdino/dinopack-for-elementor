@@ -45,7 +45,44 @@ class DinoPack_Admin_Menus {
 		add_action( 'admin_head', array( $this, 'add_css_go_pro_menu' ) );
 		add_action( 'admin_footer', array( $this, 'add_target_blank_go_pro_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+		add_action( 'all_admin_notices', array( $this, 'templates_cpt_tabs' ) );
 
+		add_filter( 'parent_file', array( $this, 'templates_parent_file' ) );
+		add_filter( 'submenu_file', array( $this, 'templates_submenu_file' ), 10, 2 );
+	}
+
+	/**
+	 * Keep DinoPack menu open when on any template CPT (Header, Footer, Side Panel).
+	 */
+	public function templates_parent_file( $parent_file ) {
+		if ( $this->is_templates_cpt_screen() ) {
+			return 'dinopack-settings';
+		}
+		return $parent_file;
+	}
+
+	/**
+	 * Highlight Templates submenu when on Header, Footer, or Side Panel list/edit.
+	 */
+	public function templates_submenu_file( $submenu_file, $parent_file ) {
+		if ( 'dinopack-settings' === $parent_file && $this->is_templates_cpt_screen() ) {
+			return 'edit.php?post_type=dinopack-header';
+		}
+		return $submenu_file;
+	}
+
+	/**
+	 * Whether the current screen is one of the template CPTs (Header, Footer, Side Panel).
+	 *
+	 * @return bool
+	 */
+	private function is_templates_cpt_screen() {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( $screen && ! empty( $screen->post_type ) ) {
+			return in_array( $screen->post_type, array( 'dinopack-header', 'dinopack-footer', 'dinopack-side-panel' ), true );
+		}
+		$post_type = isset( $_GET['post_type'] ) ? sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) : '';
+		return in_array( $post_type, array( 'dinopack-header', 'dinopack-footer', 'dinopack-side-panel' ), true );
 	}
 
 	/**
@@ -75,7 +112,16 @@ class DinoPack_Admin_Menus {
 			array( $this, 'admin_page' )
 		);
 
+		// Templates: goes to Header CPT list; use horizontal tabs on that page to switch to Footer / Side Panel.
+		add_submenu_page(
+			'dinopack-settings',
+			esc_html__( 'Templates', 'dinopack-for-elementor' ),
+			esc_html__( 'Templates', 'dinopack-for-elementor' ),
+			'edit_posts',
+			'edit.php?post_type=dinopack-header'
+		);
 	}
+
 
 	/**
 	 * Wrapper for the hook to render our custom settings pages.
@@ -178,6 +224,41 @@ class DinoPack_Admin_Menus {
 	}
 
 	/**
+	 * Output horizontal tabs for Template CPT list screens (Header, Footer, Side Panel).
+	 */
+	public function templates_cpt_tabs() {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen || $screen->base !== 'edit' || $screen->post_type === '' ) {
+			return;
+		}
+		$cpts = array(
+			'dinopack-header'     => esc_html__( 'Header', 'dinopack-for-elementor' ),
+			'dinopack-footer'     => esc_html__( 'Footer', 'dinopack-for-elementor' ),
+			'dinopack-side-panel' => esc_html__( 'Side Panel', 'dinopack-for-elementor' ),
+		);
+		if ( ! array_key_exists( $screen->post_type, $cpts ) ) {
+			return;
+		}
+		$current = $screen->post_type;
+		?>
+		<div class="dinopack-templates-tabs nav-tab-wrapper wp-clearfix" style="margin: 15px 0 0 0;">
+			<?php
+			foreach ( $cpts as $post_type => $label ) {
+				$url = admin_url( 'edit.php?post_type=' . $post_type );
+				$active = $current === $post_type ? ' nav-tab-active' : '';
+				printf(
+					'<a href="%1$s" class="nav-tab%2$s">%3$s</a>',
+					esc_url( $url ),
+					esc_attr( $active ),
+					esc_html( $label )
+				);
+			}
+			?>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Add target="_blank" to Go Pro link in admin menu.
 	 */
 	public function add_target_blank_go_pro_menu() {
@@ -201,13 +282,22 @@ class DinoPack_Admin_Menus {
 	 * @param string $hook_suffix The current admin page hook suffix.
 	 */
 	public function enqueue_admin_assets( $hook_suffix ) {
-		// Only load on admin pages
 		if ( ! is_admin() ) {
 			return;
 		}
 
-		// Enqueue jQuery (it's already included in WordPress admin)
 		wp_enqueue_script( 'jquery' );
+
+		// Admin CSS for DinoPack menu (submenu padding) and Templates/CPT screens.
+		$admin_css = DINOPACK_URL . 'assets/css/dinopack-admin.css';
+		if ( file_exists( DINOPACK_PATH . 'assets/css/dinopack-admin.css' ) ) {
+			wp_enqueue_style(
+				'dinopack-admin',
+				$admin_css,
+				array(),
+				defined( 'DINOPACK_VERSION' ) ? DINOPACK_VERSION : '1.0.0'
+			);
+		}
 	}
 
 }

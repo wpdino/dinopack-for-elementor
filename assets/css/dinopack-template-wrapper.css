@@ -1,0 +1,11 @@
+/**
+ * Wrapper for DinoPack template CPTs (Header, Footer, Side Panel) when viewed as single.
+ */
+.dinopack-template-wrapper {
+	display: block;
+	width: 100%;
+}
+.dinopack-template-inner {
+	display: block;
+	width: 100%;
+}

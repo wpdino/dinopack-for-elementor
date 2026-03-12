@@ -1,0 +1,222 @@
+
+.elementor-widget-dinopack-offset-side-panel {
+	position:absolute;
+	right:0;
+	top:0;
+}
+/* Widget wrapper: do not take flex space */
+.elementor-widget-dinopack-offset-side-panel .elementor-widget-container,
+.dinopack-offset-side-panel {
+	flex-shrink: 0;
+	min-width: 0;
+}
+
+.dinopack-offset-side-panel {
+	position: relative;
+	display: block;
+}
+
+/* Overlay: full viewport, behind panel when open */
+.dinopack-offset-side-panel__overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 99998;
+	background: rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dinopack-offset-side-panel.is-open .dinopack-offset-side-panel__overlay {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* Panel: fixed, positioned by direction */
+.dinopack-offset-side-panel__panel {
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.3s ease, visibility 0.3s ease;
+	box-sizing: border-box;
+}
+
+.dinopack-offset-side-panel--no-transition .dinopack-offset-side-panel__panel {
+	transition: none;
+}
+
+/* Direction: left/right use width; top/bottom use height (set by controls) */
+.dinopack-offset-side-panel--left .dinopack-offset-side-panel__panel {
+	top: 0;
+	left: 0;
+	height: 100vh;
+}
+
+.dinopack-offset-side-panel--right .dinopack-offset-side-panel__panel {
+	top: 0;
+	right: 0;
+	left: auto;
+	height: 100vh;
+}
+
+.dinopack-offset-side-panel--top .dinopack-offset-side-panel__panel {
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.dinopack-offset-side-panel--bottom .dinopack-offset-side-panel__panel {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: auto;
+	width: 100%;
+}
+
+/* Open state: override inline closed style */
+.dinopack-offset-side-panel.is-open .dinopack-offset-side-panel__panel {
+	visibility: visible !important;
+	pointer-events: auto !important;
+	transform: translate3d(0, 0, 0) !important;
+}
+
+/* Close button */
+.dinopack-offset-side-panel__close {
+	position: absolute;
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	transition: color 0.2s ease, background-color 0.2s ease;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+.dinopack-offset-side-panel__close *,
+.dinopack-offset-side-panel__close svg {
+	color: inherit;
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.dinopack-offset-side-panel__close .dinopack-offset-side-panel__close-icon,
+.dinopack-offset-side-panel__close svg {
+	width: 1em;
+	height: 1em;
+	display: block;
+}
+
+.dinopack-offset-side-panel__close:focus {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.dinopack-offset-side-panel__close--top-left {
+	top: var(--dinopack-close-gap, 16px);
+	left: var(--dinopack-close-gap, 16px);
+}
+
+.dinopack-offset-side-panel__close--top-right {
+	top: var(--dinopack-close-gap, 16px);
+	right: var(--dinopack-close-gap, 16px);
+}
+
+.dinopack-offset-side-panel__close--bottom-left {
+	bottom: var(--dinopack-close-gap, 16px);
+	left: var(--dinopack-close-gap, 16px);
+}
+
+.dinopack-offset-side-panel__close--bottom-right {
+	bottom: var(--dinopack-close-gap, 16px);
+	right: var(--dinopack-close-gap, 16px);
+}
+
+/* Panel inner: scrollable content area */
+.dinopack-offset-side-panel__panel-inner {
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	flex: 1;
+	min-height: 0;
+}
+
+/* Constrain Elementor content inside the panel */
+.dinopack-offset-side-panel__panel-inner .elementor {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.dinopack-offset-side-panel__panel-inner .elementor-section,
+.dinopack-offset-side-panel__panel-inner .elementor-container,
+.dinopack-offset-side-panel__panel-inner .elementor-widget-wrap,
+.dinopack-offset-side-panel__panel-inner .elementor-column-wrap {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.dinopack-offset-side-panel__panel-inner .elementor-element {
+	box-sizing: border-box;
+}
+
+/* Editor only: placeholder visible at opacity 0.4; margin-left auto so hamburger stays left in same row */
+.elementor-widget-dinopack-offset-side-panel:has(.dinopack-offset-side-panel-editor-placeholder) {
+	opacity: 0.4;
+}
+.elementor-widget-dinopack-offset-side-panel:has(.dinopack-offset-side-panel-editor-placeholder) .elementor-widget-container {
+	margin-left: auto;
+}
+.elementor-widget-dinopack-offset-side-panel .elementor-widget-container .dinopack-offset-side-panel-editor-placeholder,
+.dinopack-offset-side-panel-editor-placeholder {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px 18px;
+	background: #f1f3f5;
+	border: 1px dashed #cbd5e0;
+	border-radius: 4px;
+	font-size: 13px;
+	color: #475569;
+}
+
+.dinopack-offset-side-panel-editor-placeholder i.eicon-sidebar {
+	font-size: 28px;
+	width: 28px;
+	height: 28px;
+	color: #22c55e;
+	flex-shrink: 0;
+}
+
+.dinopack-offset-side-panel-editor-text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.dinopack-offset-side-panel-editor-placeholder .dinopack-offset-side-panel-editor-label {
+	font-weight: 600;
+	color: #334155;
+}
+
+.dinopack-offset-side-panel-editor-placeholder .dinopack-offset-side-panel-editor-hint {
+	font-size: 11px;
+	color: #94a3b8;
+}
+
+.dinopack-offset-side-panel-editor-placeholder .dinopack-offset-side-panel-editor-id {
+	margin-left: auto;
+	font-family: monospace;
+	font-size: 12px;
+	color: #94a3b8;
+}

@@ -1,0 +1,52 @@
+/* Wrapper: do not let Elementor column layout stack icon and label; keep trigger on left in row */
+.dinopack-header-hamburger,
+.elementor-widget-dinopack-header-hamburger .dinopack-header-hamburger {
+	display: inline-block;
+}
+.elementor-widget-dinopack-header-hamburger {
+	align-self: flex-start;
+}
+.elementor-widget-dinopack-header-hamburger .elementor-widget-container {
+	display: block;
+}
+/* Button: always one row – icon and label on same line */
+.dinopack-header-hamburger__btn,
+.elementor-widget-dinopack-header-hamburger .dinopack-header-hamburger__btn {
+	display: inline-flex !important;
+	flex-direction: row !important;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap !important;
+	width: max-content;
+	max-width: 100%;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	padding: 8px;
+	line-height: 1;
+	gap: 0;
+}
+.dinopack-header-hamburger__btn > *,
+.elementor-widget-dinopack-header-hamburger .dinopack-header-hamburger__btn > * {
+	flex-shrink: 0;
+}
+.dinopack-header-hamburger__label {
+	display: inline;
+	white-space: nowrap;
+}
+.dinopack-header-hamburger__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.dinopack-header-hamburger__btn:focus {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+.dinopack-header-hamburger__icon svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+}

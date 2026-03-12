@@ -107,31 +107,11 @@ final class Plugin {
 
 		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
 
-		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'register_elementor_v2_editor_placeholders' ), 0 );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'plugin_css' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'plugin_css' ) );
 
 		add_action( 'elementor/editor/footer', array( $this, 'editor_template_library_scripts' ) );
 		add_action( 'elementor/editor/footer', array( $this, 'insert_editor_templates' ) );
-	}
-
-	/**
-	 * Register placeholder scripts for Elementor v2 editor handles (avoids WP 6.9.1 notices).
-	 */
-	public function register_elementor_v2_editor_placeholders() {
-		$placeholders = array(
-			'elementor-v2-editor-controls',
-			'elementor-v2-editor-elements',
-			'elementor-v2-editor-canvas',
-			'elementor-v2-editor-editing-panel',
-			'elementor-v2-editor-props',
-			'elementor-v2-editor-styles-repository',
-		);
-		foreach ( $placeholders as $handle ) {
-			if ( ! wp_script_is( $handle, 'registered' ) ) {
-				wp_register_script( $handle, '', array(), null );
-			}
-		}
 	}
 
 	/**
@@ -179,8 +159,20 @@ final class Plugin {
 		// AJAX Handlers
 		include_once DINOPACK_PATH . 'inc/class-dinopack-elementor-ajax-handlers.php';
 
-		// Admin Menus and settins page
+		// Admin Menus and settings page
 		include_once DINOPACK_PATH . 'inc/class-dinopack-admin-menus.php';
+
+		// Template CPTs (Header, Footer, Side Panel) for Elementor
+		include_once DINOPACK_PATH . 'inc/post-types/class-dinopack-templates-cpt.php';
+		if ( class_exists( 'DinoPack\DinoPack_Templates_CPT' ) ) {
+			new \DinoPack\DinoPack_Templates_CPT();
+		}
+
+		// Header/Footer display conditions (metaboxes + get_header/get_footer)
+		include_once DINOPACK_PATH . 'inc/class-dinopack-header-footer-conditions.php';
+		if ( class_exists( 'DinoPack\DinoPack_Header_Footer_Conditions' ) ) {
+			new \DinoPack\DinoPack_Header_Footer_Conditions();
+		}
 
 		// Admin page with settings
 		include_once DINOPACK_PATH . 'inc/admin/settings/class-dinopack-settings-page.php';

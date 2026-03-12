@@ -1,0 +1,139 @@
+/**
+ * Header Menu – navigation with up to 3-level dropdowns.
+ */
+
+.dinopack-header-menu {
+	display: block;
+}
+
+.dinopack-header-menu__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0;
+}
+
+.dinopack-header-menu__list li {
+	margin: 0;
+	position: relative;
+}
+
+.dinopack-header-menu__list a {
+	display: block;
+	text-decoration: none;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Sub-menus (Level 2 & 3) – base */
+.dinopack-header-menu__list .sub-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	min-width: 200px;
+	background: #fff;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	border-radius: 6px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-4px);
+	transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+	z-index: 1000;
+	white-space: nowrap;
+}
+
+/* Third level: open to the right of parent */
+.dinopack-header-menu__list .sub-menu .sub-menu {
+	left: 100%;
+	top: 0;
+	transform: translateX(-4px) translateY(0);
+}
+
+.dinopack-header-menu__list .sub-menu .sub-menu .sub-menu {
+	left: 100%;
+	top: 0;
+}
+
+/* Hover: show dropdown */
+.dinopack-header-menu__list li:hover > .sub-menu,
+.dinopack-header-menu__list li.menu-item-has-children:focus-within > .sub-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.dinopack-header-menu__list .sub-menu .sub-menu {
+	transform: translateX(-4px) translateY(0);
+}
+
+.dinopack-header-menu__list li:hover > .sub-menu .sub-menu,
+.dinopack-header-menu__list .sub-menu li.menu-item-has-children:focus-within > .sub-menu {
+	transform: translateX(0) translateY(0);
+}
+
+/* Horizontal layout */
+.dinopack-header-menu--horizontal .dinopack-header-menu__list {
+	flex-direction: row;
+	align-items: center;
+}
+
+.dinopack-header-menu--horizontal .dinopack-header-menu__list > li {
+	display: inline-flex;
+	align-items: center;
+}
+
+.dinopack-header-menu--horizontal .dinopack-header-menu__list > li > a {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* Vertical layout */
+.dinopack-header-menu--vertical .dinopack-header-menu__list {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.dinopack-header-menu--vertical .dinopack-header-menu__list .sub-menu {
+	position: static;
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	box-shadow: none;
+	background: transparent;
+	margin-top: 0;
+	padding-left: 1em;
+	border-left: 2px solid rgba(0, 0, 0, 0.08);
+	margin-left: 0.5em;
+	min-width: 0;
+	white-space: normal;
+}
+
+.dinopack-header-menu--vertical .dinopack-header-menu__list .sub-menu .sub-menu {
+	position: static;
+	transform: none;
+	padding-left: 1em;
+	margin-left: 0;
+}
+
+.dinopack-header-menu--vertical .dinopack-header-menu__list li:hover > .sub-menu,
+.dinopack-header-menu--vertical .dinopack-header-menu__list li.menu-item-has-children:focus-within > .sub-menu {
+	transform: none;
+}
+
+/* Dropdown indicator (optional visual for items with children) */
+.dinopack-header-menu__list .menu-item-has-children > a {
+	position: relative;
+}
+
+/* Ensure clickable area for touch: keep dropdown visible when hovering panel */
+.dinopack-header-menu__list .sub-menu {
+	pointer-events: auto;
+}
+
+.dinopack-header-menu__list li.menu-item-has-children:hover > .sub-menu {
+	pointer-events: auto;
+}
