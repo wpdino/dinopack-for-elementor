@@ -106,7 +106,12 @@ class Dinopack_Elementor_Widgets {
 		// Include Widget files
 		foreach ( glob( __DIR__ . '/widgets/*', GLOB_ONLYDIR | GLOB_NOSORT ) as $path ) {
 			$slug = str_replace( __DIR__ . '/widgets/', '', $path );
-			
+
+			// WooCommerce-dependent widget: only register when WooCommerce is active.
+			if ( $slug === 'woo-products' && ! class_exists( 'WooCommerce' ) ) {
+				continue;
+			}
+
 			// Check if widget is enabled
 			if ( ! $this->is_widget_enabled( $slug ) ) {
 				continue; // Skip disabled widgets

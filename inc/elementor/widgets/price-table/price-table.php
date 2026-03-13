@@ -657,6 +657,75 @@ class Price_Table extends Widget_Base {
         $this->end_controls_tabs();
 
         $this->end_controls_section();
+
+        // Popular badge style.
+        $this->start_controls_section(
+            'section_popular_style',
+            [
+                'label' => esc_html__( 'Popular Badge', 'dinopack-for-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'popular' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_typography',
+                'selector' => '{{WRAPPER}} .dinopack-price-table-popular span',
+            ]
+        );
+
+        $this->add_control(
+            'popular_text_color',
+            [
+                'label'     => esc_html__( 'Text Color', 'dinopack-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-popular'      => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dinopack-price-table-popular span' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'popular_background_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'dinopack-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-popular' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'popular_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'dinopack-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dinopack-price-table-popular' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'popular_border_radius',
+            [
+                'label'      => esc_html__( 'Border Radius', 'dinopack-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors'  => [
+                    '{{WRAPPER}} .dinopack-price-table-popular' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**

@@ -1422,7 +1422,7 @@ class DinoPack_Settings {
 								<a href="%2$s" target="_blank" aria-label="%5$s"><span class="dashicons dashicons-twitter"></span></a>
 								<a href="%3$s" target="_blank" aria-label="%6$s"><span class="dashicons dashicons-camera"></span></a>
 							</div>',
-							esc_url( 'https://www.facebook.com/profile.php?id=61584792480483' ),
+							esc_url( 'https://www.facebook.com/wpdinocom' ),
 							esc_url( 'https://x.com/wpdinocom' ),
 							esc_url( 'https://www.instagram.com/_wpdino_/' ),
 							esc_attr__( 'Follow WPDINO on Facebook', 'dinopack-for-elementor' ),
