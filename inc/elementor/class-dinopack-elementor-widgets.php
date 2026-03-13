@@ -147,5 +147,19 @@ class Dinopack_Elementor_Widgets {
 				'icon' => 'fa fa-plug'
 			]
 		);
+		$elements_manager->add_category(
+			'dinopack-header',
+			[
+				'title' => esc_attr__( 'DinoPack Header', 'dinopack-for-elementor' ),
+				'icon'  => 'eicon-header',
+			]
+		);
+		$elements_manager->add_category(
+			'dinopack-footer',
+			[
+				'title' => esc_attr__( 'DinoPack Footer', 'dinopack-for-elementor' ),
+				'icon'  => 'eicon-footer',
+			]
+		);
 	}
 }

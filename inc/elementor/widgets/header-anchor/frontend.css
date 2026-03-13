@@ -1,0 +1,19 @@
+.dinopack-header-anchor {
+	display: inline-block;
+}
+.dinopack-header-anchor__link {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+}
+.dinopack-header-anchor__link:hover {
+	text-decoration: none;
+}
+.dinopack-header-anchor__icon {
+	display: inline-flex;
+	align-items: center;
+}
+.dinopack-header-anchor__icon svg {
+	width: 1em;
+	height: 1em;
+}

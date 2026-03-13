@@ -3,10 +3,14 @@
     display: flex;
     flex-direction: column;
 }
-#elementor-panel-category-dinopack-for-elementor {
+#elementor-panel-category-dinopack-for-elementor,
+#elementor-panel-category-dinopack-header,
+#elementor-panel-category-dinopack-footer{
 	order: -1;
 }
 
-#elementor-panel-category-dinopack-for-elementor .icon {
-	color: #6F9C50;
+#elementor-panel-category-dinopack-for-elementor .icon,
+#elementor-panel-category-dinopack-header .icon,
+#elementor-panel-category-dinopack-footer .icon {
+	color: #1A8960;
 }

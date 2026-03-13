@@ -5,6 +5,35 @@ All notable changes to DinoPack for Elementor will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.6] - 2026-03-13
+
+### Added
+- Offset Side Panel widget
+  - Slide-in panel from left, right, top, or bottom with overlay
+  - Supports inline WYSIWYG content (free) or optional Side Panel CPT template
+  - Style controls for panel background, padding, border, radius, text color, and shadow
+  - Accessible close button with customizable size, position, colors, and border
+  - Clean “Visible on frontend” placeholder in the Elementor editor so the widget is always clearly identifiable
+- Header Trigger widget improvements
+  - Default Target selector set to `#dinopack-offset-panel` so a new Trigger + Offset Side Panel pair works out‑of‑the‑box
+  - Label + icon layout refinements and accessibility label control
+- Header builder widgets
+  - Header Menu widget for 3‑level navigation menus with horizontal/vertical layouts and full typography + dropdown styling
+  - Header Logo widget for site logo or custom image with extensive sizing, alignment, and hover controls
+  - Header Anchor widget for smooth‑scroll header links with optional icons and spacing controls
+- Side Panel CPT & editor behavior
+  - Minimal single template used when editing Header/Footer/Side Panel CPTs in Elementor so the theme header/footer are hidden in the editor
+  - Direct visits to Header/Footer/Side Panel single URLs are redirected to home; templates are meant to be used only via Elementor or header/footer conditions
+
+### Changed
+- Offset Side Panel widget
+  - Default panel styling updated (white background, inner padding, softer close button color)
+  - Editor preview now consistently shows the placeholder instead of a generic grey box after deselection/reload
+- Price Table widget
+  - Popular badge styling controls added (typography, colors, padding, border radius, and margin‑bottom)
+- Woo Products widget
+  - Widget is now only registered when WooCommerce is active to avoid unnecessary dependencies
+
 ## [1.0.5] - 2025-12-XX
 
 ### Changed

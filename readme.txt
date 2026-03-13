@@ -24,6 +24,10 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Icon Box Widget** - Feature boxes with icons, perfect for services and features
 * **Newsletter Widget** - MailChimp integration for email subscriptions with AJAX submission
 * **Popup Widget** - Modal popups and overlays for enhanced user experience
+* **Offset Side Panel Widget** - Slide-in side panel with inline content or optional template, perfect for off‑canvas menus and panels
+* **Header Menu Widget** - Flexible 3‑level navigation menu for custom headers
+* **Header Logo Widget** - Site logo or custom image with advanced styling
+* **Header Anchor Widget** - Smooth‑scroll header links with icon options
 * **Price Table Widget** - Professional pricing tables with customizable features and popular badge
 * **Progress Bar Widget** - Animated progress bars in line and circle formats
 * **WooCommerce Products Widget** - Display products with customizable layouts and styling
@@ -114,6 +118,12 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 8. Gallery Widget with lightbox functionality
 
 == Changelog ==
+
+= 1.0.6 =
+* Added Offset Side Panel widget with inline WYSIWYG content, optional Side Panel template support, and full styling controls (background, padding, border, radius, text color, shadow)
+* Added header builder widgets: Header Menu, Header Logo, and Header Anchor for creating fully custom Elementor headers
+* Enhanced Price Table widget with styling options for the “Popular” badge (typography, colors, padding, border radius, and margin bottom)
+* Registered Woo Products widget only when WooCommerce is active
 
 = 1.0.5 =
 * Enhanced widget controls with visual image selectors for better user experience

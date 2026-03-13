@@ -6,7 +6,7 @@
 ![PHP Version](https://img.shields.io/badge/PHP-7.0+-purple.svg)
 ![Elementor](https://img.shields.io/badge/Elementor-2.0+-pink.svg)
 ![License](https://img.shields.io/badge/License-GPL%20v2-green.svg)
-![Version](https://img.shields.io/badge/Version-1.0.4-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.0.6-orange.svg)
 
 **A powerful collection of advanced Elementor widgets to supercharge your WordPress website**
 
@@ -77,7 +77,31 @@ Modal popups and overlays with:
 - Close button styling
 - Content flexibility
 
-### 8. **Price Table Widget**
+### 8. **Offset Side Panel Widget**
+Slide-in side panels perfect for off‑canvas navigation or utility panels:
+- Open from left, right, top, or bottom with overlay
+- Inline WYSIWYG content (free) or optional Elementor template
+- Style controls for panel background, padding, border, radius, text color, and shadow
+- Accessible close button with configurable position, size, and colors
+
+### 9. **Header Menu Widget**
+Navigation menu widget designed for custom headers:
+- Supports up to 3 menu levels
+- Horizontal and vertical layouts
+- Styling for top‑level links, dropdown panels, and dropdown links
+
+### 10. **Header Logo Widget**
+Header logo widget for branding:
+- Use the site logo or a custom image
+- Controls for size, alignment, borders, hover effects, and link behavior
+
+### 11. **Header Anchor Widget**
+Smooth‑scroll anchor links for header menus:
+- Scrolls to page sections by ID
+- Optional before/after icons with spacing controls
+- Typography and color styling
+
+### 12. **Price Table Widget**
 Professional pricing tables with:
 - Customizable title and description
 - Price display with currency and period
@@ -85,20 +109,20 @@ Professional pricing tables with:
 - Popular badge option
 - Call-to-action button
 
-### 9. **Progress Bar Widget**
+### 13. **Progress Bar Widget**
 Animated progress bars in multiple formats:
 - Line style
 - Circle style
 - Custom colors and animations
 
-### 10. **WooCommerce Products Widget**
+### 14. **WooCommerce Products Widget**
 Display WooCommerce products with:
 - Customizable layouts
 - Product filtering
 - Rating display
 - Add to cart functionality
 
-### 11. **Restaurant Menu Widget**
+### 15. **Restaurant Menu Widget**
 Perfect for restaurant, café, and bar menus with:
 - Global menu title replacing individual category headings
 - Menu item name, description, price, and dietary badges (Spicy, Vegetarian, Gluten Free)
@@ -107,7 +131,7 @@ Perfect for restaurant, café, and bar menus with:
 - Icon-box inspired container styling with radius, shadow, and item separators
 - Toggleable list and grid layouts with responsive controls
 
-### 12. **Car Specs Widget**
+### 16. **Car Specs Widget**
 Ideal for automotive, dealership, and rental sites with:
 - Vehicle title block featuring name, subtitle, and featured image
 - Repeater-based specification groups (Engine, Transmission, Dimensions, etc.)
@@ -115,7 +139,7 @@ Ideal for automotive, dealership, and rental sites with:
 - Vertical or horizontal layout modes per breakpoint
 - Global styling controls for cards, typography, spacing, and separators
 
-### 13. **AI Product Description Generator**
+### 17. **AI Product Description Generator**
 AI-powered product description generator for WooCommerce products:
 - Automatically generates product descriptions using OpenAI
 - Customizable prompts and content types
@@ -125,7 +149,7 @@ AI-powered product description generator for WooCommerce products:
 - Editable generated content in Elementor editor
 - Requires OpenAI API key (configure in DinoPack Settings)
 
-### 14. **AI Product Review Summarizer**
+### 18. **AI Product Review Summarizer**
 Automatically summarize and analyze product reviews using AI:
 - Analyzes multiple product reviews at once
 - Generates comprehensive summaries
@@ -134,7 +158,7 @@ Automatically summarize and analyze product reviews using AI:
 - Editable generated summaries in Elementor editor
 - Requires OpenAI API key (configure in DinoPack Settings)
 
-### 15. **AI Product Image Generator**
+### 19. **AI Product Image Generator**
 Generate product images using DALL-E AI:
 - Automatically generates product images based on product information
 - Multiple image styles (photorealistic, illustration, 3D render, lifestyle, product shot, minimal)
@@ -145,7 +169,7 @@ Generate product images using DALL-E AI:
 - Fully customizable styling (width, height, alignment, border, shadow)
 - Requires OpenAI API key with DALL-E access (configure in DinoPack Settings)
 
-### 16. **AI Product SEO Meta Generator**
+### 20. **AI Product SEO Meta Generator**
 Generate SEO-optimized meta data for WooCommerce products:
 - Generates SEO-optimized titles (50-60 characters)
 - Creates compelling meta descriptions (150-160 characters)
