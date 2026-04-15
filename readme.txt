@@ -5,7 +5,7 @@ Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,10 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 8. Gallery Widget with lightbox functionality
 
 == Changelog ==
+
+= 1.0.7 =
+
+* Minor bug fix in woo widget
 
 = 1.0.6 =
 * Added Offset Side Panel widget with inline WYSIWYG content, optional Side Panel template support, and full styling controls (background, padding, border, radius, text color, shadow)
