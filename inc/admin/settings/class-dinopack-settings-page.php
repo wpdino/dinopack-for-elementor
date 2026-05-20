@@ -1214,32 +1214,39 @@ class DinoPack_Settings {
 			<!-- Header -->
 			<div class="wpdino-header">
 				<div class="wpdino-header-content">					
-					<h1>
-						<?php 
-					/**
-					 * Filter the plugin name displayed in settings header.
-					 *
-					 * @since 1.0.0
-					 * @param string $name Plugin name.
-					 */
-					$dinopack_name = apply_filters( 'dinopack_name', esc_html__( 'DinoPack For Elementor', 'dinopack-for-elementor' ) );
-						
-					echo wp_kses_post( $dinopack_name );
-						?>
-					</h1>
-					<span class="wpdino-version">
-						<?php esc_html_e('v', 'dinopack-for-elementor'); ?>
-						<?php
+					<div class="wpdino-header-content-left">
+						<h1>
+							<?php 
 						/**
-						 * Filter the plugin version displayed in settings header.
+						 * Filter the plugin name displayed in settings header.
 						 *
 						 * @since 1.0.0
-						 * @param string $version Plugin version.
+						 * @param string $name Plugin name.
 						 */
-						$dinopack_version = apply_filters( 'dinopack_version', DINOPACK_VERSION );
-						echo esc_html( $dinopack_version );
-						?>
-					</span>					
+						$dinopack_name = apply_filters( 'dinopack_name', esc_html__( 'Welcome to DinoPack!', 'dinopack-for-elementor' ) );
+							
+						echo wp_kses_post( $dinopack_name );
+							?>
+						</h1>
+						<p class="wpdino-tagline">
+							<?php esc_html_e( 'Build faster with lightweight, flexible Elementor enhancements.', 'dinopack-for-elementor' ); ?>
+						</p>
+					</div>
+					<div class="wpdino-header-content-right">
+						<span class="wpdino-version">
+							<?php esc_html_e('v', 'dinopack-for-elementor'); ?>
+							<?php
+							/**
+							 * Filter the plugin version displayed in settings header.
+							 *
+							 * @since 1.0.0
+							 * @param string $version Plugin version.
+							 */
+							$dinopack_version = apply_filters( 'dinopack_version', DINOPACK_VERSION );
+							echo esc_html( $dinopack_version );
+							?>
+						</span>
+					</div>
 				</div>
 			</div>
 

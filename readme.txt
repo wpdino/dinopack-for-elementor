@@ -3,9 +3,9 @@ Contributors: wpdino
 Donate link: https://paypal.me/dinostd/10usd
 Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
-Tested up to: 6.9
-Requires PHP: 7.0
-Stable tag: 1.0.7
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,8 +119,10 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
-= 1.0.7 =
+= 1.0.8 =
+* Compatibility WordPress version 7.0
 
+= 1.0.7 =
 * Minor bug fix in woo widget
 
 = 1.0.6 =

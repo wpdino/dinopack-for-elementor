@@ -3,13 +3,13 @@
  * Plugin Name:         DinoPack for Elementor
  * Plugin URI:          https://wpdino.com/plugins/dinopack-for-elementor/
  * Description:         DinoPack for Elementor is a collection of creative and advanced widgets, expertly crafted by the WPDINO team to enhance your Elementor experience.
- * Version:             1.0.7
+ * Version:             1.0.8
  * Author:              WPDINO
  * Author URI:          https://wpdino.com
  * Requires at least:   6.6
- * Tested up to:        6.9
+ * Tested up to:        7.0
  * Requires Plugins: elementor
- * Requires PHP: 7.0
+ * Requires PHP: 7.4
  * Tags: elementor, widgets, page builder, templates, blocks, design
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
