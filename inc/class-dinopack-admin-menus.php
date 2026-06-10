@@ -108,7 +108,7 @@ class DinoPack_Admin_Menus {
 		// Add Go Pro link first if PRO version is not installed
 		if ( ! class_exists( 'DinoPackPro\Plugin' ) ) {
 			$new_links['go_pro'] = sprintf( 
-				'<a href="%1$s" target="_blank" class="dinopack-gopro" style="color:#6F9C50;font-weight:bold;">%2$s</a>',
+				'<a href="%1$s" target="_blank" class="dinopack-gopro" style="color:#1a8960;font-weight:bold;">%2$s</a>',
 				esc_url( self::$goProLink ), 
 				esc_html__( 'Get DinoPack PRO', 'dinopack-for-elementor' )
 			);
@@ -162,15 +162,15 @@ class DinoPack_Admin_Menus {
 				#adminmenu #toplevel_page_dinopack-settings a[href="<?php echo esc_attr( $escaped_url ); ?>"],
 				#adminmenu #toplevel_page_dinopack-settings a[href*="dinopack-pro-for-elementor"],
 				#adminmenu #toplevel_page_dinopack-settings a.dinopack-go-pro-menu-link {
-					background-color: #6F9C50 !important;
-					color: #fff !important;
-					font-weight: 600 !important;
+					background-color: #1a8960;
+					color: #fff;
+					font-weight: 600;
 				}
 				#adminmenu #toplevel_page_dinopack-settings a[href="<?php echo esc_attr( $escaped_url ); ?>"]:hover,
 				#adminmenu #toplevel_page_dinopack-settings a[href*="dinopack-pro-for-elementor"]:hover,
 				#adminmenu #toplevel_page_dinopack-settings a.dinopack-go-pro-menu-link:hover {
-					background-color: #5a7d3f !important;
-					color: #fff !important;
+					background-color:rgb(21, 116, 81);
+					color: #fff;
 				}
 			</style>
 			<?php
