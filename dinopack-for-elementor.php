@@ -15,6 +15,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: dinopack-for-elementor
  * Domain Path: /languages/
+ * Elementor tested up to: 3.33
  * 
  * Privacy Policy: This plugin collects and processes personal data in the following ways:
  * 

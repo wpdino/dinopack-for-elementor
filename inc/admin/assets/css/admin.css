@@ -41,7 +41,7 @@
 .wpdino-header-content small {
 	font-size: inherit;
 	font-weight: inherit;
-	color: #6F9C50;
+	color: #1a8960;
 }
 .wpdino-icon {
 	font-size: 36px;
@@ -54,7 +54,7 @@
 }
 
 .wpdino-version {
-	background: #6F9C50;
+	background: #1a8960;
 	padding: 4px 12px;
 	border-radius: 20px;
 	font-size: 14px;
@@ -117,7 +117,7 @@
 	font-size: 24px;
 	font-weight: 600;
 	margin: 0 0 8px 0;
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-card-header p {
@@ -218,13 +218,13 @@
 }
 
 .wpdino-tab-btn:hover {
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-tab-btn.active {
 	background: white;
-	color: #6F9C50;
-	border-bottom-color: #6F9C50;
+	color: #1a8960;
+	border-bottom-color: #1a8960;
 }
 .wpdino-tab-btn:focus-visible {
 	outline: none;
@@ -324,7 +324,7 @@
 	left: 0;
 	width: 40px;
 	height: 2px;
-	background: #6F9C50;
+	background: #1a8960;
 }
 
 .wpdino-subsection-description {
@@ -437,7 +437,7 @@
 
 .wpdino-settings-wrap .wpdino-select:hover {
 	background-color: #f0f0f0;
-	border-color: #6F9C50;
+	border-color: #1a8960;
 }
 .wpdino-settings-wrap .wpdino-password-input {
 	max-width: 100%;
@@ -452,13 +452,13 @@
 .wpdino-settings-wrap .wpdino-select:focus,
 .wpdino-settings-wrap .wpdino-textarea:focus {
 	outline: none;
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	box-shadow: 0 0 0 3px rgba(111, 156, 80, 0.1);
 }
 
 .wpdino-settings-wrap .wpdino-select:focus {
 	background-color: white;
-	border-color: #6F9C50;
+	border-color: #1a8960;
 }
 
 .wpdino-settings-wrap .wpdino-textarea {
@@ -507,12 +507,12 @@
 }
 
 .wpdino-settings-wrap .wpdino-checkbox:hover .wpdino-checkbox-mark {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 }
 
 .wpdino-settings-wrap .wpdino-checkbox input[type="checkbox"]:checked + .wpdino-checkbox-mark {
-	background: #6F9C50;
-	border-color: #6F9C50;
+	background: #1a8960;
+	border-color: #1a8960;
 }
 
 .wpdino-settings-wrap .wpdino-checkbox input[type="checkbox"]:checked + .wpdino-checkbox-mark::after {
@@ -541,8 +541,8 @@
 
 /* Disabled but checked checkbox (PRO widgets) */
 .wpdino-settings-wrap .wpdino-checkbox-disabled input[type="checkbox"]:checked + .wpdino-checkbox-mark {
-	background: #6F9C50;
-	border-color: #6F9C50;
+	background: #1a8960;
+	border-color: #1a8960;
 	opacity: 0.7;
 }
 
@@ -626,11 +626,11 @@
 }
 
 .wpdino-settings-wrap .wpdino-radio:hover .wpdino-radio-mark {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 }
 
 .wpdino-settings-wrap .wpdino-radio input[type="radio"]:checked + .wpdino-radio-mark {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	background: white;
 }
 
@@ -639,7 +639,7 @@
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #6F9C50;
+	background: #1a8960;
 }
 
 /* Button Styles */
@@ -664,7 +664,7 @@
 }
 
 .wpdino-btn-primary {
-	background: #6F9C50;
+	background: #1a8960;
 	color: white !important;
 }
 
@@ -683,11 +683,15 @@
 }
 
 .wpdino-btn-secondary {
-	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-	color: #495057;
-	border: 1px solid #e0e0e0;
+	background: #f8f9fa;
+	color: #1a8960;
+	border: 1px solid #1a8960;
 }
 
+.wpdino-btn-secondary:hover {
+	background: #1a8960;
+	color: white;
+}
 .wpdino-btn-danger {
 	background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 	color: white;	
@@ -757,8 +761,7 @@
 }
 
 .wpdino-tool-item {
-	background: #f8f9fa;
-	border: 1px solid #e9ecef;
+	border: 1px solid #1a8960;
 	padding: 25px;
 	transition: all 0.3s ease;
 	position: relative;
@@ -766,21 +769,21 @@
 }
 
 .wpdino-tool-icon {
-	width: 60px;
-	height: 60px;
-	background: #6F9C50;
-	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border-radius: 6px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
+	border: 1px solid #1a8960;
 }
 
 .wpdino-tool-icon .dashicons {
-	font-size: 24px;
-	color: white;
-	height:24px;
-	width:24px;
+	font-size: 34px;
+	color: #1a8960;
+	height:34px;
+	width:34px;
 }
 
 .wpdino-tool-content h4 {
@@ -816,7 +819,7 @@
 .wpdino-tool h3 {
 	font-size: 18px;
 	font-weight: 600;
-	color: #6F9C50;
+	color: #1a8960;
 	margin: 0 0 12px 0;
 }
 
@@ -838,7 +841,7 @@
 .wpdino-sidebar h3 {
 	font-size: 18px;
 	font-weight: 600;
-	color: #6F9C50; 
+	color: #1a8960; 
 	margin: 0 0 20px 0;
 	padding: 30px 30px 0;
 }
@@ -952,7 +955,7 @@
 }
 
 .wpdino-quick-link:hover {
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-quick-link:last-child {
@@ -961,7 +964,7 @@
 }
 
 .wpdino-quick-link .dashicons {
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 /* Rating */
@@ -993,13 +996,13 @@
 }
 
 .wpdino-footer a {
-	color: #6F9C50;
+	color: #1a8960;
 	text-decoration: none;
 	font-size: 14px;
 }
 
 .wpdino-footer a:hover {
-	color: #6F9C50;
+	color: #1a8960;
 }
 .wpdino-footer p {
 	color: #fff;
@@ -1043,7 +1046,7 @@
 
 .wpdino-footer-social a:hover {
 	background: rgba(255, 255, 255, 0.18);
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-footer-social .dashicons {
@@ -1104,7 +1107,7 @@
 	}
 
 	.wpdino-tab-btn.active {
-		border-right-color: #6F9C50;
+		border-right-color: #1a8960;
 		border-bottom: none;
 	}
 
@@ -1263,7 +1266,7 @@
 }
 
 .wpdino-image-select-option:hover {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	box-shadow: 0 2px 8px rgba(111, 156, 80, 0.2);
 	transform: translateY(-2px);
 }
@@ -1276,12 +1279,12 @@
 }
 
 .wpdino-image-select-option input[type="radio"]:checked + img {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	box-shadow: 0 0 0 3px rgba(111, 156, 80, 0.2);
 }
 
 .wpdino-image-select-option input[type="radio"]:checked ~ .wpdino-image-select-label {
-	color: #6F9C50;
+	color: #1a8960;
 	font-weight: 600;
 }
 
@@ -1305,13 +1308,13 @@
 }
 
 .wpdino-image-select-option:has(input[type="radio"]:checked) {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	background: rgba(111, 156, 80, 0.05);
 }
 
 /* For older browsers that don't support :has() */
 .wpdino-image-select-option.selected {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	background: rgba(111, 156, 80, 0.05);
 } 
 
@@ -1330,7 +1333,7 @@
 }
 
 .wpdino-image-preview:hover {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 }
 
 .wpdino-image-preview img {
@@ -1394,7 +1397,7 @@
 }
 
 .wpdino-image-upload-prompt:hover {
-	border-color: #6F9C50;
+	border-color: #1a8960;
 	background: #f8fffe;
 }
 
@@ -1411,7 +1414,7 @@
 }
 
 .wpdino-image-upload-prompt:hover .wpdino-upload-icon .dashicons {
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-image-upload-prompt p {
@@ -1483,12 +1486,12 @@
 
 .wpdino-admin-notice-success {
 	background-color: #d4edda;
-	border-left: 4px solid #6F9C50;
+	border-left: 4px solid #1a8960;
 	color: #155724;
 }
 
 .wpdino-admin-notice-success .dashicons {
-	color: #6F9C50;
+	color: #1a8960;
 }
 
 .wpdino-admin-notice-error {
@@ -1567,7 +1570,13 @@
 .toplevel_page_dinopack-settings .notice,
 .dinopack_page_dinopack-docs .notice,
 .toplevel_page_dinopack-settings div.error,
-.dinopack_page_dinopack-docs div.error {
+.dinopack_page_dinopack-docs div.error,
+.toplevel_page_dinopack-settings div .updated,
+.dinopack_page_dinopack-docs div.updated,
+.toplevel_page_dinopack-settings div.error,
+.dinopack_page_dinopack-docs div.error,
+.toplevel_page_dinopack-settings div .updated,
+.dinopack_page_dinopack-docs div.updated {
 	margin: 5px 0 15px !important;
 	margin-right: 20px !important;
 }
@@ -1609,13 +1618,13 @@
 }
 
 .wpdino-password-toggle:hover {
-	color: #6F9C50;
+	color: #1a8960;
 	background: rgba(111, 156, 80, 0.1);
 }
 
 .wpdino-password-toggle:focus {
 	outline: none;
-	color: #6F9C50;
+	color: #1a8960;
 	background: rgba(111, 156, 80, 0.1);
 	box-shadow: 0 0 0 2px rgba(111, 156, 80, 0.2);
 }
