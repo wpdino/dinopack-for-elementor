@@ -397,7 +397,7 @@ class Header_Menu extends Widget_Base {
 
 		$this->add_render_attribute( 'wrap', 'class', $class );
 		?>
-		<nav <?php echo $this->get_render_attribute_string( 'wrap' ); ?>>
+		<nav <?php $this->print_render_attribute_string( 'wrap' ); ?>>
 			<?php
 			wp_nav_menu( [
 				'menu'            => (int) $menu_id,

@@ -347,13 +347,13 @@ class Header_Hamburger extends Widget_Base {
 			ob_start();
 			Icons_Manager::render_icon( $s['icon'], [ 'aria-hidden' => 'true' ] );
 			$captured = ob_get_clean();
-			if ( $captured !== '' && trim( strip_tags( $captured ) ) !== '1' ) {
+			if ( $captured !== '' && trim( wp_strip_all_tags( $captured ) ) !== '1' ) {
 				$icon_inner = $captured;
 			}
 		}
 		?>
 		<div class="dinopack-header-hamburger">
-			<button <?php echo $this->get_render_attribute_string( 'btn' ); ?>>
+			<button <?php $this->print_render_attribute_string( 'btn' ); ?>>
 				<?php if ( $show_label && $label_pos === 'left' ) : ?>
 					<span class="dinopack-header-hamburger__label dinopack-header-hamburger__label--before"><?php echo esc_html( $label_text ); ?></span>
 				<?php endif; ?>

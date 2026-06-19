@@ -657,7 +657,7 @@ function dinopack_generate_product_image() {
         $attachment_id = media_handle_sideload($file_array, 0);
         
         if (is_wp_error($attachment_id)) {
-            @unlink($tmp);
+            wp_delete_file( $tmp );
             wp_send_json_error(['message' => 'Failed to save image to media library: ' . $attachment_id->get_error_message()]);
         }
         
@@ -766,7 +766,7 @@ function dinopack_generate_product_seo() {
         }
         
         if (!is_wp_error($title_response) && isset($title_response['content'])) {
-            $seo_title = trim(strip_tags($title_response['content']));
+            $seo_title = trim( wp_strip_all_tags( $title_response['content'] ) );
             // Clean up and ensure proper length
             $seo_title = wp_trim_words($seo_title, 10, '');
             if (strlen($seo_title) > 60) {
@@ -810,7 +810,7 @@ function dinopack_generate_product_seo() {
         }
         
         if (!is_wp_error($desc_response) && isset($desc_response['content'])) {
-            $meta_description = trim(strip_tags($desc_response['content']));
+            $meta_description = trim( wp_strip_all_tags( $desc_response['content'] ) );
             // Clean up and ensure proper length
             if (strlen($meta_description) > 160) {
                 $meta_description = substr($meta_description, 0, 157) . '...';
@@ -853,7 +853,7 @@ function dinopack_generate_product_seo() {
         }
         
         if (!is_wp_error($keywords_response) && isset($keywords_response['content'])) {
-            $focus_keywords = trim(strip_tags($keywords_response['content']));
+            $focus_keywords = trim( wp_strip_all_tags( $keywords_response['content'] ) );
             // Clean up
             $focus_keywords = preg_replace('/[^a-zA-Z0-9,\s-]/', '', $focus_keywords);
             $seo_data['focus_keywords'] = $focus_keywords;

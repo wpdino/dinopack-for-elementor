@@ -379,6 +379,32 @@ class DinoPack_Settings {
 	}
 
 	/**
+	 * Render review request card
+	 */
+	private function render_review_card() {
+		?>
+		<div class="wpdino-card wpdino-review-card">
+			<div class="wpdino-review-header">
+				<div class="wpdino-review-stars" aria-hidden="true">
+					<?php for ( $i = 0; $i < 5; $i++ ) : ?>
+						<span class="dashicons dashicons-star-filled"></span>
+					<?php endfor; ?>
+				</div>
+				<h2><?php esc_html_e( 'Enjoying DinoPack?', 'dinopack-for-elementor' ); ?></h2>
+				<p><?php esc_html_e( 'If our free widgets help your Elementor projects, a quick 5-star review on WordPress.org means a lot to our small team.', 'dinopack-for-elementor' ); ?></p>
+				<div class="wpdino-review-cta">
+					<a href="https://wordpress.org/plugins/dinopack-for-elementor/#reviews" target="_blank" rel="noopener noreferrer" class="wpdino-btn wpdino-btn-primary">
+						<?php esc_html_e( 'Leave a 5-Star Review', 'dinopack-for-elementor' ); ?>
+						<span class="dashicons dashicons-arrow-right-alt"></span>
+					</a>
+					<p><?php esc_html_e( 'It only takes a minute', 'dinopack-for-elementor' ); ?></p>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Render admin notices
 	 */
 	private function render_admin_notices() {
@@ -426,7 +452,8 @@ class DinoPack_Settings {
 		$is_settings_page = in_array( $hook, $valid_hooks );
 		
 		// Also check by GET parameter as fallback
-		if ( ! $is_settings_page && isset( $_GET['page'] ) && $_GET['page'] === 'dinopack-settings' ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page detection for asset loading.
+		if ( ! $is_settings_page && isset( $_GET['page'] ) && 'dinopack-settings' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) {
 			$is_settings_page = true;
 		}
 		
@@ -959,6 +986,7 @@ class DinoPack_Settings {
 					'name' => 'pro_widgets_subsection',
 					'label' => esc_html__( 'PRO Widgets', 'dinopack-for-elementor' ),
 					'description' => sprintf(
+						// translators: %s: DinoPack PRO product URL.
 						wp_kses_post( __( 'These widgets are available in <a href="%s" target="_blank">DinoPack PRO</a>. Upgrade to unlock these powerful features.', 'dinopack-for-elementor' ) ),
 						esc_url( $this->add_utm_params( 'https://wpdino.com/plugins/dinopack-pro-for-elementor/', 'pro_widgets_section' ) )
 					),
@@ -1071,7 +1099,7 @@ class DinoPack_Settings {
 				<div class="wpdino-tool-content">
 					<h4><?php esc_html_e( 'Export Settings', 'dinopack-for-elementor' ); ?></h4>
 					<p><?php esc_html_e( 'Download your current settings as a JSON file.', 'dinopack-for-elementor' ); ?></p>
-					<button type="button" id="export-settings" class="wpdino-btn wpdino-btn-secondary">
+					<button type="button" id="export-settings" class="wpdino-btn wpdino-btn-primary">
 						<span class="dashicons dashicons-download"></span>
 						<?php esc_html_e( 'Export Settings', 'dinopack-for-elementor' ); ?>
 					</button>
@@ -1087,7 +1115,7 @@ class DinoPack_Settings {
 					<p><?php esc_html_e( 'Upload a settings file to restore your configuration.', 'dinopack-for-elementor' ); ?></p>
 					<div class="wpdino-file-upload">
 						<input type="file" id="import-file" accept=".json" style="display: none;" />
-						<button type="button" id="import-settings" class="wpdino-btn wpdino-btn-secondary">
+						<button type="button" id="import-settings" class="wpdino-btn wpdino-btn-primary">
 							<span class="dashicons dashicons-upload"></span>
 							<?php esc_html_e( 'Choose File', 'dinopack-for-elementor' ); ?>
 						</button>
@@ -1106,7 +1134,7 @@ class DinoPack_Settings {
 			
 			<div class="wpdino-system-info">
 				<div class="wpdino-system-info-header">
-					<button type="button" id="copy-system-info" class="wpdino-btn wpdino-btn-secondary">
+					<button type="button" id="copy-system-info" class="wpdino-btn wpdino-btn-primary">
 						<span class="dashicons dashicons-admin-page"></span>
 						<?php esc_html_e( 'Copy System Info', 'dinopack-for-elementor' ); ?>
 					</button>
@@ -1216,7 +1244,7 @@ class DinoPack_Settings {
 				<div class="wpdino-header-content">					
 					<div class="wpdino-header-content-left">
 						<h1>
-							<?php 
+						<?php 
 						/**
 						 * Filter the plugin name displayed in settings header.
 						 *
@@ -1226,7 +1254,7 @@ class DinoPack_Settings {
 						$dinopack_name = apply_filters( 'dinopack_name', esc_html__( 'Welcome to DinoPack!', 'dinopack-for-elementor' ) );
 							
 						echo wp_kses_post( $dinopack_name );
-							?>
+						?>
 						</h1>
 						<p class="wpdino-tagline">
 							<?php esc_html_e( 'Build faster with lightweight, flexible Elementor enhancements.', 'dinopack-for-elementor' ); ?>
@@ -1383,6 +1411,7 @@ class DinoPack_Settings {
 				<!-- Sidebar -->
 				<div class="wpdino-sidebar">
 					<?php $this->render_pro_upsell(); ?>
+					<?php $this->render_review_card(); ?>
 				</div>
 			</div>
 
@@ -1395,6 +1424,7 @@ class DinoPack_Settings {
 							/* translators: DinoPack version and WPDINO link */
 							'<p>%s</p>',
 							sprintf(
+								/* translators: 1: plugin version number, 2: WPDINO website link. */
 								esc_html__( 'DinoPack For Elementor v%1$s by %2$s', 'dinopack-for-elementor' ),
 								esc_attr( DINOPACK_VERSION ),
 								'<a href="' . esc_url( $this->add_utm_params( 'https://wpdino.com', 'footer_brand_link' ) ) . '" target="_blank">WPDINO</a>'

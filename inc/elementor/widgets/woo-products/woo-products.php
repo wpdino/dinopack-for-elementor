@@ -1047,14 +1047,12 @@ class Woo_Products extends Widget_Base {
             return;
         }
 
-        // Set up WooCommerce loop
-        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- WooCommerce core global variable
-        global $woocommerce_loop;
-        $woocommerce_loop['columns'] = (int) $settings['columns'];
+        $dinopack_columns = (int) $settings['columns'];
+        wc_set_loop_prop( 'columns', $dinopack_columns );
 
         $this->add_render_attribute( 'woo-products-container', 'class', 'dinopack-woo-products-container' );
 		$this->add_render_attribute( 'woo-products-container', 'class', 'woocommerce' );
-        $this->add_render_attribute( 'woo-products-container', 'class', 'columns-' . esc_attr( $woocommerce_loop['columns'] ) );
+        $this->add_render_attribute( 'woo-products-container', 'class', 'columns-' . esc_attr( (string) $dinopack_columns ) );
         
         // Add sale badge visibility data attribute to widget wrapper
         $this->add_render_attribute( 'wrapper', 'data-show-sale-badge', esc_attr($settings['show_sale_badge']) );

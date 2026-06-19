@@ -275,7 +275,7 @@ class Header_Anchor extends Widget_Base {
 		}
 		?>
 		<div class="dinopack-header-anchor">
-			<a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
+			<a <?php $this->print_render_attribute_string( 'link' ); ?>>
 				<?php
 				if ( ! empty( $s['icon']['value'] ) && $s['icon_position'] === 'before' ) {
 					echo '<span class="dinopack-header-anchor__icon dinopack-header-anchor__icon--before">';

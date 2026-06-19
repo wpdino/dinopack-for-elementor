@@ -591,7 +591,7 @@ class Blog extends Widget_Base {
                 'label' => esc_html__('Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .dinopack-blog-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dinopack-blog-title a' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -602,7 +602,7 @@ class Blog extends Widget_Base {
                 'label' => esc_html__('Hover Color', 'dinopack-for-elementor'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .dinopack-blog-title:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .dinopack-blog-title a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );

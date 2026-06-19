@@ -450,13 +450,16 @@ class Header_Logo extends Widget_Base {
 			return;
 		}
 
-		$img = '<img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $logo_alt ) . '" class="dinopack-header-logo__img" />';
-		echo '<div class="dinopack-header-logo">';
-		if ( $link_url ) {
-			echo '<a ' . $this->get_render_attribute_string( 'link' ) . '>' . $img . '</a>';
-		} else {
-			echo $img;
-		}
-		echo '</div>';
+		?>
+		<div class="dinopack-header-logo">
+			<?php if ( $link_url ) : ?>
+				<a <?php $this->print_render_attribute_string( 'link' ); ?>>
+					<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" class="dinopack-header-logo__img" />
+				</a>
+			<?php else : ?>
+				<img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" class="dinopack-header-logo__img" />
+			<?php endif; ?>
+		</div>
+		<?php
 	}
 }

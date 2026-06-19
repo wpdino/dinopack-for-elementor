@@ -534,7 +534,10 @@ class Ai_Product_Seo extends Widget_Base {
                         <div class="dinopack-ai-seo-item dinopack-ai-seo-title">
                             <strong><?php echo esc_html__('SEO Title:', 'dinopack-for-elementor'); ?></strong>
                             <span><?php echo esc_html($seo_title); ?></span>
-                            <small class="dinopack-char-count"><?php echo esc_html(sprintf(__('(%d characters)', 'dinopack-for-elementor'), strlen($seo_title))); ?></small>
+                            <small class="dinopack-char-count"><?php
+                                /* translators: %d: character count. */
+                                echo esc_html( sprintf( __( '(%d characters)', 'dinopack-for-elementor' ), strlen( $seo_title ) ) );
+                            ?></small>
                         </div>
                     <?php endif; ?>
                     
@@ -542,7 +545,10 @@ class Ai_Product_Seo extends Widget_Base {
                         <div class="dinopack-ai-seo-item dinopack-ai-seo-description">
                             <strong><?php echo esc_html__('Meta Description:', 'dinopack-for-elementor'); ?></strong>
                             <p><?php echo esc_html($meta_description); ?></p>
-                            <small class="dinopack-char-count"><?php echo esc_html(sprintf(__('(%d characters)', 'dinopack-for-elementor'), strlen($meta_description))); ?></small>
+                            <small class="dinopack-char-count"><?php
+                                /* translators: %d: character count. */
+                                echo esc_html( sprintf( __( '(%d characters)', 'dinopack-for-elementor' ), strlen( $meta_description ) ) );
+                            ?></small>
                         </div>
                     <?php endif; ?>
                     

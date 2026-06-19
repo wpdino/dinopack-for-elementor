@@ -566,7 +566,7 @@ class Offset_Side_Panel extends Widget_Base {
 							ob_start();
 							Icons_Manager::render_icon( $s['close_icon'], array( 'aria-hidden' => 'true' ) );
 							$icon_output = ob_get_clean();
-							if ( $icon_output !== '' && trim( strip_tags( $icon_output ) ) !== '' && ! preg_match( '/^\d+$/', trim( strip_tags( $icon_output ) ) ) ) {
+							if ( $icon_output !== '' && trim( wp_strip_all_tags( $icon_output ) ) !== '' && ! preg_match( '/^\d+$/', trim( wp_strip_all_tags( $icon_output ) ) ) ) {
 								echo $icon_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								$icon_rendered = true;
 							}
@@ -583,6 +583,7 @@ class Offset_Side_Panel extends Widget_Base {
 					if ( $template_id && class_exists( '\Elementor\Plugin' ) ) {
 						$doc = \Elementor\Plugin::instance()->documents->get( $template_id );
 						if ( $doc && $doc->is_built_with_elementor() ) {
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor template HTML output.
 							echo \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $template_id, true );
 						}
 					} elseif ( ! empty( $s['panel_content'] ) ) {

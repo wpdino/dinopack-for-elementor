@@ -5,7 +5,7 @@ Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,9 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.0.9 =
+* Minor bug fix in blog widget
+
 = 1.0.8 =
 * Compatibility WordPress version 7.0
 
@@ -193,7 +196,7 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 == Upgrade Notice ==
 
 = 1.0.3 =
-This update adds two powerful AI-powered widgets for WooCommerce: AI Product Description Generator and AI Product Review Summarizer. These widgets require an OpenAI API key to be configured in DinoPack Settings. The Price Table widget now supports shortcodes in the currency field and shortcode-based buttons. All widgets remain enabled by default.
+Adds AI Product Description Generator and AI Review Summarizer widgets for WooCommerce (OpenAI API key required). Price Table now supports shortcode currency and buttons. Widgets remain enabled by default.
 
 = 1.0.2 =
 New widget management feature allows you to enable/disable individual widgets from the settings panel. All widgets remain enabled by default, so no action is required unless you want to hide specific widgets from the Elementor panel.
