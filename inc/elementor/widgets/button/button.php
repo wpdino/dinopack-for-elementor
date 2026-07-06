@@ -552,6 +552,20 @@ class Button extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'enable_fixed_size',
+            [
+                'label' => esc_html__('Fixed Size on All Devices', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'dinopack-for-elementor'),
+                'label_off' => esc_html__('No', 'dinopack-for-elementor'),
+                'return_value' => 'yes',
+                'default' => '',
+                'separator' => 'before',
+                'description' => esc_html__('Turn on to keep the desktop font size and padding on tablet and mobile instead of scaling down.', 'dinopack-for-elementor'),
+            ]
+        );
+
         // Animated Underline Styling Controls
         $this->add_control(
             'underline_heading',
@@ -748,6 +762,12 @@ class Button extends Widget_Base {
             'dinopack-button',
             'dinopack-button-' . $settings['button_type'],
         ];
+
+        // By default the button uses responsive sizes (scales down on smaller screens).
+        // When fixed size is enabled, this class keeps the desktop font size and padding on all devices.
+        if ($settings['enable_fixed_size'] === 'yes') {
+            $button_classes[] = 'dinopack-button-no-responsive';
+        }
 
         // Add animated underline class for label type if enabled
         if ($settings['button_type'] === 'label' && $settings['enable_animated_underline'] === 'yes') {

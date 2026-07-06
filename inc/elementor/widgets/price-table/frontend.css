@@ -28,11 +28,17 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     z-index: 1;
+    max-width: calc(100% - 24px);
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.3;
 }
 
 /* Header */
 .dinopack-price-table-header {
     margin-bottom: 30px;
+    /* Reserve top space on every card so titles align when one has a popular badge. */
+    padding-top: 28px;
 }
 
 .dinopack-price-table-title {
@@ -242,6 +248,17 @@
         padding: 30px 20px;
         margin: 0 10px;
     }
+
+    .dinopack-price-table-header {
+        padding-top: 32px;
+    }
+
+    .dinopack-price-table-popular {
+        font-size: 11px;
+        padding: 6px 14px;
+        letter-spacing: 0.5px;
+        max-width: calc(100% - 20px);
+    }
     
     .dinopack-price-table-title {
         font-size: 24px;
@@ -260,6 +277,15 @@
 @media (max-width: 480px) {
     .dinopack-price-table {
         padding: 25px 15px;
+    }
+
+    .dinopack-price-table-header {
+        padding-top: 36px;
+    }
+
+    .dinopack-price-table-popular {
+        font-size: 10px;
+        padding: 5px 12px;
     }
     
     .dinopack-price-table-title {

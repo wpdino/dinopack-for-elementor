@@ -412,6 +412,32 @@ class Price_Table extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'container_max_width',
+            [
+                'label' => esc_html__('Max Width', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em', 'vw'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1200,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'size' => 350,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         // Title Style
@@ -451,6 +477,87 @@ class Price_Table extends Widget_Base {
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
                     '{{WRAPPER}} .dinopack-price-table-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Description Style
+        $this->start_controls_section(
+            'section_description_style',
+            [
+                'label' => esc_html__('Description', 'dinopack-for-elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'description_color',
+            [
+                'label' => esc_html__('Color', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-description' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'label' => esc_html__('Typography', 'dinopack-for-elementor'),
+                'selector' => '{{WRAPPER}} .dinopack-price-table-description',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_margin',
+            [
+                'label' => esc_html__('Margin', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_padding',
+            [
+                'label' => esc_html__('Padding', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-description' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_align',
+            [
+                'label' => esc_html__('Alignment', 'dinopack-for-elementor'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'dinopack-for-elementor'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .dinopack-price-table-description' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -741,7 +848,7 @@ class Price_Table extends Widget_Base {
         $nofollow = $settings['button_url']['nofollow'] ? ' rel="nofollow"' : '';
         
         ?>
-        <div class="dinopack-price-table">
+        <div class="dinopack-price-table<?php echo ( $settings['popular'] === 'yes' ) ? ' dinopack-price-table--has-popular' : ''; ?>">
             <?php if ($settings['popular'] === 'yes'): ?>
                 <div class="dinopack-price-table-popular">
                     <span><?php echo esc_html($settings['popular_text']); ?></span>

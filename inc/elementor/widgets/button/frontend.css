@@ -147,25 +147,27 @@
 }
 
 /* Responsive Styles */
+/* The :not(.dinopack-button-no-responsive) guard keeps the button at its desktop */
+/* size when "Fixed Size on All Devices" is enabled. */
 @media (max-width: 768px) {
-    .dinopack-button {
+    .dinopack-button:not(.dinopack-button-no-responsive) {
         padding: 10px 20px;
         font-size: 14px;
     }
-    
-    .dinopack-button-label {
+
+    .dinopack-button-label:not(.dinopack-button-no-responsive) {
         padding: 6px 12px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .dinopack-button {
+    .dinopack-button:not(.dinopack-button-no-responsive) {
         padding: 8px 16px;
         font-size: 13px;
     }
-    
-    .dinopack-button-label {
+
+    .dinopack-button-label:not(.dinopack-button-no-responsive) {
         padding: 5px 10px;
         font-size: 13px;
     }
