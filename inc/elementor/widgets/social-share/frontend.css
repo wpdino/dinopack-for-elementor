@@ -1,0 +1,142 @@
+.dinopack-social-share {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+.dinopack-share-btn {
+	--dinopack-share-size: 40px;
+	--dinopack-share-brand: #6F9C50;
+
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: auto;
+	min-width: var(--dinopack-share-size);
+	height: var(--dinopack-share-size);
+	padding: 0 14px;
+	margin: 0;
+	text-decoration: none;
+	line-height: 1;
+	white-space: nowrap;
+	vertical-align: middle;
+	transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+	box-sizing: border-box;
+}
+
+.dinopack-share-btn:hover {
+	transform: translateY(-1px);
+	opacity: 0.92;
+}
+
+.dinopack-share-btn:focus {
+	outline: none;
+}
+
+.dinopack-share-btn:focus-visible {
+	outline: 2px solid #6F9C50;
+	outline-offset: 2px;
+}
+
+.dinopack-share-icon {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+}
+
+.dinopack-share-icon svg {
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+
+.dinopack-share-label {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+	line-height: 1;
+}
+
+/* Icon-only: fixed square/circle hit area */
+.dinopack-social-share.view-icon .dinopack-share-btn {
+	width: var(--dinopack-share-size);
+	padding: 0;
+}
+
+/* Shapes */
+.dinopack-social-share.shape-square .dinopack-share-btn {
+	border-radius: 0;
+}
+
+.dinopack-social-share.shape-rounded .dinopack-share-btn {
+	border-radius: 8px;
+}
+
+.dinopack-social-share.shape-circle .dinopack-share-btn {
+	border-radius: 999px;
+}
+
+.dinopack-social-share.shape-circle.view-icon .dinopack-share-btn {
+	padding: 0;
+	width: var(--dinopack-share-size);
+}
+
+.dinopack-social-share.shape-circle.view-icon-text .dinopack-share-btn,
+.dinopack-social-share.shape-circle.view-text .dinopack-share-btn {
+	width: auto;
+	min-width: 0;
+	padding: 0 16px;
+}
+
+/* Skins */
+.dinopack-social-share.skin-brand .dinopack-share-btn {
+	background-color: var(--dinopack-share-brand);
+	color: #fff;
+	border: 1px solid transparent;
+}
+
+.dinopack-social-share.skin-flat .dinopack-share-btn {
+	background-color: #6F9C50;
+	color: #fff;
+	border: 1px solid transparent;
+}
+
+.dinopack-social-share.skin-outline .dinopack-share-btn {
+	background-color: transparent;
+	color: #6F9C50;
+	border: 1px solid #6F9C50;
+}
+
+.dinopack-social-share.skin-minimal .dinopack-share-btn {
+	background-color: transparent;
+	color: #6F9C50;
+	border: 1px solid transparent;
+	min-width: auto;
+	width: auto;
+	height: auto;
+	padding: 4px;
+}
+
+.dinopack-social-share.view-text .dinopack-share-btn {
+	width: auto;
+	min-width: 0;
+	padding: 0 14px;
+}
+
+.dinopack-social-share.view-icon-text .dinopack-share-btn {
+	width: auto;
+	min-width: 0;
+}
+
+/* Keep copy button identical to siblings (href="#" themes sometimes stretch links) */
+.dinopack-social-share .dinopack-share-copy {
+	display: inline-flex;
+	width: auto;
+	max-width: none;
+	flex: 0 0 auto;
+}

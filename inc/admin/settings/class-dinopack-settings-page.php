@@ -761,8 +761,11 @@ class DinoPack_Settings {
 		$widget_names = array(
 			'advanced-heading' => esc_html__( 'Advanced Heading', 'dinopack-for-elementor' ),
 			'blog' => esc_html__( 'Blog', 'dinopack-for-elementor' ),
+			'breadcrumbs' => esc_html__( 'Breadcrumbs', 'dinopack-for-elementor' ),
 			'button' => esc_html__( 'Button', 'dinopack-for-elementor' ),
 			'car-specs' => esc_html__( 'Car Specs', 'dinopack-for-elementor' ),
+			'counter' => esc_html__( 'Counter', 'dinopack-for-elementor' ),
+			'faq-accordion' => esc_html__( 'FAQ Accordion', 'dinopack-for-elementor' ),
 			'gallery' => esc_html__( 'Gallery', 'dinopack-for-elementor' ),
 			'icon-box' => esc_html__( 'Icon Box', 'dinopack-for-elementor' ),
 			'newsletter' => esc_html__( 'Newsletter', 'dinopack-for-elementor' ),
@@ -770,6 +773,9 @@ class DinoPack_Settings {
 			'price-table' => esc_html__( 'Price Table', 'dinopack-for-elementor' ),
 			'progress-bar' => esc_html__( 'Progress Bar', 'dinopack-for-elementor' ),
 			'restaurant-menu' => esc_html__( 'Restaurant Menu', 'dinopack-for-elementor' ),
+			'social-share' => esc_html__( 'Social Share', 'dinopack-for-elementor' ),
+			'table-of-contents' => esc_html__( 'Table of Contents', 'dinopack-for-elementor' ),
+			'text-marquee' => esc_html__( 'Text Marquee', 'dinopack-for-elementor' ),
 			'woo-products' => esc_html__( 'WooCommerce Products', 'dinopack-for-elementor' ),
 		);
 		

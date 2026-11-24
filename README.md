@@ -6,7 +6,7 @@
 ![PHP Version](https://img.shields.io/badge/PHP-7.0+-purple.svg)
 ![Elementor](https://img.shields.io/badge/Elementor-2.0+-pink.svg)
 ![License](https://img.shields.io/badge/License-GPL%20v2-green.svg)
-![Version](https://img.shields.io/badge/Version-1.0.6-orange.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)
 
 **A powerful collection of advanced Elementor widgets to supercharge your WordPress website**
 
@@ -22,7 +22,7 @@
 
 ## ✨ Features
 
-- 🎨 **16+ Premium Widgets** - Advanced widgets for every need
+- 🎨 **25+ Premium Widgets** - Advanced widgets for every need
 - 🎯 **Multiple Styles** - Pre-designed styles for each widget
 - 📱 **Fully Responsive** - Mobile-first design approach
 - ⚡ **Performance Optimized** - Lightweight and fast-loading
@@ -181,6 +181,42 @@ Generate SEO-optimized meta data for WooCommerce products:
 - Display controls to show/hide each element
 - Fully customizable styling
 - Requires OpenAI API key (configure in DinoPack Settings)
+
+### 21. **FAQ Accordion Widget**
+Accessible FAQ accordion for landing pages and support sections:
+- Repeater items with question and WYSIWYG answer
+- Single or multiple open items
+- Icon position, open animations, and style controls
+
+### 22. **Text Marquee Widget**
+Infinite scrolling text ticker for announcements and highlights:
+- Repeater text items with separator
+- Left/right direction, speed, and pause on hover
+- Typography and color controls
+
+### 23. **Counter Widget**
+Animated number counters for stats and highlights:
+- Start/end number animation on scroll
+- Prefix, suffix, title, description, and optional icon
+- Thousand separator and multiple layouts
+
+### 24. **Social Share Widget**
+Share the current page to popular networks:
+- Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, Reddit, Email
+- Copy button copies the current page URL to the clipboard
+- Icon / icon+text / text views with brand, flat, outline, and minimal skins
+
+### 25. **Breadcrumbs Widget**
+SEO-friendly breadcrumb trails for pages and posts:
+- Home, category/ancestor, and current page trail
+- Separator options (slash, chevron, dash, pipe, icon, custom)
+- Optional BreadcrumbList JSON-LD schema markup
+
+### 26. **Table of Contents Widget**
+Page navigation from headings or custom anchors:
+- Auto mode: scans selected heading levels and builds the list
+- Manual mode: custom titles with CSS ID anchors and indent levels
+- Smooth scroll, active section highlight, and mobile collapse
 
 ## 📋 Requirements
 
@@ -425,6 +461,16 @@ This plugin uses the following third-party services:
 - No personal user data is collected or stored by the plugin itself
 
 ## 📝 Changelog
+
+### Version 1.1.0 - 2026-10-16
+
+#### Added
+- FAQ Accordion widget with repeater items, single/multiple open modes, icon position, open animations, and full style controls
+- Text Marquee widget for scrolling announcement tickers with direction, speed, and pause on hover
+- Counter widget with animated numbers, prefix/suffix, icon, and layout options
+- Social Share widget with Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, Reddit, Email, and Copy (copies the current page URL)
+- Breadcrumbs widget with separators, current-page toggle, and optional BreadcrumbList JSON-LD schema
+- Table of Contents widget with Auto mode (heading scan) and Manual mode (custom titles + CSS ID anchors), smooth scroll, active highlight, and mobile collapse
 
 ### Version 1.0.5 - 2025-12-XX
 

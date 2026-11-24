@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.1.0] - 2026-10-16
+
+### Added
+- FAQ Accordion widget
+  - Repeater items with question and WYSIWYG answer
+  - Single or multiple open modes, icon position, open animations, and full style controls
+- Text Marquee widget
+  - Infinite scrolling text ticker with direction, speed, and pause on hover
+- Counter widget
+  - Animated numbers with prefix/suffix, icon, and layout options
+- Social Share widget
+  - Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, Reddit, Email
+  - Copy button copies the current page URL to the clipboard
+- Breadcrumbs widget
+  - Separators, current-page toggle, and optional BreadcrumbList JSON-LD schema
+- Table of Contents widget
+  - Auto mode (heading scan) and Manual mode (custom titles + CSS ID anchors)
+  - Smooth scroll, active section highlight, and mobile collapse
+
 ## [1.0.9] - 2026-03-13
 
 ### Changed

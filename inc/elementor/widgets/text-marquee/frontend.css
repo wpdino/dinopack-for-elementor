@@ -1,0 +1,66 @@
+.dinopack-text-marquee {
+	overflow: hidden;
+	position: relative;
+}
+
+.dinopack-marquee-viewport {
+	overflow: hidden;
+	width: 100%;
+}
+
+.dinopack-marquee-track {
+	display: inline-flex;
+	align-items: center;
+	gap: 48px;
+	white-space: nowrap;
+	will-change: transform;
+	animation: dinopack-marquee-left var(--dinopack-marquee-duration, 24s) linear infinite;
+}
+
+.dinopack-text-marquee--right .dinopack-marquee-track {
+	animation-name: dinopack-marquee-right;
+}
+
+.dinopack-text-marquee--pause-hover:hover .dinopack-marquee-track {
+	animation-play-state: paused;
+}
+
+.dinopack-marquee-item {
+	display: inline-flex;
+	align-items: center;
+	font-weight: 600;
+}
+
+.dinopack-marquee-separator {
+	display: inline-flex;
+	align-items: center;
+	font-weight: 700;
+	opacity: 0.8;
+}
+
+@keyframes dinopack-marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes dinopack-marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dinopack-marquee-track {
+		animation: none;
+		transform: none;
+		white-space: normal;
+		flex-wrap: wrap;
+	}
+}

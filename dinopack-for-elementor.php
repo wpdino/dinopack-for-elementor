@@ -3,11 +3,10 @@
  * Plugin Name:         DinoPack for Elementor
  * Plugin URI:          https://wpdino.com/plugins/dinopack-for-elementor/
  * Description:         DinoPack for Elementor is a collection of creative and advanced widgets, expertly crafted by the WPDINO team to enhance your Elementor experience.
- * Version:             1.0.9
+ * Version:             1.1.0
  * Author:              WPDINO
  * Author URI:          https://wpdino.com
  * Requires at least:   6.6
- * Tested up to:        7.0
  * Requires Plugins: elementor
  * Requires PHP: 7.4
  * Tags: elementor, widgets, page builder, templates, blocks, design
@@ -106,8 +105,6 @@ final class Plugin {
 
 		self::includes();
 
-		add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
-
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'plugin_css' ) );
 		add_action( 'elementor/preview/enqueue_styles', array( $this, 'plugin_css' ) );
 
@@ -150,43 +147,15 @@ final class Plugin {
 	/**
 	 * Enqueue plugin styles.
 	 */
-	public function plugin_css() {	
-		wp_enqueue_style( 
-            'dinopack-for-elementor', 
-            DINOPACK_URL . 'assets/css/dinopack-for-elementor.css', 
-			[],
-            DINOPACK_VERSION 
-        );
+	public function plugin_css() {
+		wp_enqueue_style(
+			'dinopack-for-elementor',
+			DINOPACK_URL . 'assets/css/dinopack-for-elementor.css',
+			array(),
+			DINOPACK_VERSION
+		);
 	}
 
-	/**
-	 * On Plugins Loaded
-	 *
-	 * Checks if Elementor has loaded, and performs some compatibility checks.
-	 * If All checks pass, inits the plugin.
-	 *
-	 * Fired by `plugins_loaded` action hook.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 */
-	public function on_plugins_loaded() {
-		add_action( 'elementor/init', array( $this, 'init' ) );
-	}
-
-    /**
-	 * Initialize the plugin
-	 *
-	 * Load the plugin only after Elementor (and other plugins) are loaded.
-	 * Load the files required to run the plugin.
-	 *
-	 * Fired by `plugins_loaded` action hook.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 */
-	public function init() {}
-    
 }
 
 Plugin::instance();

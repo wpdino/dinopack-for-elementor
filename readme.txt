@@ -3,9 +3,9 @@ Contributors: wpdino
 Donate link: https://paypal.me/dinostd/10usd
 Tags: elementor, widgets, page builder, woocommerce, mailchimp
 Requires at least: 6.6
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,10 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 
 * **Advanced Heading Widget** - Create dynamic, animated headings with text rotator effects
 * **Blog Widget** - Display your posts in grid, list, or masonry layouts with AJAX load more
+* **Breadcrumbs Widget** - SEO-friendly breadcrumb trails with separators and optional JSON-LD schema
 * **Button Widget** - Stylish buttons with hover effects and animations
+* **Counter Widget** - Animated number counters with prefix, suffix, icon, and layout options
+* **FAQ Accordion Widget** - Accessible FAQ accordion with repeater items, animations, and icon controls
 * **Gallery Widget** - Responsive image galleries with lightbox functionality
 * **Icon Box Widget** - Feature boxes with icons, perfect for services and features
 * **Newsletter Widget** - MailChimp integration for email subscriptions with AJAX submission
@@ -30,6 +33,9 @@ DinoPack for Elementor is a collection of creative and advanced widgets, expertl
 * **Header Anchor Widget** - Smooth‑scroll header links with icon options
 * **Price Table Widget** - Professional pricing tables with customizable features and popular badge
 * **Progress Bar Widget** - Animated progress bars in line and circle formats
+* **Social Share Widget** - Share buttons for Facebook, X, LinkedIn, WhatsApp, and more, plus Copy page URL
+* **Table of Contents Widget** - Auto heading scan or manual anchors with smooth scroll and active highlight
+* **Text Marquee Widget** - Infinite scrolling text ticker for announcements and highlights
 * **WooCommerce Products Widget** - Display products with customizable layouts and styling
 * **Restaurant Menu Widget** - Perfect for restaurant websites with menu items, prices, images, and dietary badges
 * **Car Specs Widget** - Ideal for automotive websites with vehicle specifications and customizable layouts
@@ -119,6 +125,14 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 
 == Changelog ==
 
+= 1.1.0 =
+* Added FAQ Accordion widget with repeater items, single/multiple open modes, icon position, open animations, and full style controls
+* Added Text Marquee widget for scrolling announcement tickers with direction, speed, and pause on hover
+* Added Counter widget with animated numbers, prefix/suffix, icon, and layout options
+* Added Social Share widget with Facebook, X, LinkedIn, WhatsApp, Pinterest, Telegram, Reddit, Email, and Copy (copies the current page URL)
+* Added Breadcrumbs widget with separators, current-page toggle, and optional BreadcrumbList JSON-LD schema
+* Added Table of Contents widget with Auto mode (heading scan) and Manual mode (custom titles + CSS ID anchors), smooth scroll, active highlight, and mobile collapse
+
 = 1.0.9 =
 * Minor bug fix in blog widget
 
@@ -194,6 +208,9 @@ Yes, we provide support through our website at wpdino.com. You can also find doc
 * Performance optimizations
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds FAQ Accordion, Text Marquee, Counter, Social Share, Breadcrumbs, and Table of Contents widgets.
 
 = 1.0.3 =
 Adds AI Product Description Generator and AI Review Summarizer widgets for WooCommerce (OpenAI API key required). Price Table now supports shortcode currency and buttons. Widgets remain enabled by default.

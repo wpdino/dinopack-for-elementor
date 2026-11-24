@@ -1,0 +1,55 @@
+.dinopack-breadcrumbs {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.dinopack-breadcrumbs-list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dinopack-breadcrumb-item,
+.dinopack-breadcrumb-separator {
+	display: inline-flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	line-height: 1.4;
+}
+
+.dinopack-breadcrumbs a {
+	color: #6F9C50;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.dinopack-breadcrumbs a:hover {
+	color: #557a3d;
+}
+
+.dinopack-breadcrumb-current {
+	color: #1a1f26;
+	font-weight: 500;
+}
+
+.dinopack-breadcrumb-sep {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #9aa3ad;
+	line-height: 1;
+}
+
+.dinopack-breadcrumb-sep-icon svg,
+.dinopack-breadcrumb-sep-icon i {
+	width: 10px;
+	height: 10px;
+	font-size: 10px;
+	display: block;
+}
